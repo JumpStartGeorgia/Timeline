@@ -3,6 +3,7 @@ ka:
   activerecord:
     models:
       user: მომხმარებელი
+      event: Event
     attributes:
       user:
         email: ელ.ფოსტა
@@ -10,10 +11,21 @@ ka:
         password_confirmation: გაიმეორეთ პაროლი
         role: როლი
         remember_me: დამიმახსოვრე
+      event:
+        start_date: Start Date
+        end_date: End Date
+        event_type: Type
+      event_translation:
+        headline: Headline
+        story: Story
+        media: URL to Media
+        credit: Media Credit
+        caption: Media Caption
     errors:
       messages:
         required_field: "სავალდებულოა"
         already_exists: 'უკვე არსებობს მონაცემთა ბაზაში'
+        invalid_url: "არასწორია. სწორი ბმული შეიცავს  'http://' ან 'https://', მაგ. 'http://parliament.ge/'"
   helpers:
     actions: აირჩიეთ
     links:
@@ -25,6 +37,7 @@ ka:
       list: იხილეთ სრულად
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
+      view: View
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
@@ -48,7 +61,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: Bootstrap Starter Project
+      app_name: Election Timeline
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
@@ -77,9 +90,8 @@ ka:
   admin:
     index:
       title: ადმინისტრატორის განყოფილება
-      users_header: მომხმარებლები
-      new_users: მომხმარებლის დამატება
-      view_users: მომხმარებლების ნახვა
+      users: მომხმარებლები
+      events: Events
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე

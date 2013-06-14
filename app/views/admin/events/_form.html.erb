@@ -1,0 +1,35 @@
+<%= semantic_form_for([:admin,@event]) do |f| %>
+	<%= f.error_messages %>
+
+
+	<%= f.inputs do %>
+		<%= f.input :start_date, :as => :string, :input_html => {:size =>35} %>
+		<%= f.input :end_date, :as => :string, :input_html => {:size =>35} %>
+	<% end %>
+
+  <% @event.event_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
+	  <%= f.fields_for :event_translations, trans do |translation| %>
+
+		  <div id="form-<%= trans.locale %>" class="multilanguage">
+			  <h3><%= t("app.language.#{trans.locale}") %></h3>
+
+			  <%= translation.input :headline %>
+			  <%= translation.input :story, :input_html => {:rows => 4} %>
+			  <%= translation.input :media %>
+			  <%= translation.input :credit %>
+			  <%= translation.input :caption %>
+			  <%= translation.hidden_field :locale , :value => trans.locale %>
+		  </div>
+
+	  <% end %>
+  <% end %>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+	  <%= f.submit nil, :class => 'btn btn-warning', :type => :reset, :value => t('helpers.links.reset'), :name => :reset %>
+	  <%= link_to t('helpers.links.cancel'), admin_events_path, :class => 'btn btn-mini btn-warning' %>
+  </div>
+<% end %>
+
+

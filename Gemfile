@@ -19,7 +19,7 @@ gem "gon", "~> 2.2.2" # push data into js
 gem "dynamic_form", "~> 1.1.4" # to see form error messages
 gem "i18n-js", "~> 2.1.2" # to show translations in javascript
 gem "paperclip", "~> 3.4.0" # to upload files
-gem "has_permalink", "~> 0.1.4" # create permalink slugs for nice urls
+#gem "has_permalink", "~> 0.1.4" # create permalink slugs for nice urls
 gem "capistrano", "~> 2.12.0" # to deploy to server
 gem "exception_notification", "~> 2.5.2" # send an email when exception occurs
 gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser detection
@@ -43,7 +43,7 @@ end
 group :development do
 #	gem "mailcatcher", "0.5.5" # small smtp server for dev, http://mailcatcher.me/
 #	gem "wkhtmltopdf-binary", "~> 0.9.5.3" # web kit that takes html and converts to pdf
-  gem 'rb-inotify', '~> 0.9' # rails dev boost needs this
+  gem 'rb-inotify', '~> 0.8.8' # rails dev boost needs this
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
 end
 

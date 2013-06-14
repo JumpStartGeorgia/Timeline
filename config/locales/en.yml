@@ -3,6 +3,7 @@ en:
   activerecord:
     models:
       user: User
+      event: Event
     attributes:
       user:
         email: Email Address
@@ -10,10 +11,21 @@ en:
         password_confirmation: Password Confirmation
         role: Role
         remember_me: Remeber Me
+      event:
+        start_date: Start Date
+        end_date: End Date
+        event_type: Type
+      event_translation:
+        headline: Headline
+        story: Story
+        media: URL to Media
+        credit: Media Credit
+        caption: Media Caption
     errors:
       messages:
         required_field: "is a required field."
         already_exists: 'already exists in the database.'
+        invalid_url: "is invalid. A valid url includes 'http://' or 'https://', i.e. 'http://parliament.ge/'"
   helpers:
     actions: Actions
     links:
@@ -25,6 +37,7 @@ en:
       list: View All
       cancel: Cancel
       reset: Reset
+      view: View
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
@@ -48,7 +61,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: Bootstrap Starter Project
+      app_name: Election Timeline
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -76,9 +89,8 @@ en:
   admin:
     index:
       title: Administration Section
-      users_header: Users
-      new_users: Add User
-      view_users: View Users
+      users: Users
+      events: Events
     users:
       edit:
         title: Editing User
