@@ -17,10 +17,10 @@
 </div>
 
   <p><strong><%= model_class.human_attribute_name(:start_date) %>:</strong>
-  <%= l @event.start_date, :format => :default_no_tz if @event.start_date.present? %></p>
+  <%= @event.start_datetime %></p>
 
   <p><strong><%= model_class.human_attribute_name(:end_date) %>:</strong>
-  <%= l @event.end_date, :format => :default_no_tz if @event.end_date.present? %></p>
+  <%= @event.end_datetime %></p>
 
   <p><strong><%= model_class_et.human_attribute_name(:headline) %>:</strong>
   <%= @event.headline %></p>

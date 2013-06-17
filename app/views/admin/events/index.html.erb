@@ -25,8 +25,8 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to t("helpers.links.view"), admin_event_path(event), :class => 'btn btn-mini' %></td>
-        <td><%= l event.start_date, :format => :default_no_tz if event.start_date.present? %></td>
-        <td><%= l event.end_date, :format => :default_no_tz if event.end_date.present? %></td>
+        <td><%= event.start_datetime %></td>
+        <td><%= event.end_datetime %></td>
         <td><%= event.headline %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

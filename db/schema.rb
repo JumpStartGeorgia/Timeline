@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614061902) do
+ActiveRecord::Schema.define(:version => 20130617124105) do
 
   create_table "event_translations", :force => true do |t|
     t.integer  "event_id"
@@ -30,12 +30,17 @@ ActiveRecord::Schema.define(:version => 20130614061902) do
 
   create_table "events", :force => true do |t|
     t.string   "event_type"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "start_time"
+    t.time     "end_time"
   end
+
+  add_index "events", ["end_date", "end_time"], :name => "idx_events_end"
+  add_index "events", ["start_date", "start_time"], :name => "idx_events_start"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

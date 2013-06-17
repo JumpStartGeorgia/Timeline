@@ -24,6 +24,7 @@ ka:
       short: "%d %b %H:%M"
       long: "%d %b %Y %H:%M"
       file: "%Y %m %d %H:%M:%S"
+      time_only: "%H:%M"
     am: "am"
     pm: "pm"
 

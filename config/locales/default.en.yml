@@ -200,6 +200,7 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
       file: "%Y %m %d %H:%M:%S"
+      time_only: "%H:%M"
     pm: pm
 
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
