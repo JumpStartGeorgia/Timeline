@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 	before_filter :set_locale
-	before_filter :is_browser_supported?
+#	before_filter :is_browser_supported?
 	before_filter :initialize_gon
 
 	unless Rails.application.config.consider_all_requests_local

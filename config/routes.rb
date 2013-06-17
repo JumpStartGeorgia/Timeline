@@ -15,10 +15,10 @@ BootstrapStarter::Application.routes.draw do
 
 
 		root :to => 'root#index'
-	  match "*path", :to => redirect("/#{I18n.default_locale}/") # handles /en/fake/path/whatever
+	  match "*path", :to => redirect("/#{I18n.default_locale}") # handles /en/fake/path/whatever
 	end
 
-	match '', :to => redirect("/#{I18n.default_locale}/") # handles /
+	match '', :to => redirect("/#{I18n.default_locale}") # handles /
 	match '*path', :to => redirect("/#{I18n.default_locale}/%{path}") # handles /not-a-locale/anything
 
 end
