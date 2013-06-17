@@ -25,7 +25,17 @@ class Event < ActiveRecord::Base
     read_attribute("end_time").in_time_zone('Tbilisi') if read_attribute("end_time").present?
   end
 
-  def start_datetime
+  def start_datetime_timeline
+    if self.start_date.present? && self.start_time.present?
+      "#{I18n.l self.start_date, :format => :timeline} #{I18n.l self.start_time, :format => :time_only}"
+    elsif self.start_date.present?
+      I18n.l self.start_date, :format => :timeline
+    else
+      nil
+    end
+  end
+
+  def start_datetime_formatted
     if self.start_date.present? && self.start_time.present?
       "#{I18n.l self.start_date} #{I18n.l self.start_time, :format => :time_only}"
     elsif self.start_date.present?
@@ -35,7 +45,17 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def end_datetime
+  def end_datetime_timeline
+    if self.end_date.present? && self.end_time.present?
+      "#{I18n.l self.end_date, :format => :timeline} #{I18n.l self.end_time, :format => :time_only}"
+    elsif self.end_date.present?
+      I18n.l self.end_date, :format => :timeline
+    else
+      nil
+    end
+  end
+
+  def end_datetime_formatted
     if self.end_date.present? && self.end_time.present?
       "#{I18n.l self.end_date} #{I18n.l self.end_time, :format => :time_only}"
     elsif self.end_date.present?

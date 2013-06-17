@@ -4,6 +4,7 @@ class RootController < ApplicationController
     events = Event.sorted
     
     gon.json_data = to_json(events)
+    gon.show_timeline = true
 
   end
 
@@ -26,8 +27,8 @@ private
       h["timeline"]["type"] = "default"
       h["timeline"]["headline"] = title.headline
       h["timeline"]["text"] = title.story
-      h["timeline"]["startDate"] = title.start_datetime
-      h["timeline"]["endDate"] = title.end_datetime
+      h["timeline"]["startDate"] = title.start_datetime_timeline
+      h["timeline"]["endDate"] = title.end_datetime_timeline
       h["timeline"]["asset"] = Hash.new
       h["timeline"]["asset"]["media"] = title.media
       h["timeline"]["asset"]["credit"] = title.media
@@ -42,8 +43,8 @@ private
           x["type"] = record.event_type
           x["headline"] = record.headline
           x["text"] = record.story
-          x["startDate"] = record.start_datetime
-          x["endDate"] = record.end_datetime
+          x["startDate"] = record.start_datetime_timeline
+          x["endDate"] = record.end_datetime_timeline
           x["asset"] = Hash.new
           x["asset"]["media"] = record.media
           x["asset"]["credit"] = record.media

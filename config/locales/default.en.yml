@@ -37,6 +37,7 @@ en:
       default: ! '%Y-%m-%d'
       long: ! '%B %d, %Y'
       short: ! '%b %d'
+      timeline: "%m/%d/%Y"
     month_names:
     -
     - January
