@@ -37,6 +37,8 @@ class Admin::EventsController < ApplicationController
 			@event.event_translations.build(:locale => locale.to_s)
 		end
 
+    gon.edit_event = true
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -46,6 +48,9 @@ class Admin::EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    gon.edit_event = true
+		gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
+		gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
   end
 
   # POST /events
@@ -58,6 +63,9 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_event_path(@event), notice: t('app.msgs.success_created', :obj => t('activerecord.models.event')) }
         format.json { render json: @event, status: :created, location: @event }
       else
+        gon.edit_event = true
+		    gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
+		    gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -74,6 +82,9 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_event_path(@event), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.event')) }
         format.json { head :ok }
       else
+        gon.edit_event = true
+		    gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
+		    gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
         format.html { render action: "edit" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
