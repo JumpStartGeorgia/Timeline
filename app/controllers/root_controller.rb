@@ -22,9 +22,8 @@ private
     hash = nil
 		key = CACHE_KEY.gsub("[locale]", I18n.locale.to_s)
 		  .gsub("[data]", 'all')
-Rails.logger.debug "333333333333333 - key = #{key}"
+
 		hash = JsonCache.fetch(key) {
-Rails.logger.debug "333333333333333 - building data for cache"
       h = Hash.new
       data = Event.sorted
 
