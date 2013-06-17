@@ -45,6 +45,7 @@ module LoadData
           h["end_time"] = nil
         end
 
+        h["event_type"] = j["gsx$type"]["$t"].present? ? j["gsx$type"]["$t"] : nil
         h["headline"] = j["gsx$headline"]["$t"].present? ? j["gsx$headline"]["$t"] : nil
         h["story"] = j["gsx$text"]["$t"].present? ? j["gsx$text"]["$t"] : nil
         h["media"] = j["gsx$media"]["$t"].present? ? j["gsx$media"]["$t"] : nil

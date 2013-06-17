@@ -8,6 +8,10 @@ class Event < ActiveRecord::Base
   validates :start_date, :presence => true
   before_save :add_type
 
+  def self.sorted
+    with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
+  end
+
   # type should always be default
   def add_type
     self.event_type = "default" if self.event_type.blank?
@@ -51,7 +55,8 @@ class Event < ActiveRecord::Base
         json.each_with_index do |record, index|
           puts index
           # make sure times are in proper timezone
-          e = Event.new(:start_date => record["start_date"], 
+          e = Event.new(:event_type => record["event_type"],
+                        :start_date => record["start_date"], 
                         :start_time => record["start_time"].present? ? Time.strptime(record["start_time"], '%H:%M') : nil, 
                         :end_date => record["end_date"], 
                         :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil)
