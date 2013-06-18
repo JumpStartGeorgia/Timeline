@@ -41,9 +41,9 @@ private
           h["timeline"]["startDate"] = title.start_datetime_timeline
           h["timeline"]["endDate"] = title.end_datetime_timeline
           h["timeline"]["asset"] = Hash.new
-          h["timeline"]["asset"]["media"] = title.media
-          h["timeline"]["asset"]["credit"] = title.media
-          h["timeline"]["asset"]["caption"] = title.media
+          h["timeline"]["asset"]["media"] = title.media_url
+          h["timeline"]["asset"]["credit"] = title.credit
+          h["timeline"]["asset"]["caption"] = title.caption
         
           # now add all of the rest of the data
           the_rest = data.select{|x| x.event_type != "title"}
@@ -57,9 +57,9 @@ private
               x["startDate"] = record.start_datetime_timeline
               x["endDate"] = record.end_datetime_timeline
               x["asset"] = Hash.new
-              x["asset"]["media"] = record.media
-              x["asset"]["credit"] = record.media
-              x["asset"]["caption"] = record.media
+              x["asset"]["media"] = record.media_url
+              x["asset"]["credit"] = record.credit
+              x["asset"]["caption"] = record.caption
             end
           end
         end

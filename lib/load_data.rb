@@ -1,6 +1,7 @@
 module LoadData
 	require 'net/http'
 	require 'net/https'
+  require 'json_cache'
 
   def self.google_spreadsheet_json(url)
     
@@ -54,6 +55,9 @@ module LoadData
       end
       Event.load_from_json(formatted_json)
     end
+
+    # clear the cache files so the new data is avaialble
+    JsonCache.clear
 
     return nil
   end

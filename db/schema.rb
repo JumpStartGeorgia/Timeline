@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617124105) do
+ActiveRecord::Schema.define(:version => 20130618055708) do
 
   create_table "event_translations", :force => true do |t|
     t.integer  "event_id"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(:version => 20130617124105) do
     t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "media_img_file_name"
+    t.string   "media_img_content_type"
+    t.integer  "media_img_file_size"
+    t.datetime "media_img_updated_at"
+    t.boolean  "media_img_verified",     :default => false
   end
 
   add_index "event_translations", ["event_id"], :name => "index_event_translations_on_event_id"
