@@ -12,6 +12,43 @@ class Event < ActiveRecord::Base
     with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
   end
 
+  def self.title_event
+    with_translations(I18n.locale).where(:event_type => 'title').first
+  end
+
+  # generate timeline json format for this event
+  # - timeline requires the title and at least one event
+  #   so copying this event into both places
+  def to_timeline_json
+    h = Hash.new
+    h["timeline"] = Hash.new
+    h["timeline"]["date"] = []
+
+    h["timeline"]["type"] = "default"
+    h["timeline"]["headline"] = self.headline
+    h["timeline"]["text"] = self.story
+    h["timeline"]["startDate"] = self.start_datetime_timeline
+    h["timeline"]["endDate"] = self.end_datetime_timeline
+    h["timeline"]["asset"] = Hash.new
+    h["timeline"]["asset"]["media"] = self.media
+    h["timeline"]["asset"]["credit"] = self.media
+    h["timeline"]["asset"]["caption"] = self.media
+
+    x = Hash.new
+    h["timeline"]["date"] << x
+    x["type"] = "default"
+    x["headline"] = self.headline
+    x["text"] = self.story
+    x["startDate"] = self.start_datetime_timeline
+    x["endDate"] = self.end_datetime_timeline
+    x["asset"] = Hash.new
+    x["asset"]["media"] = self.media
+    x["asset"]["credit"] = self.media
+    x["asset"]["caption"] = self.media
+
+    return h
+  end
+
   # type should always be default
   def add_type
     self.event_type = "default" if self.event_type.blank?

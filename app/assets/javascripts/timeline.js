@@ -10,7 +10,7 @@ $(document).ready(function() {
 		  embed_id:	'timeline-embed',
       hash_bookmark: true,
       start_zoom_adjust: -1,
-		  debug:		false
+		  debug:		true
 	  });
   }
 });

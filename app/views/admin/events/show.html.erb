@@ -16,6 +16,11 @@
   :class => 'btn' %>
 </div>
 
+<div id="timeline-embed"></div>
+
+<%
+=begin
+%>
   <p><strong><%= model_class.human_attribute_name(:start_date) %>:</strong>
   <%= @event.start_datetime_formatted %></p>
 
@@ -36,6 +41,6 @@
 
   <p><strong><%= model_class_et.human_attribute_name(:caption) %>:</strong>
   <%= @event.caption %></p>
-
-
-
+<%
+=end
+%>

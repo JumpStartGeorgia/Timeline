@@ -20,6 +20,14 @@ class Admin::EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+#    title_event = Event.title_event
+
+    gon.show_timeline = true
+    json = @event.to_timeline_json
+    # apply simple format to the text
+    json["timeline"]["text"] = view_context.simple_format json["timeline"]["text"]
+    json["timeline"]["date"][0]["text"] = view_context.simple_format json["timeline"]["date"][0]["text"]
+    gon.json_data = json
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +57,7 @@ class Admin::EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+
     gon.edit_event = true
 		gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
 		gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
