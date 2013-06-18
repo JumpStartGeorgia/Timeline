@@ -3,6 +3,7 @@ class Admin::EventsController < ApplicationController
   before_filter do |controller_instance|
     controller_instance.send(:valid_role?, User::ROLES[:user])
   end
+	cache_sweeper :event_sweeper, :only => [:create, :update, :destroy]
 
   # GET /events
   # GET /events.json
