@@ -19,7 +19,7 @@ gem "gon", "~> 2.2.2" # push data into js
 gem "dynamic_form", "~> 1.1.4" # to see form error messages
 gem "i18n-js", "~> 2.1.2" # to show translations in javascript
 gem "paperclip", "~> 3.4.0" # to upload files
-#gem "has_permalink", "~> 0.1.4" # create permalink slugs for nice urls
+gem "has_permalink", "~> 0.1.4" # create permalink slugs for nice urls
 gem "capistrano", "~> 2.12.0" # to deploy to server
 gem "exception_notification", "~> 2.5.2" # send an email when exception occurs
 gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser detection
@@ -38,6 +38,8 @@ group :assets do
   gem "therubyracer"
   gem "less-rails"
 	gem "twitter-bootstrap-rails", "~> 2.1.0"
+  gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+  gem "jquery-ui-rails"
 end
 
 group :development do

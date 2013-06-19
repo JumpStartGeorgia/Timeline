@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618055708) do
+ActiveRecord::Schema.define(:version => 20130619082439) do
+
+  create_table "categories", :force => true do |t|
+    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["type_id"], :name => "index_categories_on_type_id"
+
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
+  add_index "category_translations", ["name"], :name => "index_category_translations_on_name"
 
   create_table "event_translations", :force => true do |t|
     t.integer  "event_id"

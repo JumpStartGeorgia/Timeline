@@ -4,6 +4,7 @@ ka:
     models:
       user: მომხმარებელი
       event: Event
+      category: კატეგორია
     attributes:
       user:
         email: ელ.ფოსტა
@@ -21,11 +22,18 @@ ka:
         media: URL to Media
         credit: Media Credit
         caption: Media Caption
+      category:
+        type_id: ტიპი
+      category_translation:
+        name: სახელი
     errors:
       messages:
         required_field: "სავალდებულოა"
         already_exists: 'უკვე არსებობს მონაცემთა ბაზაში'
         invalid_url: "არასწორია. სწორი ბმული შეიცავს  'http://' ან 'https://', მაგ. 'http://parliament.ge/'"
+  categories:
+    category: კატეგორია
+    tag: Tag
   helpers:
     actions: აირჩიეთ
     links:
@@ -46,7 +54,7 @@ ka:
       en: English
       ka: ქართული
     buttons:
-      back: უკან
+      back: იხილეთ სრულად
       list: იხილეთ სრულად
       admin: ადმინისტრატორის განყოფილება
       delete: წაშლა
@@ -62,6 +70,7 @@ ka:
       new: ახალი
     common:
       app_name: Election Timeline
+      added_on: "დამატებულია: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
@@ -92,6 +101,7 @@ ka:
       title: ადმინისტრატორის განყოფილება
       users: მომხმარებლები
       events: Events
+      categories: Categories
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე

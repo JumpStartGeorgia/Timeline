@@ -4,6 +4,7 @@ en:
     models:
       user: User
       event: Event
+      category: Category
     attributes:
       user:
         email: Email Address
@@ -21,11 +22,18 @@ en:
         media: URL to Media
         credit: Media Credit
         caption: Media Caption
+      category:
+        type_id: Type
+      category_translation:
+        name: Name
     errors:
       messages:
         required_field: "is a required field."
         already_exists: 'already exists in the database.'
         invalid_url: "is invalid. A valid url includes 'http://' or 'https://', i.e. 'http://parliament.ge/'"
+  categories:
+    category: Category
+    tag: Tag
   helpers:
     actions: Actions
     links:
@@ -46,7 +54,7 @@ en:
       en: English
       ka: ქართული
     buttons:
-      back: Back
+      back: View All
       list: View All
       admin: Admin Section
       delete: Delete
@@ -62,6 +70,7 @@ en:
       new: New
     common:
       app_name: Election Timeline
+      added_on: "Added on: %{date}" 
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -91,6 +100,7 @@ en:
       title: Administration Section
       users: Users
       events: Events
+      categories: Categories
     users:
       edit:
         title: Editing User

@@ -1,10 +1,9 @@
-<%- model_class = Event -%>
+<%- model_class = Category -%>
 <% title t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
                                  :default => "New #{model_class.model_name.human}") %>
 
-
 <div class="form-actions">
-	<%= link_to t('helpers.links.list'), admin_events_path,
+	<%= link_to t('helpers.links.list'), admin_categories_path,
   :class => 'btn' %>
 	<%= link_to t('helpers.links.admin'), admin_path,
   :class => 'btn' %>

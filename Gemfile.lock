@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 494f752b8eb8350f33841c822a67d014c869219f
+  specs:
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
+
+GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
   revision: d21b297863221d6682a99c0207ac3d219a5e7ba4
   specs:
@@ -98,6 +105,7 @@ GEM
     gon (2.2.2)
       actionpack (>= 2.3.0)
       json
+    has_permalink (0.1.4)
     highline (1.6.15)
     hike (1.2.1)
     i18n (0.6.1)
@@ -106,6 +114,9 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
+    jquery-ui-rails (4.0.3)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.7)
     kgio (2.7.4)
     less (2.2.2)
@@ -221,8 +232,11 @@ DEPENDENCIES
   formtastic-bootstrap!
   globalize3 (~> 0.2.0)
   gon (~> 2.2.2)
+  has_permalink (~> 0.1.4)
   i18n-js (~> 2.1.2)
+  jquery-datatables-rails!
   jquery-rails (~> 1.0.19)
+  jquery-ui-rails
   json
   less-rails
   mysql2 (~> 0.3.11)

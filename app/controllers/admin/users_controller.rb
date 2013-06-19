@@ -7,15 +7,9 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users
   # GET /admin/users.json
   def index
-    if current_user.role == User::ROLES[:admin]
-      @users = User.all
-    else
-      @users = User.no_admins
-    end
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: UsersDatatable.new(view_context, current_user) }
     end
   end
 

@@ -1,0 +1,24 @@
+<%- model_class = Category -%>
+<%- model_class_trans = CategoryTranslation -%>
+<% title t '.title', :default => model_class.model_name.human.pluralize %>
+
+<div class="form-actions">
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_admin_category_path,
+              :class => 'btn btn-primary' %>
+  <%= link_to t('helpers.links.admin'), admin_path,
+  :class => 'btn' %>
+</div>
+
+<table class="table table-striped display" id="categories-datatable" data-source="<%= admin_categories_url(:format => :json) %>">
+  <thead>
+    <tr>
+      <th><%= model_class_trans.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:type_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
