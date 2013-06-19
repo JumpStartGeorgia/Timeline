@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
 	translates :name, :permalink
 
-  has_and_belongs_to_many :events
 	has_many :category_translations, :dependent => :destroy
   accepts_nested_attributes_for :category_translations
   attr_accessible :type_id, :category_translations_attributes

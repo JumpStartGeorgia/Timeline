@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619115457) do
+ActiveRecord::Schema.define(:version => 20130619134303) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(:version => 20130619115457) do
 
   add_index "events", ["end_date", "end_time"], :name => "idx_events_end"
   add_index "events", ["start_date", "start_time"], :name => "idx_events_start"
+
+  create_table "events_tags", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events_tags", ["category_id"], :name => "index_events_tags_on_category_id"
+  add_index "events_tags", ["event_id"], :name => "index_events_tags_on_event_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

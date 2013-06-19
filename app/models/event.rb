@@ -3,9 +3,10 @@ class Event < ActiveRecord::Base
 	translates :headline, :story, :media, :credit, :caption
 
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :tags, :class_name => 'Category', :join_table => 'events_tags'
 	has_many :event_translations, :dependent => :destroy
   accepts_nested_attributes_for :event_translations
-  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids
+  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids, :tag_ids
 
   validates :start_date, :presence => true
   validate :required_category
@@ -81,7 +82,13 @@ class Event < ActiveRecord::Base
 
     if self.categories.present?
       x << "<p><strong>#{I18n.t('categories.category')}:</strong> "
-      x << self.categories.map{|x| ActionController::Base.helpers.link_to(self.categories[0].name, root_path(:category => self.categories[0].permalink, :locale => I18n.locale))}.join(", ")
+      x << self.categories.sort_by{|x| ActionController::Base.helpers.link_to(x.name, root_path(:category => x.permalink, :locale => I18n.locale))}.join(", ")
+      x << "</p>"
+    end
+
+    if self.tags.present?
+      x << "<p><strong>#{I18n.t('categories.tag')}:</strong> "
+      x << self.tags.sort_by{|y| y.name}.map{|x| ActionController::Base.helpers.link_to(x.name, root_path(:tag => x.permalink, :locale => I18n.locale))}.join(", ")
       x << "</p>"
     end
 

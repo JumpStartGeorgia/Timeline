@@ -112,6 +112,12 @@ ol.standard li {
 	filter: none; 
 }
 
+/* fix left margin of radio and checkboxes */
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
 /* multilanguage form styles */
 div#form-en {
 	background-color:#ddd;

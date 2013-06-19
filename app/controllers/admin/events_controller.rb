@@ -39,6 +39,7 @@ class Admin::EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @tags = Category.by_type(Category::TYPES[:tag])
 
     # create the translation object for the locales that were selected
 	  # so the form will properly create all of the nested form fields
@@ -57,6 +58,7 @@ class Admin::EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @tags = Category.by_type(Category::TYPES[:tag])
 
     gon.edit_event = true
 		gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
@@ -73,6 +75,7 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_event_path(@event), notice: t('app.msgs.success_created', :obj => t('activerecord.models.event')) }
         format.json { render json: @event, status: :created, location: @event }
       else
+        @tags = Category.by_type(Category::TYPES[:tag])
         gon.edit_event = true
 		    gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
 		    gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
@@ -92,6 +95,7 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_event_path(@event), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.event')) }
         format.json { head :ok }
       else
+        @tags = Category.by_type(Category::TYPES[:tag])
         gon.edit_event = true
 		    gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
 		    gon.end_date = @event.end_date.strftime('%m/%d/%Y %H:%M') if @event.end_date.present?
