@@ -85,26 +85,6 @@ class Event < ActiveRecord::Base
   end
 
 
-  # add the category links and tag links to the bottom of the story
-  def formatted_story
-    x = ""
-    x << self.story.clone if self.story.present?
-
-    if self.categories.present?
-      x << "<p><strong>#{I18n.t('categories.category')}:</strong> "
-      x << self.categories.sort_by{|y| y.name}.map{|x| ActionController::Base.helpers.link_to(x.name, root_path(:category => x.permalink, :locale => I18n.locale))}.join(", ")
-      x << "</p>"
-    end
-
-    if self.tags.present?
-      x << "<p><strong>#{I18n.t('categories.tag')}:</strong> "
-      x << self.tags.sort_by{|y| y.name}.map{|x| ActionController::Base.helpers.link_to(x.name, root_path(:tag => x.permalink, :locale => I18n.locale))}.join(", ")
-      x << "</p>"
-    end
-
-    return x
-  end
-
 	##############################
 	## shortcut methods to get to
 	## image file in image_file object
@@ -152,7 +132,9 @@ class Event < ActiveRecord::Base
 
     h["timeline"]["type"] = "default"
     h["timeline"]["headline"] = self.headline
-    h["timeline"]["text"] = self.formatted_story
+    h["timeline"]["text"] = self.story
+    h["timeline"]["categories"] = self.categories.present? ? self.categories.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
+    h["timeline"]["tags"] = self.tags.present? ? self.tags.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
     h["timeline"]["startDate"] = self.start_datetime_timeline
     h["timeline"]["endDate"] = self.end_datetime_timeline
     h["timeline"]["asset"] = Hash.new
@@ -164,7 +146,9 @@ class Event < ActiveRecord::Base
     h["timeline"]["date"] << x
     x["type"] = "default"
     x["headline"] = self.headline
-    x["text"] = self.formatted_story
+    x["text"] = self.story
+    x["categories"] = self.categories.present? ? self.categories.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
+    x["tags"] = self.tags.present? ? self.tags.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
     x["startDate"] = self.start_datetime_timeline
     x["endDate"] = self.end_datetime_timeline
     x["asset"] = Hash.new

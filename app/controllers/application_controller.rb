@@ -73,6 +73,25 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     redirect_to root_path, :notice => t('app.msgs.not_authorized') if !current_user || !current_user.role?(role)
   end
 
+  #######################
+  def build_story(story, categories, tags)
+    x = ""
+    x << story.clone if story.present?
+
+    if categories.present?
+      x << "<p class='story_categories'><strong>#{I18n.t('categories.category')}:</strong> "
+      x << categories.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], root_path(:category => x[:permalink], :locale => I18n.locale))}.join(", ")
+      x << "</p>"
+    end
+
+    if tags.present?
+      x << "<p class='story_tags'><strong>#{I18n.t('categories.tag')}:</strong> "
+      x << tags.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], url_for(params.merge(:tag => x[:permalink], :locale => I18n.locale)))}.join(", ")
+      x << "</p>"
+    end
+
+    return x
+  end
 
   #######################
 	def render_not_found(exception)
