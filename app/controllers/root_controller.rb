@@ -20,19 +20,29 @@ private
   # {timeline: { title_record, date: [ record, record, ... ] } }
   def get_event_json
     hash = nil
+    data_type = "all"
+    data_type << "_category_#{params[:category]}" if params[:category].present?
+    data_type << "_tag_#{params[:tag]}" if params[:tag].present?
 		key = CACHE_KEY.gsub("[locale]", I18n.locale.to_s)
-		  .gsub("[data]", 'all')
+		  .gsub("[data]", data_type)
 
 		hash = JsonCache.fetch(key) {
       h = Hash.new
-      data = Event.sorted
+      data = Event.sorted.apply_filter(params[:category], params[:tag])
 
       if data.present?
         h["timeline"] = Hash.new
         h["timeline"]["date"] = []
 
         # get the title record
-        title = data.select{|x| x.event_type == "title"}
+        if data.class == ActiveRecord::Relation
+          title = data
+          the_rest = data
+        else
+          title = data.select{|x| x.event_type == "title"}
+          title = data.first if title.blank?
+          the_rest = data.select{|x| x.event_type != "title"}
+        end
         if title.present?
           title = title.first            
           h["timeline"]["type"] = "default"
@@ -46,7 +56,6 @@ private
           h["timeline"]["asset"]["caption"] = title.caption
         
           # now add all of the rest of the data
-          the_rest = data.select{|x| x.event_type != "title"}
           if the_rest.present?
             the_rest.each do |record|
               x = Hash.new

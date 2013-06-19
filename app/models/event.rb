@@ -16,6 +16,16 @@ class Event < ActiveRecord::Base
     with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
   end
 
+  def self.apply_filter(category=nil, tag=nil)
+    if category.present?
+      joins(:categories => :category_translations).where(['category_translations.permalink = ? and category_translations.locale = ?', category, I18n.locale])
+    elsif tag.present?
+      joins(:tags => :category_translations).where(['category_translations.permalink = ? and category_translations.locale = ?', tag, I18n.locale])
+    else
+      all
+    end
+  end
+
   # type should always be default
   def add_type
     self.event_type = "default" if self.event_type.blank?
@@ -82,7 +92,7 @@ class Event < ActiveRecord::Base
 
     if self.categories.present?
       x << "<p><strong>#{I18n.t('categories.category')}:</strong> "
-      x << self.categories.sort_by{|x| ActionController::Base.helpers.link_to(x.name, root_path(:category => x.permalink, :locale => I18n.locale))}.join(", ")
+      x << self.categories.sort_by{|y| y.name}.map{|x| ActionController::Base.helpers.link_to(x.name, root_path(:category => x.permalink, :locale => I18n.locale))}.join(", ")
       x << "</p>"
     end
 
