@@ -42,9 +42,17 @@
 				                <b class="caret"></b>
 				          </a>
 				          <ul class="dropdown-menu">
-						        <li>
-				 		         <%= link_to t('.admin'), admin_path %>
-										</li>
+               			<li>
+                     <%= link_to t('.events'), admin_events_path %>
+                    </li>
+                    <li>
+                      <%= link_to t('.categories'), admin_categories_path  %>
+                    </li>
+                    <% if current_user.role? User::ROLES[:admin] %>
+                 			<li>
+                       <%= link_to t('.users'), admin_users_path %>
+                      </li>
+                    <% end %> 		
 						        <li>
 				 		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
 										</li>

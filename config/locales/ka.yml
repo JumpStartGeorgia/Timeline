@@ -31,6 +31,7 @@ ka:
         required_field: "სავალდებულოა"
         already_exists: 'უკვე არსებობს მონაცემთა ბაზაში'
         invalid_url: "არასწორია. სწორი ბმული შეიცავს  'http://' ან 'https://', მაგ. 'http://parliament.ge/'"
+        required_category: "Category is a required field."
   categories:
     category: კატეგორია
     tag: Tag
@@ -43,6 +44,7 @@ ka:
       destroy: წაშლა
       new: ახალი
       list: იხილეთ სრულად
+      back: იხილეთ სრულად
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
       view: View

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619082439) do
+ActiveRecord::Schema.define(:version => 20130619115457) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20130619082439) do
   end
 
   add_index "categories", ["type_id"], :name => "index_categories_on_type_id"
+
+  create_table "categories_events", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories_events", ["category_id"], :name => "index_categories_events_on_category_id"
+  add_index "categories_events", ["event_id"], :name => "index_categories_events_on_event_id"
 
   create_table "category_translations", :force => true do |t|
     t.integer  "category_id"

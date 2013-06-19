@@ -1,11 +1,14 @@
 class Event < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
 	translates :headline, :story, :media, :credit, :caption
 
+  has_and_belongs_to_many :categories
 	has_many :event_translations, :dependent => :destroy
   accepts_nested_attributes_for :event_translations
-  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag
+  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids
 
   validates :start_date, :presence => true
+  validate :required_category
   before_save :add_type
 
   def self.sorted
@@ -15,6 +18,11 @@ class Event < ActiveRecord::Base
   # type should always be default
   def add_type
     self.event_type = "default" if self.event_type.blank?
+  end
+
+  # make sure category is provided in order to save
+  def required_category
+    errors.add(:base, t('activerecord.errors.messages.required_category')) if categories.blank?
   end
 
   def start_time
@@ -65,6 +73,21 @@ class Event < ActiveRecord::Base
     end
   end
 
+
+  # add the category links and tag links to the bottom of the story
+  def formatted_story
+    x = ""
+    x << self.story.clone if self.story.present?
+
+    if self.categories.present?
+      x << "<p><strong>#{I18n.t('categories.category')}:</strong> "
+      x << self.categories.map{|x| ActionController::Base.helpers.link_to(self.categories[0].name, root_path(:category => self.categories[0].permalink, :locale => I18n.locale))}.join(", ")
+      x << "</p>"
+    end
+
+    return x
+  end
+
 	##############################
 	## shortcut methods to get to
 	## image file in image_file object
@@ -112,7 +135,7 @@ class Event < ActiveRecord::Base
 
     h["timeline"]["type"] = "default"
     h["timeline"]["headline"] = self.headline
-    h["timeline"]["text"] = self.story
+    h["timeline"]["text"] = self.formatted_story
     h["timeline"]["startDate"] = self.start_datetime_timeline
     h["timeline"]["endDate"] = self.end_datetime_timeline
     h["timeline"]["asset"] = Hash.new
@@ -124,7 +147,7 @@ class Event < ActiveRecord::Base
     h["timeline"]["date"] << x
     x["type"] = "default"
     x["headline"] = self.headline
-    x["text"] = self.story
+    x["text"] = self.formatted_story
     x["startDate"] = self.start_datetime_timeline
     x["endDate"] = self.end_datetime_timeline
     x["asset"] = Hash.new

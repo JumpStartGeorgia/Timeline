@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 	before_filter :set_locale
 #	before_filter :is_browser_supported?
 	before_filter :initialize_gon
+	before_filter :preload_global_variables
 
 	unless Rails.application.config.consider_all_requests_local
 		rescue_from Exception,
@@ -42,6 +43,9 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 		end
 	end
 
+	def preload_global_variables
+    @categories = Category.by_type(Category::TYPES[:category])
+	end
 
 	def set_locale
     if params[:locale] and I18n.available_locales.include?(params[:locale].to_sym)

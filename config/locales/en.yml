@@ -31,6 +31,7 @@ en:
         required_field: "is a required field."
         already_exists: 'already exists in the database.'
         invalid_url: "is invalid. A valid url includes 'http://' or 'https://', i.e. 'http://parliament.ge/'"
+        required_category: "Category is a required field."
   categories:
     category: Category
     tag: Tag
@@ -42,6 +43,7 @@ en:
       confirm: Are you sure?
       destroy: Delete
       new: New
+      back: View All
       list: View All
       cancel: Cancel
       reset: Reset

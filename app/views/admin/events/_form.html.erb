@@ -3,6 +3,7 @@
 
 
 	<%= f.inputs do %>
+		<%= f.input :categories, :as => :select, :collection => @categories, :input_html => {:multiple => false} %>
 		<%= f.input :start_date, :as => :string, :input_html => {:size =>35} %>
 		<%= f.input :end_date, :as => :string, :input_html => {:size =>35} %>
 	<% end %>
