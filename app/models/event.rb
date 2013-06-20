@@ -131,7 +131,7 @@ class Event < ActiveRecord::Base
     h["timeline"]["date"] = []
 
     h["timeline"]["type"] = "default"
-    h["timeline"]["headline"] = self.headline
+    h["timeline"]["headline"] = nil
     h["timeline"]["text"] = self.story
     h["timeline"]["categories"] = self.categories.present? ? self.categories.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
     h["timeline"]["tags"] = self.tags.present? ? self.tags.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
