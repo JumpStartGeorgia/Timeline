@@ -47,7 +47,7 @@ ka:
       back: იხილეთ სრულად
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
-      view: View
+      view: ნახვა
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"

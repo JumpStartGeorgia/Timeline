@@ -130,18 +130,11 @@ class Event < ActiveRecord::Base
     h["timeline"] = Hash.new
     h["timeline"]["date"] = []
 
+    # create empty title event
     h["timeline"]["type"] = "default"
     h["timeline"]["headline"] = nil
-    h["timeline"]["text"] = self.story
-    h["timeline"]["categories"] = self.categories.present? ? self.categories.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
-    h["timeline"]["tags"] = self.tags.present? ? self.tags.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
-    h["timeline"]["startDate"] = self.start_datetime_timeline
-    h["timeline"]["endDate"] = self.end_datetime_timeline
-    h["timeline"]["asset"] = Hash.new
-    h["timeline"]["asset"]["media"] = self.media_url
-    h["timeline"]["asset"]["credit"] = self.media
-    h["timeline"]["asset"]["caption"] = self.media
 
+    # add event
     x = Hash.new
     h["timeline"]["date"] << x
     x["type"] = "default"

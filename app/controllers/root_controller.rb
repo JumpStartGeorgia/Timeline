@@ -36,11 +36,10 @@ private
 
         # get the title record
         if data.class == ActiveRecord::Relation
-          title = data
+          title = nil
           the_rest = data
         else
           title = data.select{|x| x.event_type == "title"}
-          title = data.first if title.blank?
           the_rest = data.select{|x| x.event_type != "title"}
         end
         if title.present?
@@ -54,22 +53,26 @@ private
           h["timeline"]["asset"]["media"] = title.media_url
           h["timeline"]["asset"]["credit"] = title.credit
           h["timeline"]["asset"]["caption"] = title.caption
+        else
+          # create empty title event
+          h["timeline"]["type"] = "default"
+          h["timeline"]["headline"] = nil
+        end
         
-          # now add all of the rest of the data
-          if the_rest.present?
-            the_rest.each do |record|
-              x = Hash.new
-              h["timeline"]["date"] << x
-              x["type"] = record.event_type
-              x["headline"] = record.headline
-              x["text"] = view_context.simple_format build_story(record.story, record.categories, record.tags)
-              x["startDate"] = record.start_datetime_timeline
-              x["endDate"] = record.end_datetime_timeline
-              x["asset"] = Hash.new
-              x["asset"]["media"] = record.media_url
-              x["asset"]["credit"] = record.credit
-              x["asset"]["caption"] = record.caption
-            end
+        # now add all of the rest of the data
+        if the_rest.present?
+          the_rest.each do |record|
+            x = Hash.new
+            h["timeline"]["date"] << x
+            x["type"] = record.event_type
+            x["headline"] = record.headline
+            x["text"] = view_context.simple_format build_story(record.story, record.categories, record.tags)
+            x["startDate"] = record.start_datetime_timeline
+            x["endDate"] = record.end_datetime_timeline
+            x["asset"] = Hash.new
+            x["asset"]["media"] = record.media_url
+            x["asset"]["credit"] = record.credit
+            x["asset"]["caption"] = record.caption
           end
         end
       end
