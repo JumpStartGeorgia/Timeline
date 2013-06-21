@@ -6,8 +6,6 @@
   <%= link_to t('.new', :default => t("helpers.links.new")),
               new_admin_category_path,
               :class => 'btn btn-primary' %>
-  <%= link_to t('helpers.links.admin'), admin_path,
-  :class => 'btn' %>
 </div>
 
 <table class="table table-striped display" id="categories-datatable" data-source="<%= admin_categories_url(:format => :json) %>">

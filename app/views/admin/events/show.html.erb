@@ -12,35 +12,8 @@
               :method => :delete,
 							:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
               :class => 'btn btn-danger' %>
-	<%= link_to t('helpers.links.admin'), admin_path,
-  :class => 'btn' %>
 </div>
 
 <div id="timeline-embed"></div>
 
-<%
-=begin
-%>
-  <p><strong><%= model_class.human_attribute_name(:start_date) %>:</strong>
-  <%= @event.start_datetime_formatted %></p>
 
-  <p><strong><%= model_class.human_attribute_name(:end_date) %>:</strong>
-  <%= @event.end_datetime_formatted %></p>
-
-  <p><strong><%= model_class_et.human_attribute_name(:headline) %>:</strong>
-  <%= @event.headline %></p>
-
-  <p><strong><%= model_class_et.human_attribute_name(:story) %>:</strong>
-  <%= @event.story %></p>
-
-  <p><strong><%= model_class_et.human_attribute_name(:media) %>:</strong>
-  <%= @event.media %></p>
-
-  <p><strong><%= model_class_et.human_attribute_name(:credit) %>:</strong>
-  <%= @event.credit %></p>
-
-  <p><strong><%= model_class_et.human_attribute_name(:caption) %>:</strong>
-  <%= @event.caption %></p>
-<%
-=end
-%>
