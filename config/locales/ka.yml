@@ -3,7 +3,7 @@ ka:
   activerecord:
     models:
       user: მომხმარებელი
-      event: Event
+      event: მოვლენა
       category: კატეგორია
     attributes:
       user:
@@ -13,15 +13,15 @@ ka:
         role: როლი
         remember_me: დამიმახსოვრე
       event:
-        start_date: Start Date
-        end_date: End Date
-        event_type: Type
+        start_date: დაწყების თარიღი
+        end_date: დასრულების თარიღი
+        event_type: ტიპი
       event_translation:
-        headline: Headline
-        story: Story
-        media: URL to Media
-        credit: Media Credit
-        caption: Media Caption
+        headline: სათაური
+        story: ამბავი
+        media: მედიის ბმული
+        credit: მედიის საავტორო უფლებები
+        caption: მედიის დასახელება
       category:
         type_id: ტიპი
       category_translation:
@@ -31,10 +31,10 @@ ka:
         required_field: "სავალდებულოა"
         already_exists: 'უკვე არსებობს მონაცემთა ბაზაში'
         invalid_url: "არასწორია. სწორი ბმული შეიცავს  'http://' ან 'https://', მაგ. 'http://parliament.ge/'"
-        required_category: "Category is a required field."
+        required_category: კატეგორია არის სავალდებულო ველი.
   categories:
     category: კატეგორია
-    tag: Tag
+    tag: მონიშვნა
   helpers:
     actions: აირჩიეთ
     links:
@@ -71,7 +71,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: Election Timeline
+      app_name: არჩევნების თაიმლაინი
       added_on: "დამატებულია: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
@@ -102,8 +102,8 @@ ka:
     index:
       title: ადმინისტრატორის განყოფილება
       users: მომხმარებლები
-      events: Events
-      categories: Categories
+      events: მოვლენები
+      categories: კატეგორიები
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე
