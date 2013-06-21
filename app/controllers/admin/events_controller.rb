@@ -25,10 +25,9 @@ class Admin::EventsController < ApplicationController
     gon.show_timeline = true
     json = @event.to_timeline_json
     # add categories and tags to story
-    story = build_story(json["timeline"]["text"], json["timeline"]["categories"], json["timeline"]["tags"])
+    story = build_story(json["timeline"]["date"][0]["text"], json["timeline"]["date"][0]["categories"], json["timeline"]["date"][0]["tags"])
 
     # apply simple format to the text
-    json["timeline"]["text"] = view_context.simple_format story
     json["timeline"]["date"][0]["text"] = view_context.simple_format story
     gon.json_data = json
 
