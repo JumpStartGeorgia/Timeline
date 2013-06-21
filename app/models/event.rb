@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
     with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
   end
 
+  def self.with_filters
+    includes(:categories => :category_translations, :tags => :category_translations)
+  end
+
   def self.apply_filter(category=nil, tag=nil)
     if category.present?
       joins(:categories => :category_translations).where(['category_translations.permalink = ? and category_translations.locale = ?', category, I18n.locale])
