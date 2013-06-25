@@ -34,6 +34,14 @@
           </a>
           <%= link_to(t('app.common.app_name'), root_path(:locale => I18n.locale),:class=>"brand font")%>
           <div class="container-fluid nav-collapse">
+            <% if @categories.present? %>
+              <ul class="nav">
+                <% @categories.each do |cat| %>
+                  <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
+                <% end %>
+              </ul>
+            <% end %>
+
 	          <ul class="nav pull-right">
 		          <% if user_signed_in? %>
 				        <li class="dropdown">
