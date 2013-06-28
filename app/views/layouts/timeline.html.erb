@@ -28,9 +28,9 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="#">
+          <%= link_to(root_path(:locale => I18n.locale),:class=>"brand") do %>
             <%= image_tag "timeline-of-georgia_logo_#{I18n.locale}.png", :alt => t('app.common.app_name'), :id => "logo" %>
-          </a>
+          <% end %>
           <% if @categories.present? %>
             <ul id="category_nav" class="nav">
               <% @categories.each do |cat| %>

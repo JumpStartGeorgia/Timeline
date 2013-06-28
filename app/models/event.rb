@@ -126,7 +126,6 @@ class Event < ActiveRecord::Base
               cat = Category.create(:type_id => Category::TYPES[:category])
               cat.category_translations.create(:locale => 'ka', :name => record["category"])
               cat.category_translations.create(:locale => 'en', :name => record["category"])
-              end
               cat_record = cat
             end
 

@@ -2,8 +2,8 @@
 ##### SET THESE VARIABLES ########
 ##################################
 server "alpha.jumpstart.ge", :web, :app, :db, primary: true # server where app is located
-set :application, "Election-Timeline-Staging" # unique name of application
-set :user, "election-timeline-staging" # name of user on server
+set :application, "Timeline-Staging" # unique name of application
+set :user, "timeline-staging" # name of user on server
 set :ngnix_conf_file_loc, "staging/nginx.conf" # location of nginx conf file
 set :unicorn_init_file_loc, "staging/unicorn_init.sh" # location of unicor init shell file
 set :github_account_name, "JumpStartGeorgia" # name of accout on git hub
