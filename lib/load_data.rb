@@ -3,7 +3,40 @@ module LoadData
 	require 'net/https'
   require 'json_cache'
 
+  def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
+puts 'getting en'
+    en_json = format_data(en_url)
+puts 'getting ka'
+    ka_json = format_data(ka_url)
+  
+    if en_json.present? && ka_json.present?
+puts 'creating records'
+      Event.load_from_json_multi_lang(ka_json, en_json)
+
+      # clear the cache files so the new data is avaialble
+      JsonCache.clear
+    end
+
+    return nil
+  end
+
   def self.google_spreadsheet_json(url)
+
+    json = format_data(url)
+    if json.present?
+      Event.load_from_json(json)
+
+      # clear the cache files so the new data is avaialble
+      JsonCache.clear
+    end
+
+    return nil
+  end
+
+
+protected 
+  def self.format_data(url)
+    formatted_json = []
     
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
@@ -16,7 +49,6 @@ module LoadData
     json = response.body
     if json.present?
       # format the json into the format we need
-      formatted_json = []
       json_data = JSON.parse(json)["feed"]["entry"]
       json_data.each do |j|
         h = Hash.new
@@ -46,20 +78,18 @@ module LoadData
           h["end_time"] = nil
         end
 
+        h["id"] = j["gsx$id"]["$t"].present? ? j["gsx$id"]["$t"].strip() : nil
         h["event_type"] = j["gsx$type"]["$t"].present? ? j["gsx$type"]["$t"] : nil
         h["headline"] = j["gsx$headline"]["$t"].present? ? j["gsx$headline"]["$t"] : nil
         h["story"] = j["gsx$text"]["$t"].present? ? j["gsx$text"]["$t"] : nil
         h["media"] = j["gsx$media"]["$t"].present? ? j["gsx$media"]["$t"] : nil
         h["credit"] = j["gsx$mediacredit"]["$t"].present? ? j["gsx$mediacredit"]["$t"] : nil
         h["caption"] = j["gsx$mediacaption"]["$t"].present? ? j["gsx$mediacaption"]["$t"] : nil
+        h["category"] = j["gsx$category"]["$t"].present? ? j["gsx$category"]["$t"] : nil
       end
-      Event.load_from_json(formatted_json)
     end
 
-    # clear the cache files so the new data is avaialble
-    JsonCache.clear
-
-    return nil
+    return formatted_json
   end
 
 end

@@ -43,7 +43,9 @@ class EventTranslation < ActiveRecord::Base
           end
           self.media_img_verified = true
         end
-      rescue OpenURI::HTTPError => the_error
+      rescue Timeout::Error => e
+        self.media_img_verified = true
+      rescue OpenURI::HTTPError => e
         self.media_img_verified = true
       end
     # if media is no longer present, delete image file

@@ -32,7 +32,7 @@
             <%= image_tag "timeline-of-georgia_logo_#{I18n.locale}.png", :alt => t('app.common.app_name'), :id => "logo" %>
           </a>
           <% if @categories.present? %>
-            <ul class="nav">
+            <ul id="category_nav" class="nav">
               <% @categories.each do |cat| %>
                 <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
               <% end %>
