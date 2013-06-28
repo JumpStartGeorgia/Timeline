@@ -97,7 +97,7 @@ class Event < ActiveRecord::Base
 		self.event_translations.select{|x| x.locale == I18n.locale.to_s}.first.media_url
 	end
 
-  ######################
+######################
   ## load from json
   ## - expect each item to have key names that match attr names
   ######################
@@ -112,11 +112,104 @@ class Event < ActiveRecord::Base
                         :start_time => record["start_time"].present? ? Time.strptime(record["start_time"], '%H:%M') : nil, 
                         :end_date => record["end_date"], 
                         :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil)
+
+          # if category value exists, add it
+          if record["category"].present?
+            # see if already in system
+            cat = Category.includes(:category_translations).where(["category_translations.name = ? and category_translations.locale = ?", record["category"], I18n.locale])
+            cat_record = nil
+            if cat.present?
+              # already exists, save id
+              cat_record = cat.first
+            else
+              # not exist, create category
+              cat = Category.create(:type_id => Category::TYPES[:category])
+              cat.category_translations.create(:locale => 'ka', :name => record["category"])
+              cat.category_translations.create(:locale => 'en', :name => record["category"])
+              cat_record = cat
+            end
+
+            # assign to category
+            if cat_record.present?
+              e.categories << cat_record
+            end
+          end
+
           if e.save
             e.event_translations.create(:locale => 'en', :headline => record["headline"], :story => record["story"], 
                   :media => record["media"], :credit => record["credit"], :caption => record["caption"])          
             e.event_translations.create(:locale => 'ka', :headline => record["headline"], :story => record["story"], 
                   :media => record["media"], :credit => record["credit"], :caption => record["caption"])          
+          else
+            puts "****************************"
+            puts e.errors.full_messages
+          end
+        end
+      end
+    end
+  end
+
+  ######################
+  ## load from json with mutliple languages
+  ## - expect each item to have key names that match attr names
+  ######################
+  def self.load_from_json_multi_lang(ka_json, en_json)
+    if ka_json.present? && en_json.present?
+      Event.transaction do
+        ka_json.each_with_index do |record, index|
+          puts index
+
+          # get en record
+          en_record = en_json.select{|x| x["id"] == record["id"]}.first
+
+          # make sure times are in proper timezone
+          e = Event.new(:event_type => record["event_type"],
+                        :start_date => record["start_date"], 
+                        :start_time => record["start_time"].present? ? Time.strptime(record["start_time"], '%H:%M') : nil, 
+                        :end_date => record["end_date"], 
+                        :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil)
+
+          # if category value exists, add it
+          if record["category"].present?
+            # see if already in system
+            cat = Category.includes(:category_translations).where(["category_translations.name = ? and category_translations.locale = ?", record["category"], 'ka'])
+            cat_record = nil
+            if cat.present?
+              # already exists, save id
+              cat_record = cat.first
+            else
+              # not exist, create category
+              cat = Category.create(:type_id => Category::TYPES[:category])
+              cat.category_translations.create(:locale => 'ka', :name => record["category"])
+              if en_record["category"].present?
+                cat.category_translations.create(:locale => 'en', :name => en_record["category"])
+              else
+puts "********************************"
+puts "----------- - could not find en category match for #{record["category"]}"
+                cat.category_translations.create(:locale => 'en', :name => record["category"])
+              end
+              cat_record = cat
+            end
+
+            # assign to category
+            if cat_record.present?
+              e.categories << cat_record
+            end
+          end
+
+          if e.save
+            e.event_translations.create(:locale => 'ka', :headline => record["headline"], :story => record["story"], 
+                  :media => record["media"], :credit => record["credit"], :caption => record["caption"])          
+
+            if en_record.present?
+              e.event_translations.create(:locale => 'en', :headline => en_record["headline"], :story => en_record["story"], 
+                    :media => en_record["media"], :credit => en_record["credit"], :caption => en_record["caption"])          
+            else
+puts "********************************"
+puts "----------- - could not find en match for #{record["id"]}"
+              e.event_translations.create(:locale => 'en', :headline => record["headline"], :story => record["story"], 
+                    :media => record["media"], :credit => record["credit"], :caption => record["caption"])          
+            end
           else
             puts "****************************"
             puts e.errors.full_messages
