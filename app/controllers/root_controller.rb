@@ -8,7 +8,10 @@ class RootController < ApplicationController
     
     gon.json_data = get_event_json
     gon.show_timeline = true
+    gon.hidden_form = true
 
+    render :layout => 'timeline'
+    
   end
 
 

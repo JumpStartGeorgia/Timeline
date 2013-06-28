@@ -1,0 +1,10 @@
+#hidden_form #success_submit, #hidden_form #error_submit, #hidden_form #required_submit, #hidden_form #loading{
+  font-family: 'Arial';
+}
+
+/************************/
+/* timeline styles */
+.vco-slider .slider-item .content .content-container .text .container p{
+  font-family: 'Arial' !important;
+}
+

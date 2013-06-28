@@ -71,7 +71,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: Election Timeline
+      app_name: Timeline of Georgia
       added_on: "Added on: %{date}" 
     msgs:
       does_not_exist: You tried to access a page that does not exist.
@@ -97,6 +97,20 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
+    timeline:
+      form:
+        header: Add an Event
+        text: "Did we miss something? Let us know and we will add it to the timeline."
+        event: Event Description
+        required: Required
+        date: Event Date
+        link: Media Link
+        name: Your Name
+        email: Your E-mail
+        submit: Submit
+        success: Thank you for your submission!
+        error: 'Sorry, an error occurred.'
+        req_submit: Event Description is required.
   admin:
     index:
       title: Administration Section
@@ -112,3 +126,6 @@ en:
         title: New User
       show:
         title: User Details
+  root:
+    index:
+      submit_event: Submit Event

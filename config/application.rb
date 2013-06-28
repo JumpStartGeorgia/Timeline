@@ -50,5 +50,12 @@ module BootstrapStarter
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # tell the assest pipeline to add the public/css dir as assets path
+    config.assets.paths << "#{Rails.root}/public/css/"
+
+    # tell the assest pipeline to include the fancybox.js and font styles
+    config.assets.precompile += ['fonts_en.css', 'fonts_ka.css']
+
   end
 end
