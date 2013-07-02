@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta property="og:title" content="<%= t('.og.title') %>" />
-		<meta property="og:description" content="<%= t('.og.desc') %>" />
+		<meta property="og:title" content="<%= t('.og.title').html_safe %>" />
+		<meta property="og:description" content="<%= t('.og.desc').html_safe %>" />
 		<meta property="og:type" content="non_profit" />
 		<meta property="og:url" content="<%= current_url %>" />
 		<meta property="og:image" content="<%= full_url(image_path('facebook.jpg')) %>" />
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
-	  <meta property="fb:app_id" content="<%= ENV['VISUALIZING_NEWS_FACEBOOK_APP_ID'] %>" />
+	  <!--meta property="fb:app_id" content="<%#= ENV['VISUALIZING_NEWS_FACEBOOK_APP_ID'] %>" /-->
 
     <title><%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
 				t('app.common.app_name') %></title>
