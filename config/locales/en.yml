@@ -106,6 +106,9 @@ en:
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
     timeline:
+      og:
+        title: Timeline of Georgia
+        desc: "Jumpstart Georgia created a visual timeline of events in Georgia. Viewers can submit events that they feel should be included in the timeline using the submission form at the top of the website. After careful consideration, Jumpstart Georgia will add qualified events to the timeline."
       form:
         header: Add an Event
         text: "Did we miss something? Let us know and we will add it to the timeline."
