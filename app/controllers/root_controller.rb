@@ -6,6 +6,11 @@ class RootController < ApplicationController
 
   def index
     
+    if params[:category].blank? && params[:tag].blank?
+      # default to latest year
+      params[:category] = @categories[@categories.length-1].permalink
+    end
+
     gon.json_data = get_event_json
     gon.show_timeline = true
     gon.hidden_form = true
