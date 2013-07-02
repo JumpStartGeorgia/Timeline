@@ -38,10 +38,18 @@ $(document).ready(function() {
       }else {
         // send email
         var dataString = "event="+event+"&date="+date+"&link="+link+"&name="+name+"&email="+email;
+        var dataObj = new Object;
+        dataObj.message = new Object;
+        dataObj.message.event = event;
+        dataObj.message.event_date = date;
+        dataObj.message.url = link;
+        dataObj.message.name = name;
+        dataObj.message.email = email;
+
         $.ajax({
             type: "POST",
-            url: "send_mail.php",
-            data: dataString,
+            url: gon.form_submission_path,
+            data: dataObj,
             dataType:"json",
             timeout: 8000,
             error: function(response) {

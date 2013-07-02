@@ -16,6 +16,8 @@ BootstrapStarter::Application.routes.draw do
 		end
 
 
+		match '/form_submission', :to => 'root#form_submission', :as => :form_submission, :via => :post
+
 		root :to => 'root#index'
 	  match "*path", :to => redirect("/#{I18n.default_locale}") # handles /en/fake/path/whatever
 	end

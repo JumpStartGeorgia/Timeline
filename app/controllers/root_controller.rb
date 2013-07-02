@@ -9,11 +9,26 @@ class RootController < ApplicationController
     gon.json_data = get_event_json
     gon.show_timeline = true
     gon.hidden_form = true
+    gon.form_submission_path = form_submission_path
 
     render :layout => 'timeline'
     
   end
 
+  def form_submission
+    msg = {'status' => 'error'}
+    if request.post?
+		  @message = Message.new(params[:message])
+		  if @message.valid?
+				ContactMailer.new_message(@message).deliver
+        msg = {'status' => 'success'}
+		  end
+	  end
+    respond_to do |format|
+      format.html { redirect root_path}
+      format.json { render json: msg.to_json }
+    end
+  end
 
 
 private

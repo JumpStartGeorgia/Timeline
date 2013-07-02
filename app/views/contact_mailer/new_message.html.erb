@@ -1,0 +1,29 @@
+<%- model_class = Message -%>
+
+<p>
+<strong><%= model_class.human_attribute_name(:event_date) %>:</strong>
+<%= @message.event_date %>
+</p>
+
+<p>
+<strong><%= model_class.human_attribute_name(:event) %>:</strong>
+<%= @message.event %>
+</p>
+
+<p>
+<strong><%= model_class.human_attribute_name(:url) %>:</strong>
+<%= @message.url %>
+</p>
+
+
+<p>
+<strong><%= model_class.human_attribute_name(:name) %>:</strong>
+<%= @message.name %>
+</p>
+
+<p>
+<strong><%= model_class.human_attribute_name(:email) %>:</strong>
+<%= @message.email %>
+</p>
+
+

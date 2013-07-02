@@ -23,6 +23,7 @@ gem "has_permalink", "~> 0.1.4" # create permalink slugs for nice urls
 gem "capistrano", "~> 2.12.0" # to deploy to server
 gem "exception_notification", "~> 2.5.2" # send an email when exception occurs
 gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser detection
+gem "active_attr", "~> 0.5.1" # to create tabless models; using for contact form
 #gem "pdfkit", "~> 0.5.2" # generate pdfs
 #gem "use_tinymce", "~> 0.0.15" # wysiwyg
 #gem "rails_autolink", "~> 1.0.9" # convert string to link if it is url

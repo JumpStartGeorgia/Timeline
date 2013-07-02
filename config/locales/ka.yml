@@ -26,6 +26,12 @@ ka:
         type_id: ტიპი
       category_translation:
         name: სახელი
+      message:
+        name: "Person's Name"
+        email: "Person's Email"
+        url: Event Link
+        event: Event
+        event_date: Event Date
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -51,6 +57,8 @@ ka:
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
+  mailer:
+    subject: Georgian Timeline Event Submission
   app:
     language:
       en: English
