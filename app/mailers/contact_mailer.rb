@@ -4,8 +4,7 @@ class ContactMailer < ActionMailer::Base
 
   def new_message(message)
     @message = message
-    mail(:from => "#{message.name} <#{message.email}>",
-			:subject => I18n.t("mailer.subject"))
+    mail(:subject => I18n.t("mailer.subject"))
   end
 
 end
