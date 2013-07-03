@@ -6,7 +6,7 @@ module LoadData
   # 2012 en: https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json
   # 2012 ka: https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dFpyUXpIQXczc2N1WUZWV01UUlN3VFE/od6/public/values?alt=json
   # 2013 ka: https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dGRXNnFJM3RJVlluNWdHR0FXandNb1E/od6/public/values?alt=json
-  # 2013 en: 
+  # 2013 en: https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dGRXNnFJM3RJVlluNWdHR0FXandNb1E/2/public/values?alt=json
 
   def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
 puts 'getting en'
