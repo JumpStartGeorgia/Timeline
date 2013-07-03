@@ -4,13 +4,10 @@ module LoadData
   require 'json_cache'
 
   def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
-puts 'getting en'
     en_json = format_data(en_url)
-puts 'getting ka'
     ka_json = format_data(ka_url)
   
     if en_json.present? && ka_json.present?
-puts 'creating records'
       Event.load_from_json_multi_lang(ka_json, en_json)
 
       # clear the cache files so the new data is avaialble
@@ -103,4 +100,3 @@ protected
   end
 
 end
-

@@ -12,6 +12,15 @@ class Event < ActiveRecord::Base
   validate :required_category
   before_save :add_type
 
+  before_destroy :remove_media_img, :prepend => true
+
+  def remove_media_img
+    self.event_translations.each do |trans|
+      trans.media_img = nil
+      trans.save
+    end
+  end 
+
   def self.sorted
     with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
   end
@@ -97,7 +106,7 @@ class Event < ActiveRecord::Base
 		self.event_translations.select{|x| x.locale == I18n.locale.to_s}.first.media_url
 	end
 
-######################
+  ######################
   ## load from json
   ## - expect each item to have key names that match attr names
   ######################
