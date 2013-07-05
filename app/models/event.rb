@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
 
   # make sure category is provided in order to save
   def required_category
-    errors.add(:base, t('activerecord.errors.messages.required_category')) if categories.blank?
+    errors.add(:base, I18n.t('activerecord.errors.messages.required_category')) if categories.blank?
   end
 
   def start_time
