@@ -12,7 +12,8 @@ class RootController < ApplicationController
     end
 
     gon.json_data = get_event_json
-    gon.show_timeline = true
+    gon.show_timeline = gon.json_data.present? ? true : false
+    @no_timeline_data = !gon.show_timeline
     gon.hidden_form = true
     gon.form_submission_path = form_submission_path
 
@@ -48,11 +49,9 @@ private
     data_type << "_tag_#{params[:tag]}" if params[:tag].present?
 		key = CACHE_KEY.gsub("[locale]", I18n.locale.to_s)
 		  .gsub("[data]", data_type)
-Rails.logger.debug "----------- key = #{key}"
 		hash = JsonCache.fetch(key) {
       h = Hash.new
       data = Event.sorted.apply_filter(params[:category], params[:tag])
-Rails.logger.debug "----------- found #{data.length} records"
 
       if data.present?
         h["timeline"] = Hash.new
@@ -102,7 +101,6 @@ Rails.logger.debug "----------- found #{data.length} records"
       end
       h.to_json
     }
-
 
     return JSON.parse(hash)
   end

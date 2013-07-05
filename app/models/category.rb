@@ -4,6 +4,7 @@ class Category < ActiveRecord::Base
 	has_many :category_translations, :dependent => :destroy
   accepts_nested_attributes_for :category_translations
   attr_accessible :type_id, :category_translations_attributes
+  has_and_belongs_to_many :events
 
   validates :type_id, :presence => true
 
@@ -11,6 +12,10 @@ class Category < ActiveRecord::Base
 
   def self.by_type(type_id)
     with_translations(I18n.locale).where(:type_id => type_id).order("category_translations.name asc")
+  end
+
+  def self.with_events
+    joins('inner join categories_events as ce on categories.id = ce.category_id')
   end
 
   def type_name

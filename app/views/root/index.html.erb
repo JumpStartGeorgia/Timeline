@@ -1,6 +1,11 @@
+<% if @no_timeline_data %>
+  <div id="no_data">
+    <%= t('.no_data') %>
+  </div>
+<% else %>
 	<div id="timeline-embed">
     <div id="slide_up_container">
       <%= image_tag "submit_event_#{I18n.locale}.png", :alt => t('.submit_event'), :id => "img_slide_up" %>
     </div>
 	</div>
-
+<% end %>

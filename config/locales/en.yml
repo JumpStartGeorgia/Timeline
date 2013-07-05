@@ -48,6 +48,7 @@ en:
       edit: Edit
       confirm: Are you sure?
       destroy: Delete
+      delete: Delete
       new: New
       back: View All
       list: View All
@@ -140,3 +141,4 @@ en:
   root:
     index:
       submit_event: Submit Event
+      no_data: I am sorry but there is no data to load into the timeline.
