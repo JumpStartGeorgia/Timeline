@@ -69,7 +69,7 @@ private
           title = title.first            
           h["timeline"]["type"] = "default"
           h["timeline"]["headline"] = title.headline
-          h["timeline"]["text"] = view_context.simple_format build_story(title.story, title.categories, title.tags)
+          h["timeline"]["text"] = build_story(title.story, title.categories, title.tags)
           h["timeline"]["startDate"] = title.start_datetime_timeline
           h["timeline"]["endDate"] = title.end_datetime_timeline
           h["timeline"]["asset"] = Hash.new
@@ -89,7 +89,7 @@ private
             h["timeline"]["date"] << x
             x["type"] = record.event_type
             x["headline"] = record.headline
-            x["text"] = view_context.simple_format build_story(record.story, record.categories, record.tags)
+            x["text"] = build_story(record.story, record.categories, record.tags)
             x["startDate"] = record.start_datetime_timeline
             x["endDate"] = record.end_datetime_timeline
             x["asset"] = Hash.new
