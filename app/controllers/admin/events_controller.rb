@@ -26,7 +26,7 @@ class Admin::EventsController < ApplicationController
     story = build_story(json["timeline"]["date"][0]["text"], json["timeline"]["date"][0]["categories"], json["timeline"]["date"][0]["tags"])
 
     # apply simple format to the text
-    json["timeline"]["date"][0]["text"] = view_context.simple_format story
+    json["timeline"]["date"][0]["text"] = story
     gon.json_data = json
 
     respond_to do |format|

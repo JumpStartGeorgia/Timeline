@@ -237,3 +237,9 @@ footer, footer ul li, footer div#right ul li {
   background-color: #eee;
   padding: 0.5em 1em;
 }
+
+/* timeline text styles */
+.story_cat_tags{
+  font-size: 11px;
+  margin-top: -13px;
+}
