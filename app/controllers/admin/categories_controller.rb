@@ -3,6 +3,7 @@ class Admin::CategoriesController < ApplicationController
   before_filter do |controller_instance|
     controller_instance.send(:valid_role?, User::ROLES[:user])
   end
+	cache_sweeper :category_sweeper, :only => [:create, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
