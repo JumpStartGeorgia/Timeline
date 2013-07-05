@@ -54,7 +54,7 @@ private
     events = Event.with_filters.with_translations(I18n.locale).order("#{sort_column} #{sort_direction}")
     events = events.page(page).per_page(per_page)
     if params[:sSearch].present?
-      search_qry = "events.start_date like :search or event_translations.headline like :search or event_translations.story like :search "  
+      search_qry = "DATE_FORMAT(events.start_date, '%Y-%m-%d') like :search or event_translations.headline like :search or event_translations.story like :search "  
       search_qry << "or category_translations.name like :search or category_translations_categories.name like :search "
       events = events.where(search_qry, search: "%#{params[:sSearch]}%")
     end
