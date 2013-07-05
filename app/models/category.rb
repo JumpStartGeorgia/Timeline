@@ -13,6 +13,10 @@ class Category < ActiveRecord::Base
     with_translations(I18n.locale).where(:type_id => type_id).order("category_translations.name asc")
   end
 
+  def self.with_events
+    joins('inner join categories_events as ce on categories.id = ce.category_id')
+  end
+
   def type_name
     index = TYPES.values.index(self.type_id)
     if index

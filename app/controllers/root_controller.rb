@@ -7,8 +7,8 @@ class RootController < ApplicationController
   def index
     
     gon.json_data = get_event_json
-    gon.show_timeline = true
-
+    gon.show_timeline = gon.json_data.present? ? true : false
+    @no_timeline_data = !gon.show_timeline
   end
 
 
