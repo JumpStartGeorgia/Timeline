@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   validates :start_date, :presence => true
 #  validate :required_category
   before_save :add_type
-
+  before_validation :populate_missing_headlines
   before_destroy :remove_media_img, :prepend => true
 
   def remove_media_img
@@ -96,6 +96,20 @@ class Event < ActiveRecord::Base
       nil
     end
   end
+
+	##############################
+	## if text exists for one locale but not others, 
+  ## copy text into missing locales
+	##############################
+	def populate_missing_headlines
+    with_text = self.event_translations.select{|x| x.headline.present?}
+    if with_text.length != self.event_translations.length && with_text.length > 0
+    	self.event_translations.select{|x| with_text.map{|y| y.locale}.index(x.locale).nil?}.each do |trans|
+        trans.headline = with_text.first.headline
+      end
+    end
+	end
+
 
 
 	##############################
