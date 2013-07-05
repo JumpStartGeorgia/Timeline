@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids, :tag_ids
 
   validates :start_date, :presence => true
-  validate :required_category
+#  validate :required_category
   before_save :add_type
 
   before_destroy :remove_media_img, :prepend => true
