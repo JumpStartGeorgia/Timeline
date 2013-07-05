@@ -77,19 +77,19 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     x = ""
 
     if categories.present? || tags.present?
-      x << "<div class='story_cat_tags fluid-row'>"
-      x << "<div class='span6'>"
+      x << "<div class='story_cat_tags fluid-row clear'>"
       if categories.present?
+        x << "<div class='span6'>"
         x << "<strong>#{I18n.t('categories.category')}:</strong> "
         x << categories.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], root_path(:category => x[:permalink], :locale => I18n.locale))}.join(", ")
+        x << "</div>"
       end
-      x << "</div>"
-      x << "<div class='span6'>"
       if tags.present?
+        x << "<div class='span6'>"
         x << "<strong>#{I18n.t('categories.tag')}:</strong> "
         x << tags.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], url_for(params.merge(:tag => x[:permalink], :locale => I18n.locale)))}.join(", ")
+        x << "</div>"
       end
-      x << "</div>"
       x << "</div>"
     end
 
