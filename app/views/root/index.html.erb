@@ -1,1 +1,8 @@
-<div id="timeline-embed"></div>
+<% if @no_timeline_data %>
+  <div id="no_data">
+    <%= t('.no_data') %>
+  </div>
+<% else %>
+  <div id="timeline-embed"></div>
+<% end %>
+
