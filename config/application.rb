@@ -48,6 +48,9 @@ module BootstrapStarter
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # tell the assest pipeline to add the public/locale dir as assets path
+    config.assets.paths << "#{Rails.root}/public/locale/"
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
