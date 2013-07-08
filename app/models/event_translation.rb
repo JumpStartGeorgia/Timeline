@@ -64,4 +64,13 @@ class EventTranslation < ActiveRecord::Base
     end
   end
 
+  def is_local_image
+    if self.media_img_file_name.present?
+      true
+    else
+      false
+    end
+  end
+
+
 end

@@ -11,4 +11,32 @@
       <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fferadi.info&amp;width=220&amp;height=70&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;show_border=false&amp;header=false&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:70px;" allowTransparency="true"></iframe>
     </div>
 	</div>
+
+	<% if @events.present? %>
+	  <div style="display: none;">
+      <div>
+        <h3><%= @events["timeline"]["headline"] %></h3>
+        <div>
+          <%= @events["timeline"]["startDate"] %>  
+          <%= @events["timeline"]["endDate"] %>  
+          <br />
+          <%= image_tag @events["timeline"]["asset"]["media"], :width => '50' if @events["timeline"]["asset"].present? && @events["timeline"]["asset"]["media"].present? && @events["timeline"]["asset"]["is_img"] %>
+        </div>        
+        <%= @events["timeline"]["text"].html_safe if @events["timeline"]["text"].present? %>
+      </div>
+      
+	    <% @events["timeline"]["date"].each do |event| %>
+	      <div>
+	        <h3><%= event["headline"] %></h3>
+          <div>
+            <%= event["startDate"] %>  
+            <%= event["endDate"] %>  
+            <br />
+            <%= image_tag event["asset"]["media"], :width => '50' if event["asset"].present? && event["asset"]["media"].present? && event["asset"]["is_img"] %>
+          </div>        
+          <%= event["text"].html_safe if event["text"].present? %>
+	      </div>
+	    <% end %>
+    </div>
+  <% end %>
 <% end %>

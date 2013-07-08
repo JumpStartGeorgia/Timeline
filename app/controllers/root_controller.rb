@@ -11,7 +11,8 @@ class RootController < ApplicationController
       params[:category] = @categories[@categories.length-1].permalink
     end
 
-    gon.json_data = get_event_json
+    @events = get_event_json
+    gon.json_data = @events
     gon.show_timeline = gon.json_data.present? ? true : false
     @no_timeline_data = !gon.show_timeline
     gon.hidden_form = true
@@ -76,6 +77,7 @@ private
           h["timeline"]["asset"]["media"] = title.media_url
           h["timeline"]["asset"]["credit"] = title.credit
           h["timeline"]["asset"]["caption"] = title.caption
+          h["timeline"]["asset"]["is_img"] = title.is_local_image
         else
           # create empty title event
           h["timeline"]["type"] = "default"
@@ -96,6 +98,7 @@ private
             x["asset"]["media"] = record.media_url
             x["asset"]["credit"] = record.credit
             x["asset"]["caption"] = record.caption
+            x["asset"]["is_img"] = record.is_local_image
           end
         end
       end

@@ -118,6 +118,10 @@ class Event < ActiveRecord::Base
 		self.event_translations.select{|x| x.locale == I18n.locale.to_s}.first.media_url
 	end
 
+	def is_local_image
+		self.event_translations.select{|x| x.locale == I18n.locale.to_s}.first.is_local_image
+	end
+
   ######################
   ## load from json
   ## - expect each item to have key names that match attr names
