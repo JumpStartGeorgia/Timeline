@@ -1,17 +1,25 @@
+var x;
 $(document).ready(function() {
 
   if (gon.show_timeline){
-	  createStoryJS({
+	  x = createStoryJS({
 		  type:		'timeline',
 		  width:		'100%',
       lang:     I18n.locale,
-		  height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
+		  height:		String($(window).height()-$('.navbar').height()),
 		  source:		gon.json_data,
 		  embed_id:	'timeline-embed',
       hash_bookmark: true,
       start_zoom_adjust: -1,
 		  debug:		false
 	  });
+	  
+	  // resize the timeline when the screen changes
+    window.onresize = function()
+    {
+      $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()) + "px");
+    }
+	  
   }
 
   if (gon.hidden_form){
