@@ -13,6 +13,7 @@ $(document).ready(function(){
     "bServerSide": true,
     "bDestroy": true,
     "bAutoWidth": false,
+    "bStateSave": true,
     "sAjaxSource": $('#events-datatable').data('source'),
     "oLanguage": {
       "sUrl": gon.datatable_i18n_url
@@ -31,6 +32,7 @@ $(document).ready(function(){
     "bServerSide": true,
     "bDestroy": true,
     "bAutoWidth": false,
+    "bStateSave": true,
     "sAjaxSource": $('#categories-datatable').data('source'),
     "oLanguage": {
       "sUrl": gon.datatable_i18n_url
@@ -46,6 +48,7 @@ $(document).ready(function(){
     "bServerSide": true,
     "bDestroy": true,
     "bAutoWidth": false,
+    "bStateSave": true,
     "sAjaxSource": $('#users-datatable').data('source'),
     "oLanguage": {
       "sUrl": gon.datatable_i18n_url
