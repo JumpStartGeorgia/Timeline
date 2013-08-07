@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
-  revision: d21b297863221d6682a99c0207ac3d219a5e7ba4
+  revision: 5d4d34aeff928c45dda4be40623411ed5acb18c2
   specs:
     rails-dev-boost (0.2.1)
       listen (>= 0.5)
