@@ -98,6 +98,14 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
+    timeline:
+      admin: Admin
+      sign_out: Sign Out
+      js_link_title: "Visit JumpStart Georgia's website"
+      js_link_text: Built by
+      og:
+        title: Election Timeline
+        desc: TBD
   admin:
     index:
       title: Administration Section

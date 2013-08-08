@@ -9,6 +9,8 @@ class RootController < ApplicationController
     gon.json_data = get_event_json
     gon.show_timeline = gon.json_data.present? ? true : false
     @no_timeline_data = !gon.show_timeline
+    
+    render :layout => 'timeline'
   end
 
 

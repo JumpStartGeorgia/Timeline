@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta property="og:title" content="<%= t('.og.title').html_safe %>" />
+		<meta property="og:description" content="<%= t('.og.desc').html_safe %>" />
+		<meta property="og:type" content="non_profit" />
+		<meta property="og:url" content="<%= current_url %>" />
+		<meta property="og:image" content="<%= full_url(image_path('facebook.jpg')) %>" />
+	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
+
+    <title><%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
+				t('app.common.app_name') %></title>
+    <%= csrf_meta_tags %>
+	  <%= include_gon %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "fonts_#{I18n.locale}", :media => "all" %>
+		<!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
+	  <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag '/favicon.png', :rel => 'shortcut icon' %>
+  </head>
+  <body id="body_timeline">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <%= link_to(t('app.common.app_name'), root_path(:locale => I18n.locale),:class=>"brand font")%>
+          <% if @categories.present? %>
+            <ul id="category_nav" class="nav">
+              <% @categories.each do |cat| %>
+                <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <ul class="nav pull-right">
+	          <% if user_signed_in? %>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                <%= current_user.nickname %>
+			                <b class="caret"></b>
+			          </a>
+			          <ul class="dropdown-menu">
+             			<li>
+                   <%= link_to t('.events'), admin_events_path %>
+                  </li>
+                  <li>
+                    <%= link_to t('.categories'), admin_categories_path  %>
+                  </li>
+                  <% if current_user.role? User::ROLES[:admin] %>
+               			<li>
+                     <%= link_to t('.users'), admin_users_path %>
+                    </li>
+                  <% end %> 		
+					        <li>
+			 		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
+									</li>
+			          </ul>
+			        </li>
+	          <% end %>
+						<% I18n.available_locales.each do |locale| %>
+							<% if locale != I18n.locale %>
+								<li class="lang_switcher"><%= link_to t("app.language.#{locale}"), params.merge(:locale => locale) %></li>
+							<% end %>
+						<% end %>
+          </ul>
+          <ul id="social_links" class="nav pull-right">
+            <li>
+				      <a href="http://www.facebook.com/share.php?u=<%= root_url %>" title="facebook" target="_blank"><img src="/assets/fb.png" alt="facebook"></a>
+            </li>
+            <li>
+				      <a href="https://twitter.com/share?url=<%= root_url %>" title="twitter" target="_blank"><img src="/assets/twitter.png" alt="twitter"></a>
+            </li>
+            <li>
+				      <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=<%= root_url %>" title="google+" target="_blank"><img src="/assets/google.png" alt="google+"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+		<div id="wrapper">
+		  <div id="container-content" class="container-fluid">
+		    <div class="content-fluid">
+		      <div class="row-fluid">
+		         <div class="span12">
+
+	            <%= yield %>
+	          </div><!--/span-->
+		      </div><!--/row-->
+		    </div><!--/content-->
+		   </div> <!-- /container -->
+		</div><!--/wrapper-->
+
+    <div class="push"><!--//--></div>
+
+    <footer class="clear">
+			<div id="left">&copy; 2013</div>
+		  <div id="middle">
+				NDI Logo
+			</div>
+			<div id="right" class="clear">
+				<ul>
+					<li id="js_link_text">
+						<%= t(".js_link_text") %>:
+					</li>
+					<li id="js_logo">
+						<%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
+								:title => t(".js_link_title")	) %>
+					</li>
+				</ul>
+			</div>
+    </footer>
+
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+		<script type="text/javascript">
+			I18n.defaultLocale = "<%= I18n.default_locale %>";
+			I18n.locale = "<%= I18n.locale %>";
+		</script>
+
+		<% if Rails.env.production? %>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12801815-13']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  		</script>
+		<% elsif Rails.env.staging? %>
+			<!-- insert google analytics for staging site here -->
+		<% end %>
+
+  </body>
+</html>

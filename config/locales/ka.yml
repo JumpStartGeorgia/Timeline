@@ -98,7 +98,14 @@ ka:
       sign_out: გასვლა
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
       js_link_text: აგებულია
-
+    timeline:
+      admin: ადმინისტრატო
+      sign_out: გასვლა
+      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_text: აგებულია
+      og:
+        title: არჩევნების თაიმლაინი
+        desc: TBD
   admin:
     index:
       title: ადმინისტრატორის განყოფილება
