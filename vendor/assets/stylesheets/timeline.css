@@ -308,7 +308,7 @@
 
 /* content area */
 .vco-slider .slider-item .content .content-container .text .container h2.date{
-	color: #000;
+	color: #333;
 }
 .vco-storyjs .vco-feature h3, .vco-storyjs .vco-feature h4, .vco-storyjs .vco-feature h5, .vco-storyjs .vco-feature h6, .vco-storyjs h2.start{
 	color: #000;
@@ -324,7 +324,7 @@
 	background-color: #000;
 }
 .vco-storyjs .vco-feature p{
-	color: #000;
+	color: #333;
 }
 
 .vco-storyjs a{
