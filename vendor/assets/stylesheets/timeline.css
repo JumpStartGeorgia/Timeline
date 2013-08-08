@@ -299,39 +299,56 @@
 
 }
 .vco-slider{
-	background: url('/assets/bg_black_3.png');
+	background: #c9c3bd;
 }
 
 .vco-timeline .vco-navigation .timenav-background{
-	border-top: solid 10px #525657;
+	border-top: solid 10px #8c4d4f;
 }
 
 /* content area */
 .vco-slider .slider-item .content .content-container .text .container h2.date{
-	color: #727272;
+	color: #000;
 }
 .vco-storyjs .vco-feature h3, .vco-storyjs .vco-feature h4, .vco-storyjs .vco-feature h5, .vco-storyjs .vco-feature h6, .vco-storyjs h2.start{
-	color: #fff;
+	color: #000;
   text-transform:uppercase;
 }
 .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .wikipedia h4 a{
-	color: #fff;
+	color: #000;
 }
 .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .wikipedia .wiki-source{
-	color: #727272;
+	color: #000;
 }
 .vco-slider .slider-item .content .content-container .text .container .slide-tag{
-	background-color: #727272;
+	background-color: #000;
 }
 .vco-storyjs .vco-feature p{
-	color: #fff;
+	color: #000;
 }
 
 .vco-storyjs a{
-  color: #999999;
+  color: #333;
+  text-decoration: underline;
 }
 .vco-storyjs a:hover{
-  color: #fff;
+  color: #8C4D4F;
+}
+
+.vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .credit{
+  color:#333;
+}
+
+.vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .caption{
+  color:#333;
+}
+
+.vco-slider .nav-previous, .vco-slider .nav-next{
+  color: #999;
+}
+
+.vco-slider .nav-previous:hover, .vco-slider .nav-next:hover{
+  color: #333;
 }
 
 .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow::before, .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .media-shadow::after{
@@ -348,7 +365,7 @@
 .vco-timeline .vco-navigation .timenav-background .timenav-tag-row-4,
 .vco-timeline .vco-navigation .timenav-background .timenav-tag-row-5,
 .vco-timeline .vco-navigation .timenav-background .timenav-tag-row-6 {
-	background-color: #313333;
+	background-color: #857B75;
 	color: #fff;
 }
 
@@ -357,11 +374,11 @@
   display: none;
 }
 .vco-timeline .vco-navigation .timenav-background .timenav-line{
-	background-color: #242828;
+	background-color: #666;
 }
 
 .vco-timeline .vco-navigation .timenav-background .timenav-interval-background{
-	background-color: #515556;
+	background-color: #8c4d4f;
 }
 
 .vco-timeline .vco-navigation .vco-toolbar{
@@ -370,7 +387,7 @@
 
 .vco-notouch .vco-navigation .timenav .content .marker .flag .flag-content h3,
 .vco-notouch .vco-navigation .timenav .content .marker .flag-small .flag-content h3{
-	color: #313333;
+	color: #857B75;
 }
 .vco-notouch .vco-navigation .timenav .content .marker .flag:hover .flag-content h3,
 .vco-notouch .vco-navigation .timenav .content .marker .flag-small:hover .flag-content h3,
@@ -380,30 +397,30 @@
 .vco-notouch .vco-navigation .timenav .content .marker.active:hover .flag-small .flag-content h3,
 .vco-timeline .vco-navigation .timenav .content .marker.active .flag .flag-content h3,
 .vco-timeline .vco-navigation .timenav .content .marker.active .flag-small .flag-content h3{
-	color: #c33a46;
+	color: #333;
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker .dot,
 .vco-timeline .vco-navigation .timenav .content .marker.active .dot{
-	color: #999999;
-	background-color: #999999;
+	color: #C9C3BD;
+	background-color: #C9C3BD;
 }
 .vco-timeline .vco-navigation .timenav .content .marker .line {
-	-moz-box-shadow: 1px 0 0 rgba(59, 59, 57, 1.0);
-	-webkit-box-shadow: 1px 0 0 rgba(59, 59, 57, 1.0);
-	box-shadow: 1px 0 0 rgba(59, 59, 57, 1.0);
+	-moz-box-shadow: 1px 0 0 rgba(59, 59, 57, 0.5);
+	-webkit-box-shadow: 1px 0 0 rgba(59, 59, 57, 0.5);
+	box-shadow: 1px 0 0 rgba(59, 59, 57, 0.5);
 }
 .vco-timeline .vco-navigation .timenav .content .marker .line,
 .vco-timeline .vco-navigation .timenav .content .marker.active .line,
 .vco-timeline .vco-navigation .timenav .content .marker .line .event-line,
 .vco-timeline .vco-navigation .timenav .content .marker.active .line .event-line{
-	background-color: #999999;
+	background-color: #C9C3BD;
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker:hover .dot,
 .vco-notouch .vco-navigation .timenav .content .marker:hover .line{
-	background-color: #c33a46;
-	color: #c33a46;
+	background-color: #333;
+	color: #333;
 }
 
 .vco-timeline .vco-navigation .timenav .time .time-interval-minor,

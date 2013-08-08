@@ -171,9 +171,13 @@ footer div#left {
 	width: 30%;
 	margin-top: 20px;
   padding-top: 3px;
+  & > a {
+    display: inline-block;
+    margin-top: -9px;
+  }
 }
-footer a:hover {
-	background-color: #D4D4D4;
+footer a:hover{
+  background-color: transparent;
 }
 
 footer #middle {
@@ -285,7 +289,7 @@ footer, footer ul li, footer div#right ul li {
 /* timeline styles */
 body#body_timeline {
   font-family: bpg_nino;
-  background-color: #515556;
+  background-color: #8c4d4f;
 
   #container-content{
 	  padding-left: 0;
@@ -296,7 +300,7 @@ body#body_timeline {
 
 
   .navbar .navbar-inner{
-	  background: url('/assets/bg_red_1.jpg');
+	  background: #799485;
 	  height: 78px;
 
     box-sizing:border-box;
@@ -316,6 +320,7 @@ body#body_timeline {
             font-family: bpg_nino;
             font-size: 16px;
             font-weight: bold;
+            text-transform: uppercase;
           }
         }
       }
@@ -390,7 +395,9 @@ body#body_timeline {
     } 
   }
 
-
+  footer{
+  	background: #afccbd !important;
+  }
 }
 
 

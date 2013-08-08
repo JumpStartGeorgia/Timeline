@@ -82,6 +82,9 @@ ka:
   layouts:
     application:
       admin: ადმინისტრატო
+      events: მოვლენები
+      categories: კატეგორიები
+      users: მომხმარებლები
       sign_out: გასვლა
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
       js_link_text: აგებულია
@@ -101,6 +104,9 @@ ka:
     timeline:
       admin: ადმინისტრატო
       sign_out: გასვლა
+      events: მოვლენები
+      categories: კატეგორიები
+      users: მომხმარებლები
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
       js_link_text: აგებულია
       og:

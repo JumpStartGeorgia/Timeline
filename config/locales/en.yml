@@ -82,6 +82,9 @@ en:
   layouts:
     application:
       admin: Admin
+      events: Events
+      categories: Categories
+      users: Users
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
@@ -100,6 +103,9 @@ en:
       js_link_text: Built by
     timeline:
       admin: Admin
+      events: Events
+      categories: Categories
+      users: Users
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
