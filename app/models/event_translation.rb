@@ -11,6 +11,7 @@ class EventTranslation < ActiveRecord::Base
 
   validates :headline, :locale, :presence => true
 	validates :media, :format => {:with => URI::regexp(['http','https']), :message => I18n.t('activerecord.errors.messages.invalid_url')},  :if => "!media.blank?"
+	validates :media, :format => {:with => URI::regexp(['http','https']), :message => I18n.t('activerecord.errors.messages.invalid_url')},  :if => "!media.blank?"
 
 
 	after_find :set_original_values
@@ -32,7 +33,9 @@ class EventTranslation < ActiveRecord::Base
             # create the file name that paperclip will read in
             extension = File.extname(URI.parse(self.media).path)
             # if extension is not in url, us the content type
-            extension = "." + file.content_type.split('/')[1] if !extension.present?
+            # if extension is php (e.g., http://www.tbilisi.gov.ge/functions/img.php?src_jpg=../album/1297_5992_668123.jpg&im_new_w=500)
+            # - default to content type to get true content type
+            extension = "." + file.content_type.split('/')[1] if !extension.present? || extension == '.php'
             name = "media_img"
             name = Utf8Converter.generate_permalink(self.headline) if self.headline.present?
 
