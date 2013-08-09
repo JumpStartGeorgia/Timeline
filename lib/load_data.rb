@@ -2,6 +2,7 @@ module LoadData
 	require 'net/http'
 	require 'net/https'
   require 'json_cache'
+  
 
   def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
     en_json = format_data(en_url)
@@ -29,7 +30,27 @@ module LoadData
 
     return nil
   end
+  
+  
+  # when the timeline was initialized, only english records existed
+  # need to update these records to include the geo records
+  def self.add_geo_to_eng
+    # urls to jumpstart 2012 timeline
+    en_url = "https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json"
+    ka_url = "https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dFpyUXpIQXczc2N1WUZWV01UUlN3VFE/od6/public/values?alt=json"
 
+    en_json = format_data(en_url)
+    ka_json = format_data(ka_url)
+  
+    if en_json.present? && ka_json.present?
+      Event.add_missing_geo_json_multi_lang(ka_json, en_json)
+
+      # clear the cache files so the new data is avaialble
+      JsonCache.clear
+    end
+
+    return nil
+  end
 
 protected 
   def self.format_data(url)

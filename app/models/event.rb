@@ -241,6 +241,91 @@ puts "----------- - could not find en match for #{record["id"]}"
       end
     end
   end
+  
+  ######################
+  ## when the timeline was initialized, only english records existed
+  ## need to update these records to include the geo records
+  ######################
+  def self.add_missing_geo_json_multi_lang(ka_json, en_json)
+    if ka_json.present? && en_json.present?
+      counter = 0
+      Event.transaction do
+        en_json.each_with_index do |record, index|
+          puts "******************************"
+          puts "******************************"
+          puts index
+
+          # look for matching english record
+          # - if value is null, have to use 'is null' for sql does not know '= null'
+          where_sql = "events.start_date = '"
+          where_sql << record["start_date"].strftime("%F") 
+          where_sql << "' " 
+=begin
+          where_sql << "' and events.start_time "
+          if record["start_time"].present?
+            where_sql <<  "= '#{Time.strptime(record["start_time"], '%H:%M').strftime("%T")}'"
+          else
+            where_sql <<  'is null'
+          end
+=end          
+          where_sql << " and events.end_date "
+          if record["end_date"].present?
+            where_sql << "= '#{record["end_date"].strftime("%F")}'"
+          else
+            where_sql << 'is null'
+          end
+=begin          
+          where_sql << " and events.end_time "
+          if record["end_time"].present?
+            where_sql << "= '#{Time.strptime(record["end_time"], '%H:%M').strftime("%T")}'"
+          else
+            where_sql << 'is null'
+          end
+=end          
+          where_sql << " and event_translations.headline = \""
+          where_sql << record["headline"]
+          where_sql << "\""
+          
+
+          match = Event.with_translations(:en).where(where_sql)
+            
+          if match.present?
+            puts "******************************"
+            puts "found match for: #{record["headline"]}"  
+
+            # get ka record
+            ka_record = ka_json.select{|x| x["id"] == record["id"]}.first
+    
+            # add proper ka values
+            en_trans = match.first.event_translations.where(:locale => 'en')
+            ka_trans = match.first.event_translations.where(:locale => 'ka')
+            if ka_trans.present? && en_trans.present?
+              puts "******************************"
+              puts "updating geo"  
+              ka_t = ka_trans.first
+              en_t = en_trans.first
+              
+              ka_t.headline = ka_record["headline"]
+              ka_t.story = ka_record["story"]
+              ka_t.media = en_t.media # using en record for many images from spreadsheet no longer exist
+              ka_t.credit = ka_record["credit"]
+              ka_t.caption = ka_record["caption"]
+              ka_t.save
+            else
+              puts "******************************"
+              puts "could not find geo, adding"  
+              match.first.event_translations.create(:locale => 'ka', :headline => ka_record["headline"], :story => ka_record["story"], 
+                    :media => en_t.media, :credit => ka_record["credit"], :caption => ka_record["caption"])          
+            end
+            counter += 1
+          end
+        end
+      end
+      puts "******************************"
+      puts "******************************"
+      puts "updated #{counter} geo records"
+    end
+  end  
 
   # generate timeline json format for this event
   # - timeline requires the title and at least one event
