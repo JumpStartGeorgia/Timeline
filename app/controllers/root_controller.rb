@@ -47,6 +47,7 @@ private
         if title.present?
           title = title.first            
           h["timeline"]["type"] = "default"
+          h["timeline"]["id"] = record.id.to_s
           h["timeline"]["headline"] = title.headline
           h["timeline"]["text"] = build_story(title.story, title.categories, title.tags)
           h["timeline"]["startDate"] = title.start_datetime_timeline
@@ -66,6 +67,7 @@ private
           the_rest.each do |record|
             x = Hash.new
             h["timeline"]["date"] << x
+            x["id"] = record.id.to_s
             x["type"] = record.event_type
             x["headline"] = record.headline
             x["text"] = build_story(record.story, record.categories, record.tags)
