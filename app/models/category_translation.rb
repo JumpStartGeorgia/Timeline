@@ -12,4 +12,5 @@ class CategoryTranslation < ActiveRecord::Base
   def create_permalink
     Utf8Converter.convert_ka_to_en(self.name) if self.name
   end
+
 end
