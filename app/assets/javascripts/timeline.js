@@ -20,6 +20,23 @@ $(document).ready(function() {
       $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()) + "px");
     }
 	  
+    // when the hash changes, 
+    // - change the hash to use the id from the table record
+    // - update the language switcher to also have this hash
+    $(window).on('hashchange', function() {
+      $('#language a').each(function(){
+        url_ary = $(this).attr('href').split('#');
+        $(this).attr('href', url_ary[0] + window.location.hash);
+      });
+    });
+
+    // if url has hash and language link does not when page loads, add it
+    if (window.location.hash.length > 0){
+      $('#language a').each(function(){
+        url_ary = $(this).attr('href').split('#');
+        $(this).attr('href', url_ary[0] + window.location.hash);
+      });
+    }	  
   }
 
   if (gon.hidden_form){
