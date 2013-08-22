@@ -3,9 +3,9 @@
 This is a rails app that uses timeline.js to render events in a nice timeline format.  Features of the site include:
 * TimelineJS - https://github.com/VeriteCo/TimelineJS/
 * lunrjs (for searching through timeline text) - http://lunrjs.com/
-* generating json files of timeline data from database so pages load quicker
+* generating and caching json files of timeline data from database so pages load quicker
 * automatically saving images locally to avoid issues of images disappearing on the web
-* 
+ 
 
 ##TimelineJS Tweaks
 The following code changes were applied for to the timeline:

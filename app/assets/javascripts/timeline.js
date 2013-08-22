@@ -75,6 +75,12 @@ $(document).ready(function() {
 
     generate_timeline();
     
+	  // resize the timeline when the screen changes
+    window.onresize = function()
+    {
+      $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()-$('footer').height()) + "px");
+    }
+    
     // create index of all items in timeline for searching
     search_index = lunr(function () {
       this.field('title'),
