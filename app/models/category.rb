@@ -28,6 +28,17 @@ class Category < ActiveRecord::Base
     joins('inner join categories_events as ce on categories.id = ce.category_id')
   end
 
+  def self.get_differnt_locale_permalink(type_id, locale, permalink)
+    orig_record = select('categories.id').joins(:category_translations)
+      .where(['categories.type_id = ? and category_translations.locale = ? and category_translations.permalink = ?', type_id, I18n.locale, permalink])
+    if orig_record.present?
+      new_record = CategoryTranslation.select('permalink').where(:locale => locale, :category_id => orig_record.first.id)
+      if new_record.present?
+        new_record.first.permalink
+      end
+    end
+  end
+
   def type_name
     index = TYPES.values.index(self.type_id)
     if index

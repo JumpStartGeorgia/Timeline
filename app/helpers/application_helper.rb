@@ -24,6 +24,37 @@ module ApplicationHelper
 		text.html_safe
 	end
 
+	# since the url contains english or georgian text, the text must be updated to the correct language
+	# for the language switcher link to work
+	# - only applies to categories and tags
+	def generate_language_switcher_link(locale)
+    cat_permalink = nil
+    tag_permalink = nil
+    
+    if params[:category].present?
+      cat_permalink = Category.get_differnt_locale_permalink(Category::TYPES[:category], locale, params[:category])
+    end
+    
+    if params[:tag].present?
+      tag_permalink = Category.get_differnt_locale_permalink(Category::TYPES[:tag], locale, params[:tag])
+    end
+    
+    if cat_permalink && tag_permalink
+			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+        :category => cat_permalink, :tag => tag_permalink)
+    elsif cat_permalink
+			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+        :category => cat_permalink, :tag => nil)
+    elsif tag_permalink
+			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+        :category => nil, :tag => tag_permalink)
+    else
+			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+        :category => nil, :tag => nil)
+    end
+    
+  end
+
 
 	# Based on https://gist.github.com/1182136
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer

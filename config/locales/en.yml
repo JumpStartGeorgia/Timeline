@@ -113,6 +113,6 @@ en:
         title: New User
       show:
         title: User Details
-   root:
-     index:
-       no_data: I am sorry but there is no data to load into the timeline.
+  root:
+    index:
+      no_data: I am sorry but there is no data to load into the timeline.
