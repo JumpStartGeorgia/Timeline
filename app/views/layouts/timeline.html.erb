@@ -36,7 +36,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <%= link_to(image_tag("logo_elections_timeline_#{I18n.locale}.#{I18n.locale == :en ? 'png' : 'jpg'}"), root_path(:locale => I18n.locale),:class=>"brand font")%>
+          <%= link_to(image_tag("logo_elections_timeline_#{I18n.locale}.png"), root_path(:locale => I18n.locale),:class=>"brand font")%>
           <% if @categories.present? %>
             <ul id="category_nav" class="nav">
               <% @categories.each do |cat| %>
