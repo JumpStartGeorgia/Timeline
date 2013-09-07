@@ -36,7 +36,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <%= link_to(t('app.common.app_name'), root_path(:locale => I18n.locale),:class=>"brand font")%>
+          <%= link_to(image_tag("logo_elections_timeline_#{I18n.locale}.#{I18n.locale == :en ? 'png' : 'jpg'}"), root_path(:locale => I18n.locale),:class=>"brand font")%>
           <% if @categories.present? %>
             <ul id="category_nav" class="nav">
               <% @categories.each do |cat| %>
@@ -78,17 +78,18 @@
           </ul>
           <ul id="social_links" class="nav pull-right">
             <li>
-				      <a href="http://www.facebook.com/share.php?u=<%= root_url %>" title="facebook" target="_blank"><img src="/assets/fb.png" alt="facebook"></a>
+				      <a href="http://www.facebook.com/share.php?u=<%= root_url %>" title="facebook" target="_blank"><img src="/assets/icon_fb.png" alt="facebook"><img src="/assets/icon_fb_hover.png" alt="facebook"></a>
             </li>
             <li>
-				      <a href="https://twitter.com/share?url=<%= root_url %>" title="twitter" target="_blank"><img src="/assets/twitter.png" alt="twitter"></a>
+				      <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=<%= root_url %>" title="google+" target="_blank"><img src="/assets/icon_goggle.png" alt="google+"><img src="/assets/icon_goggle_hover.png" alt="google+"></a>
             </li>
             <li>
-				      <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=<%= root_url %>" title="google+" target="_blank"><img src="/assets/google.png" alt="google+"></a>
+				      <a href="https://twitter.com/share?url=<%= root_url %>" title="twitter" target="_blank"><img src="/assets/icon_twitter.png" alt="twitter"><img src="/assets/icon_twitter_hover.png" alt="twitter"></a>
             </li>
           </ul>
           <form class="navbar-search pull-right">
             <input id="search_box" type="text" class="search-query" placeholder="<%= t('.search')%>">
+            <i class="icon-search2"></i>
           </form>
           
         </div>
@@ -112,7 +113,7 @@
 
     <footer class="clear">
 			<div id="left">
-				<%= link_to(image_tag("electionsportal_#{I18n.locale}.gif", :style => 'height: 40px'), "http://electionportal.ge/", :target => "_blank") %>
+				<%= link_to(image_tag("logo_footer_election_portal.jpg"), "http://electionportal.ge/", :target => "_blank") %>
 		  </div>
 		  <div id="middle">
 			  &copy; 2013
