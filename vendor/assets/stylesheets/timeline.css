@@ -441,15 +441,6 @@
 	color: #636aad;
 }
 
-.vco-timeline .vco-navigation .timenav .content .marker .flag .flag-content .thumbnail, 
-.vco-timeline .vco-navigation .timenav .content .marker .flag-small .flag-content .thumbnail{
-  opacity: 1.0.
-}
-.vco-notouch .vco-navigation .timenav .content .marker .flag:hover .flag-content .thumbnail, 
-.vco-notouch .vco-navigation .timenav .content .marker .flag-small:hover .flag-content .thumbnail{
-  opacity: 0.5;
-}
-
 .vco-timeline .vco-navigation .timenav .content .marker .dot{
 	color: #fff;
 	background: #fff;
