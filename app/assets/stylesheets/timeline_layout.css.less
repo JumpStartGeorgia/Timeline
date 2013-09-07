@@ -12,7 +12,7 @@ body#body_timeline {
 
 
   .navbar .navbar-inner{
-	  background: #6569a8;
+    background:url('header_bg.png') repeat-x;
 	  height: 50px;
 
     box-sizing:border-box;
@@ -140,5 +140,51 @@ body#body_timeline {
   footer{
 	  background:url('page_bg.jpg') !important;
   }
+
+  /* timeline text styles */
+  .story_cat_tags{
+    font-size: 11px;
+    margin-top: -13px;
+    margin-bottom: 9px;
+    color: #6b6b6b;
+    & > div{
+/*      width: 48%;
+      float: left;*/
+      font-family: 'Arial' !important;
+      .link_header{
+        font-family: 'Arial' !important;
+        color: #fff;
+      }
+      a{
+        font-family: 'Arial' !important;
+        text-decoration: none;
+        background-color: #fff;
+        padding: 5px 10px;
+        display: inline-block;
+        text-transform: capitalize;
+        color: #6b6b6b;
+        margin-right: 3px;
+        margin-bottom: 3px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        &:hover{
+          background-color: #636aad;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  /* no data for timeline */
+  #no_data{
+    color: #fff;
+    font-size: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+  }
+
+
 }
 

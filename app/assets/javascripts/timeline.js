@@ -30,8 +30,7 @@ var was_search_box_length = 0;
       hash_bookmark: true,
       start_zoom_adjust: -1,
 		  debug:		false,
-		  start_at_end: true,
-      current_slide:      0
+		  start_at_end: true
 	  });
   }
 
