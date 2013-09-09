@@ -14,7 +14,8 @@
 .vco-notouch .vco-navigation .timenav .content .marker .flag .flag-content h3,
 .vco-notouch .vco-navigation .timenav .content .marker .flag-small .flag-content h3, 
 .vco-storyjs .time-interval div, .vco-storyjs .time-interval-major div,
-.vco-timeline .vco-navigation .timenav .time .time-interval-minor, .vco-timeline .vco-navigation .timenav .time .time-interval-major div, .vco-timeline .vco-navigation .timenav .time .time-interval div{
+.vco-timeline .vco-navigation .timenav .time .time-interval-minor, .vco-timeline .vco-navigation .timenav .time .time-interval-major div, .vco-timeline .vco-navigation .timenav .time .time-interval div,
+.vco-slider .nav-previous .date, .vco-slider .nav-next .date {
   font-family: bpg_arial !important;
 }
 
