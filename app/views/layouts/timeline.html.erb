@@ -12,6 +12,8 @@
 		<meta property="og:image" content="<%= full_url(image_path('fb-img.jpg')) %>" />
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
+    <meta name="google" value="notranslate">
+
     <title><%= content_for?(:title) ? "#{yield(:title)} | #{t('app.common.app_name')}" :
 				t('app.common.app_name') %></title>
     <%= csrf_meta_tags %>
