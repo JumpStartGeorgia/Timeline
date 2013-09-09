@@ -496,13 +496,13 @@
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker .dot{
-	color: #fff;
-	background: #fff;
+	color: #91abd6;
+	background: #91abd6;
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker.active .dot{
-	color: #636aad;
-	background: #636aad;
+	color: #fff;
+	background: #fff;
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker .line {
@@ -520,8 +520,8 @@
 
 .vco-timeline .vco-navigation .timenav .content .marker:hover .dot,
 .vco-notouch .vco-navigation .timenav .content .marker:hover .line{
-	color: #636aad;
-	background: #636aad;
+	color: #fff;
+	background: #fff;
 }
 
 .vco-timeline .vco-navigation .timenav .time .time-interval-minor,
@@ -534,4 +534,10 @@
 	text-shadow: none;
 }
 
+.vco-timeline .vco-navigation .timenav-background .timenav-interval-background .top-highlight{
+  display: none;
+}
 
+.vco-timeline .vco-navigation .timenav .time .time-interval-minor, .vco-timeline .vco-navigation .timenav .time .time-interval-major div, .vco-timeline .vco-navigation .timenav .time .time-interval div{
+  color: #b6b9ce;
+}
