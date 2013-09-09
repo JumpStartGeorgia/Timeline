@@ -340,6 +340,26 @@
   color:#898989;
 }
 
+.vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .credit a{
+  font-family: 'Arial' !important;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 5px 10px;
+  display: inline-block;
+  color: #6b6b6b;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .credit a:hover{
+  background-color: #636aad;
+  color: #fff;
+}
+
 .vco-slider .slider-item .content .content-container .media .media-wrapper .media-container .caption{
   color:#333;
 }
@@ -360,37 +380,62 @@
 
 
 .vco-slider .nav-previous .icon{
-  margin-left:15px;
+  margin-left:0;
   background-image:url('arrow_left.png');
   background-repeat:no-repeat;
   background-position:0% 0%;
   width:33px;
   height:64px;
   overflow:hidden;
+  position: absolute;
+  left: 0;
 }
 
 .vco-notouch .vco-slider .nav-previous:hover .icon{
   background-image:url('arrow_left_hover.png');
-  margin-left:15px;
+  margin-left:0;
 }
 
 .vco-slider .nav-next .icon{
-  margin-left:51px;
+  margin-left:0;
   background-image:url('arrow_right.png');
   background-repeat:no-repeat;
   background-position:0% 0%;
   width:33px;
   height:64px;
   overflow:hidden;
+  position: absolute;
+  right: 0;
 }
 
 .vco-notouch .vco-slider .nav-next:hover .icon{
   background-image:url('arrow_right_hover.png');
-  margin-left:51px;
 }
 
 .vco-notouch .vco-slider .nav-previous:hover, .vco-notouch .vco-slider .nav-next:hover{
   color: #636aad;
+}
+
+.vco-slider .nav-previous .date{
+  font-size: 10px;
+  position: absolute;
+  top: 39px;
+  left: 21px;
+  width: 100%;
+  text-align: left;
+}
+
+.vco-slider .nav-next .date{
+  font-size: 10px;
+  position: absolute;
+  top: 39px;
+  right: 21px;
+  width: 100%;
+  text-align: right;
+}
+
+.vco-slider .nav-previous .title, .vco-slider .nav-next .title{
+  display: none;
 }
 
 /* bottom navigation */
@@ -410,8 +455,7 @@
   display: none;
 }
 .vco-timeline .vco-navigation .timenav-background .timenav-line{
-/*	background-color: #636aad;*/
-  background: url('ruler_vertical_arrow.png') repeat-y;
+	background-color: #636aad;
 }
 
 .vco-timeline .vco-navigation .timenav-background .timenav-interval-background{
@@ -430,6 +474,7 @@
 .vco-notouch .vco-navigation .timenav .content .marker .flag .flag-content h3,
 .vco-notouch .vco-navigation .timenav .content .marker .flag-small .flag-content h3{
 	color: #9a9a9a;
+	font-size: 10px;
 }
 .vco-notouch .vco-navigation .timenav .content .marker .flag:hover .flag-content h3,
 .vco-notouch .vco-navigation .timenav .content .marker .flag-small:hover .flag-content h3,
@@ -440,6 +485,7 @@
 .vco-timeline .vco-navigation .timenav .content .marker.active .flag .flag-content h3,
 .vco-timeline .vco-navigation .timenav .content .marker.active .flag-small .flag-content h3{
 	color: #636aad;
+	font-size: 10px;
 }
 
 .vco-timeline .vco-navigation .timenav .content .marker .dot{
@@ -469,10 +515,6 @@
 .vco-notouch .vco-navigation .timenav .content .marker:hover .line{
 	color: #636aad;
 	background: #636aad;
-}
-
-.vco-notouch .vco-navigation .timenav .content .marker:hover .line{
-  background: url('ruler_vertical_arrow.png') repeat-y;
 }
 
 .vco-timeline .vco-navigation .timenav .time .time-interval-minor,
