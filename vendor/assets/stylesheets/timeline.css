@@ -410,7 +410,8 @@
   display: none;
 }
 .vco-timeline .vco-navigation .timenav-background .timenav-line{
-	background-color: #636aad;
+/*	background-color: #636aad;*/
+  background: url('ruler_vertical_arrow.png') repeat-y;
 }
 
 .vco-timeline .vco-navigation .timenav-background .timenav-interval-background{
@@ -468,6 +469,10 @@
 .vco-notouch .vco-navigation .timenav .content .marker:hover .line{
 	color: #636aad;
 	background: #636aad;
+}
+
+.vco-notouch .vco-navigation .timenav .content .marker:hover .line{
+  background: url('ruler_vertical_arrow.png') repeat-y;
 }
 
 .vco-timeline .vco-navigation .timenav .time .time-interval-minor,
