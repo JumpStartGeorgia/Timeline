@@ -99,6 +99,21 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
     x << view_context.simple_format(story.clone) if story.present?
 
+    # add social links
+=begin    
+    x << "<div class='event_social_links'>"
+    x << "  <span class='st_facebook_hcount' displayText='Facebook' "
+    if story.present? 
+      x << "st_summary='"
+      x << view_context.truncate(story, :length => 500, :separator => ' ', :omission => '...')
+      x << "'"
+    end
+    x << "></span>"
+    x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
+    x << "  <span class='st_twitter_hcount' displayText='Tweet'></span>"
+    x << "  <span class='st_sharethis_hcount' displayText='ShareThis'></span>"
+    x << "</div>"
+=end
 
     return x
   end

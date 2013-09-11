@@ -30,7 +30,7 @@ var was_search_box_length = 0;
 //      hash_bookmark: true,
       hash_unique_bookmark: true,
       start_zoom_adjust: -1,
-		  debug:		true,
+		  debug:		false,
 		  start_at_end: true
 	  });
   }
