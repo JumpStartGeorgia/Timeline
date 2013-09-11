@@ -27,9 +27,10 @@ var was_search_box_length = 0;
 		  height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
 		  source:		timeline_data,
 		  embed_id:	'timeline-embed',
-      hash_bookmark: true,
+//      hash_bookmark: true,
+      hash_unique_bookmark: true,
       start_zoom_adjust: -1,
-		  debug:		false,
+		  debug:		true,
 		  start_at_end: true
 	  });
   }
