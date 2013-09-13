@@ -72,7 +72,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: Elections And Political Timeline
+      app_name: საარჩევნო და პოლიტიკური კალენდარი
       added_on: "დამატებულია: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
@@ -86,7 +86,7 @@ ka:
       categories: კატეგორიები
       users: მომხმარებლები
       sign_out: გასვლა
-      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
     unsupported_browser:
       title: არასათანადო ბრაუზერი
@@ -99,7 +99,7 @@ ka:
       Safari: Safari
       admin: ადმინისტრატო
       sign_out: გასვლა
-      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
     timeline:
       admin: ადმინისტრატო
@@ -107,7 +107,7 @@ ka:
       events: მოვლენები
       categories: კატეგორიები
       users: მომხმარებლები
-      js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
+      js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
       search: ძიება
       og:
