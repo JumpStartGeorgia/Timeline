@@ -73,8 +73,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
   end
 
   #######################
-  def build_story(story, categories, tags)
-    x = ""
+  def build_story(story, categories, tags, id)
+    x = "<input type='hidden' class='hidden_input_id' id='hidden_input_" + id.to_s + "' value='" + id.to_s + "' />" # to find this from javascript
 
     if categories.present? || tags.present?
       x << "<div class='story_cat_tags fluid-row clear'>"
@@ -100,7 +100,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     x << view_context.simple_format(story.clone) if story.present?
 
     # add social links
-=begin    
+
     x << "<div class='event_social_links'>"
     x << "  <span class='st_facebook_hcount' displayText='Facebook' "
     if story.present? 
@@ -113,7 +113,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     x << "  <span class='st_twitter_hcount' displayText='Tweet'></span>"
     x << "  <span class='st_sharethis_hcount' displayText='ShareThis'></span>"
     x << "</div>"
-=end
+
 
     return x
   end

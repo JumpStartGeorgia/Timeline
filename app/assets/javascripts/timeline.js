@@ -113,7 +113,78 @@ $(document).ready(function() {
         url_ary = $(this).attr('href').split('#');
         $(this).attr('href', url_ary[0] + new_hash);
       });
+      load_social_buttons(new_hash.split('#')[1]);
+    })
+    .load(function ()
+    {
+      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
+      load_social_buttons(id);
     });
+
+    function load_social_buttons (id)
+    {
+      var item = $('#hidden_input_' + id).closest('.slider-item');
+
+      var socials = item.find('.event_social_links');
+      socials.children().each(function (){ $(this).empty(); });
+
+      var url = location.href;
+
+    /*
+      var sep = '><|-'.split(''),
+      sep_reg = [];
+      for (var i = 0; i < sep.length; i ++)
+      {
+        sep_reg.push('\\' + sep[i]);
+      }
+      sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
+      console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
+    */
+      var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').attr('content'); // if you don't specify the title, it will automatically get og:title
+
+      //var spans = new Array(5).join('<span></span>');
+      //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
+
+      stWidget.addEntry({
+          "service": "facebook",//"fblike",
+          "element": socials.children('.st_facebook_hcount')[0],
+          "url": url,
+          "title": title,
+          "type": "hcount",//"fblike"
+          //,"image": data.fb_img,
+          //"summary": data.summary
+      });
+
+      stWidget.addEntry({
+          "service": "googleplus",
+          "element": socials.children('.st_googleplus_hcount')[0],
+          "url": url,
+          "title": title,
+          "type": "hcount"
+          //,"image": data.pin_img,
+          //"summary": data.summary
+      });
+
+      stWidget.addEntry({
+          "service": "twitter",
+          "element": socials.children('.st_twitter_hcount')[0],
+          "url": url,
+          "title": title,
+          "type": "hcount"
+          //,"image": data.fb_img,
+          //"summary": data.summary
+      });
+
+      stWidget.addEntry({
+          "service": "sharethis",
+          "element": socials.children('.st_sharethis_hcount')[0],
+          "url": url,
+          "title": title,
+          "type": "hcount"
+          //,"image": data.pin_img,
+          //"summary": data.summary
+      });
+    }
 
     // if url has hash and language link does not when page loads, add it
     if (window.location.hash.length > 0){

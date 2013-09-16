@@ -45,12 +45,15 @@ private
           title = data.select{|x| x.event_type == "title"}
           the_rest = data.select{|x| x.event_type != "title"}
         end
+
+        title_input = '<input type="hidden" class="title_here" />'.html_safe;
+
         if title.present?
           title = title.first            
           h["timeline"]["type"] = "default"
           h["timeline"]["id"] = record.id.to_s
-          h["timeline"]["headline"] = title.headline
-          h["timeline"]["text"] = build_story(title.story, title.categories, title.tags)
+          h["timeline"]["headline"] = title.headline + title_input # to find this from javascript
+          h["timeline"]["text"] = build_story(title.story, title.categories, title.tags, record.id)
           h["timeline"]["startDate"] = title.start_datetime_timeline
           h["timeline"]["endDate"] = title.end_datetime_timeline
           h["timeline"]["asset"] = Hash.new
@@ -70,8 +73,8 @@ private
             h["timeline"]["date"] << x
             x["id"] = record.id.to_s
             x["type"] = record.event_type
-            x["headline"] = record.headline
-            x["text"] = build_story(record.story, record.categories, record.tags)
+            x["headline"] = record.headline + title_input # to find this from javascript
+            x["text"] = build_story(record.story, record.categories, record.tags, record.id)
             x["startDate"] = record.start_datetime_timeline
             x["endDate"] = record.end_datetime_timeline
             x["asset"] = Hash.new
