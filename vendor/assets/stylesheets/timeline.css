@@ -416,6 +416,34 @@
   background-image:url('arrow_right_hover.png');
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2){
+  .vco-slider .nav-previous .icon{
+    margin-left:0;
+    background-image:url('arrow_left.png');
+    background-repeat:no-repeat;
+    background-position:0% 0%;
+    width:33px;
+    height:64px;
+    overflow:hidden;
+    position: absolute;
+    left: 0;
+  }
+  
+  .vco-slider .nav-next .icon{
+    margin-left:0;
+    background-image:url('arrow_right.png');
+    background-repeat:no-repeat;
+    background-position:0% 0%;
+    width:33px;
+    height:64px;
+    overflow:hidden;
+    position: absolute;
+    right: 0;
+  }
+  
+}
+
+
 .vco-notouch .vco-slider .nav-previous:hover, .vco-notouch .vco-slider .nav-next:hover{
   color: #636aad;
 }
