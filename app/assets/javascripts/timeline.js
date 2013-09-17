@@ -19,7 +19,6 @@ var was_search_box_length = 0;
   }
 
   function generate_timeline(){
-  console.log('generating timeline');
 	  createStoryJS({
 		  type:		'timeline',
 		  width:		'100%',
@@ -36,7 +35,6 @@ var was_search_box_length = 0;
 
   // search for the provided text and then reload the timeline
   function search_timeline(query){
-  console.log('searching');
     var new_dates = search_index.search(change_geo_to_en(query)).map(function (result) {
       return gon.json_data.timeline.date[parseInt(result.ref, 10)] }
     );
@@ -52,7 +50,6 @@ var was_search_box_length = 0;
       $('#timeline-embed').html('');
       generate_timeline();
       window.location.hash = "_";
-      console.log('load search results done');
     }
   }
 
@@ -63,7 +60,6 @@ var was_search_box_length = 0;
     $('#timeline-embed').html('');
     generate_timeline();
     window.location.hash = "_";
-    console.log('reload done');
   }
 
 $(document).ready(function() {
@@ -155,6 +151,9 @@ $(document).ready(function() {
       
       $('#og_title').attr('content', title);
       $('#og_url').attr('content', url);
+
+
+      item.find('.fb-like').attr('data-href', url);
       
     }
     
@@ -210,12 +209,8 @@ $(document).ready(function() {
       if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
         return;
       } else if ($(this).val().length == 0 && was_search_box_length > 0) {
-        console.log('*************************');
-        console.log('reloading timeline');
         reload_timeline();      
       } else {
-        console.log('*************************');
-        console.log('starting search');
         search_timeline($(this).val());
       }
       was_search_box_length = $(this).val().length;

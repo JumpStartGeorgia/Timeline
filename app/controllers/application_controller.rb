@@ -45,6 +45,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
 	def preload_global_variables
     @categories = Category.by_type(Category::TYPES[:category]).with_events
+    
+		@fb_app_id = ENV['ETIMELINE_STAGING_FACEBOOK_APP_ID']
 	end
 
 	def set_locale
@@ -102,6 +104,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     # add social links
 
     x << "<div class='event_social_links'>"
+    x << "  <div class='fb-like' data-href='http://localhost:3000/en#" + id.to_s + "' data-width='120' data-layout='button_count' data-show-faces='false' data-send='false'></div>"
     x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
     x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
     x << "  <span class='st_twitter_hcount' displayText='Tweet'></span>"
