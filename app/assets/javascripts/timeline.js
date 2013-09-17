@@ -149,8 +149,7 @@ $(document).ready(function() {
           "element": socials.children('.st_facebook_hcount')[0],
           "url": url,
           "title": title,
-          "type": "hcount",
-          "summary": "this is a test g funk!"
+          "type": "hcount"
       });
 
       stWidget.addEntry({
