@@ -152,9 +152,6 @@ $(document).ready(function() {
       $('#og_title').attr('content', title);
       $('#og_url').attr('content', url);
 
-
-      item.find('.fb-like').attr('data-href', url);
-      FB.XFBML.parse;
     }
     
     // when the hash changes, 

@@ -34,9 +34,6 @@
     <%= favicon_link_tag '/favicon.ico?v1', :rel => 'shortcut icon' %>
   </head>
   <body id="body_timeline">
-    <div id="fb-root"></div>
-  
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -147,15 +144,6 @@
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "5e03882d-880c-43e2-b015-163ee338d8c0", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
     
-
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%= @fb_app_id %>";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
 		<% if Rails.env.production? %>
       <script type="text/javascript">
         var _gaq = _gaq || [];
