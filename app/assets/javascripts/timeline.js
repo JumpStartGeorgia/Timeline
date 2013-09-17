@@ -97,29 +97,6 @@ $(document).ready(function() {
       })
     };    
     
-    // when the hash changes, 
-    // - change the hash to use the id from the table record
-    // - update the language switcher to also have this hash
-    $(window).on('hashchange', function() {
-      var new_hash = "#_"
-      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
-      {
-//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
-//        window.location.hash = new_hash;
-        new_hash = window.location.hash;
-      }
-      $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#');
-        $(this).attr('href', url_ary[0] + new_hash);
-      });
-      load_social_buttons(new_hash.split('#')[1]);
-    })
-    .load(function ()
-    {
-      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
-      load_social_buttons(id);
-    });
-
     function load_social_buttons (id)
     {
       var item = $('#hidden_input_' + id).closest('.slider-item');
@@ -175,7 +152,35 @@ $(document).ready(function() {
           "title": title,
           "type": "hcount"
       });
+      
+      $('#og_title').attr('content', title);
+      $('#og_url').attr('content', url);
+      
     }
+    
+    // when the hash changes, 
+    // - change the hash to use the id from the table record
+    // - update the language switcher to also have this hash
+    $(window).on('hashchange', function() {
+      var new_hash = "#_"
+      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
+      {
+//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
+//        window.location.hash = new_hash;
+        new_hash = window.location.hash;
+      }
+      $('.lang_switcher a').each(function(){
+        url_ary = $(this).attr('href').split('#');
+        $(this).attr('href', url_ary[0] + new_hash);
+      });
+      load_social_buttons(new_hash.split('#')[1]);
+    })
+    .load(function ()
+    {
+      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
+      load_social_buttons(id);
+    });
+
 
     // if url has hash and language link does not when page loads, add it
     if (window.location.hash.length > 0){
