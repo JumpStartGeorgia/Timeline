@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 
       item.find('.fb-like').attr('data-href', url);
-      
+      FB.XFBML.parse;
     }
     
     // when the hash changes, 
