@@ -27,7 +27,6 @@ var was_search_box_length = 0;
 		  height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
 		  source:		timeline_data,
 		  embed_id:	'timeline-embed',
-//      hash_bookmark: true,
       hash_unique_bookmark: true,
       start_zoom_adjust: -1,
 		  debug:		false,
@@ -146,13 +145,12 @@ $(document).ready(function() {
       //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
 
       stWidget.addEntry({
-          "service": "facebook",//"fblike",
+          "service": "facebook",
           "element": socials.children('.st_facebook_hcount')[0],
           "url": url,
           "title": title,
-          "type": "hcount",//"fblike"
-          //,"image": data.fb_img,
-          //"summary": data.summary
+          "type": "hcount",
+          "summary": "this is a test g funk!"
       });
 
       stWidget.addEntry({
@@ -161,8 +159,6 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.pin_img,
-          //"summary": data.summary
       });
 
       stWidget.addEntry({
@@ -171,8 +167,6 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.fb_img,
-          //"summary": data.summary
       });
 
       stWidget.addEntry({
@@ -181,8 +175,6 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.pin_img,
-          //"summary": data.summary
       });
     }
 
