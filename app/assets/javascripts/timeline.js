@@ -119,6 +119,9 @@ $(document).ready(function() {
     {
       var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
       load_social_buttons(id);
+
+      // making the source links open in new tab
+      $('.content .credit a').attr('target', '_blank');
     });
 
     function load_social_buttons (id)

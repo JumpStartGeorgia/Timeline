@@ -25,7 +25,7 @@ body#body_timeline {
 
       .navbar-search{
         margin-right: 30px;
-        padding-top: 6px;
+        padding-top: 4px;
         position: relative;
         input{
           background-color: #fff;
@@ -125,7 +125,7 @@ body#body_timeline {
     color: #fff !important;
     font-family: bpg_nino;
   }
-  .lang_switcher {
+  .lang_switcher, #about_link {
     padding-top: 7px;
 	  padding-right: 20px;
     font-size: 16px;
@@ -135,6 +135,9 @@ body#body_timeline {
 	    color: #fff !important;
       font-family: bpg_nino;
     } 
+  }
+  #about_link {
+    
   }
 
   footer{
@@ -169,9 +172,16 @@ body#body_timeline {
         -webkit-border-radius: 5px;
         -khtml-border-radius: 5px;
         border-radius: 5px;
+        margin-left: 4px;
+        -webkit-box-shadow: 2px 2px 0px rgb(217, 217, 221);
+           -moz-box-shadow: 2px 2px 0px rgb(217, 217, 221);
+                box-shadow: 2px 2px 0px rgb(217, 217, 221);
         &:hover{
           background-color: #636aad;
           color: #fff;
+          -webkit-box-shadow: none;
+             -moz-box-shadow: none;
+                  box-shadow: none;
         }
       }
     }
@@ -187,4 +197,52 @@ body#body_timeline {
 
 
 }
+
+.vco-slider .slider-item .content .content-container .text .container h2.date {
+  font-size: 15px !important;
+  margin-bottom: 10px;
+  color: #6b6b6b !important;
+  font-family: bpg_arial !important;
+}
+
+.vco-notouch .vco-navigation .timenav .content .marker .flag .flag-content h3, .vco-notouch .vco-navigation .timenav .content .marker .flag-small .flag-content h3 {
+  margin-left: 4px !important;
+  line-height: 15px !important;
+}
+
+.vco-notouch .vco-navigation .timenav .content .marker:not(.active):not(:hover) .flag .flag-content h3, .vco-notouch .vco-navigation .timenav .content .marker:not(.active):not(:hover) .flag-small .flag-content h3 {
+  color: #aaa !important;
+}
+
+
+
+.nav-next, .nav-previous {
+  .date {
+    opacity: .2;
+  }
+  &:hover {
+    .date {
+      opacity: 1;
+    }
+  }
+}
+
+
+.vco-timeline .vco-navigation .timenav-background .timenav-interval-background {
+  top: 150px !important;
+  border-top: 1px solid #9FAFD9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

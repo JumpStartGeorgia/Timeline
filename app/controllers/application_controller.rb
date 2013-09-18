@@ -91,7 +91,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
         x << "<div class='span12'>"
 #        x << "<strong>#{I18n.t('categories.tag')}:</strong> "
         x << "#{I18n.t('categories.tag')}: "
-        x << tags.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], url_for(params.merge(:tag => x[:permalink], :locale => I18n.locale)))}.join(", ")
+        x << tags.sort_by{|y| y[:name]}.map{|x| view_context.link_to(x[:name], url_for(params.merge(:tag => x[:permalink], :locale => I18n.locale)))}.join(" ")
         x << "</div>"
       end
       x << "</div>"
