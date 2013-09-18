@@ -19,7 +19,6 @@ var was_search_box_length = 0;
   }
 
   function generate_timeline(){
-  console.log('generating timeline');
 	  createStoryJS({
 		  type:		'timeline',
 		  width:		'100%',
@@ -27,7 +26,6 @@ var was_search_box_length = 0;
 		  height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
 		  source:		timeline_data,
 		  embed_id:	'timeline-embed',
-//      hash_bookmark: true,
       hash_unique_bookmark: true,
       start_zoom_adjust: -1,
 		  debug:		false,
@@ -36,24 +34,22 @@ var was_search_box_length = 0;
   }
 
   // search for the provided text and then reload the timeline
+  sabt = 0;
   function search_timeline(query){
-  console.log('searching');
     var new_dates = search_index.search(change_geo_to_en(query)).map(function (result) {
       return gon.json_data.timeline.date[parseInt(result.ref, 10)] }
     );
     if (new_dates.length == 0){
-      if (I18n.locale == 'ka'){
-        alert('თქვენი საძიებო ფრაზის "' + query + '"  შედეგი არ მოიძებნა');
-      }else {
-        alert('Your search for "' + query + '" returned 0 results.');    
-      }
+      var alertbox = $('#search-alert');
+      alertbox.html(alertbox.html().replace(alertbox.data('query'), query)).data('query', query).stop(true, true).fadeIn();
+      clearTimeout(sabt);
+      sabt = setTimeout(function (){ alertbox.fadeOut(); }, 2000);
     }else{
       timeline_data.timeline.date = new_dates;
       $(global).unbind();
       $('#timeline-embed').html('');
       generate_timeline();
       window.location.hash = "_";
-      console.log('load search results done');
     }
   }
 
@@ -64,10 +60,11 @@ var was_search_box_length = 0;
     $('#timeline-embed').html('');
     generate_timeline();
     window.location.hash = "_";
-    console.log('reload done');
   }
 
 $(document).ready(function() {
+
+  $('#about_link a').fancybox();
 
   if (gon.show_timeline){
     // clone the json data so searching can search through the original
@@ -98,31 +95,6 @@ $(document).ready(function() {
       })
     };    
     
-    // when the hash changes, 
-    // - change the hash to use the id from the table record
-    // - update the language switcher to also have this hash
-    $(window).on('hashchange', function() {
-      var new_hash = "#_"
-      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
-      {
-//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
-//        window.location.hash = new_hash;
-        new_hash = window.location.hash;
-      }
-      $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#');
-        $(this).attr('href', url_ary[0] + new_hash);
-      });
-      load_social_buttons(new_hash.split('#')[1]);
-    })
-    .load(function ()
-    {
-      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
-      load_social_buttons(id);
-
-      // making the source links open in new tab
-      $('.content .credit a').attr('target', '_blank');
-    });
 
     function load_social_buttons (id)
     {
@@ -149,13 +121,11 @@ $(document).ready(function() {
       //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
 
       stWidget.addEntry({
-          "service": "facebook",//"fblike",
+          "service": "facebook",
           "element": socials.children('.st_facebook_hcount')[0],
           "url": url,
           "title": title,
-          "type": "hcount",//"fblike"
-          //,"image": data.fb_img,
-          //"summary": data.summary
+          "type": "hcount"
       });
 
       stWidget.addEntry({
@@ -164,8 +134,6 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.pin_img,
-          //"summary": data.summary
       });
 
       stWidget.addEntry({
@@ -174,8 +142,6 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.fb_img,
-          //"summary": data.summary
       });
 
       stWidget.addEntry({
@@ -184,10 +150,39 @@ $(document).ready(function() {
           "url": url,
           "title": title,
           "type": "hcount"
-          //,"image": data.pin_img,
-          //"summary": data.summary
       });
+      
+      $('#og_title').attr('content', title);
+      $('#og_url').attr('content', url);
+
     }
+    
+    // when the hash changes, 
+    // - change the hash to use the id from the table record
+    // - update the language switcher to also have this hash
+    $(window).on('hashchange', function() {
+      var new_hash = "#_"
+      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
+      {
+//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
+//        window.location.hash = new_hash;
+        new_hash = window.location.hash;
+      }
+      $('.lang_switcher a').each(function(){
+        url_ary = $(this).attr('href').split('#');
+        $(this).attr('href', url_ary[0] + new_hash);
+      });
+      load_social_buttons(new_hash.split('#')[1]);
+    })
+    .load(function ()
+    {
+      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
+      load_social_buttons(id);
+
+      // making the source links open in new tab
+      $('.content .credit a').attr('target', '_blank');
+    });
+
 
     // if url has hash and language link does not when page loads, add it
     if (window.location.hash.length > 0){
@@ -212,21 +207,29 @@ $(document).ready(function() {
     }
         
     // perform search
-    $('input#search_box').bind('keyup', debounce(function () {
+    $('input#search_box')
+    .bind('keyup', debounce(function () {
       // if text length is 1 or the length has not changed (e.g., press arrow keys), do nothing
       if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
         return;
       } else if ($(this).val().length == 0 && was_search_box_length > 0) {
-        console.log('*************************');
-        console.log('reloading timeline');
         reload_timeline();      
       } else {
-        console.log('*************************');
-        console.log('starting search');
         search_timeline($(this).val());
       }
       was_search_box_length = $(this).val().length;
-    }));
+    }))
+    .keyup(function () {
+      if ($(this).val().length == 0)
+      {
+        $(this).parent().removeClass('focused');
+      }
+      else
+      {
+        $(this).parent().addClass('focused');
+      }
+    })
+    .siblings('.imgs').children('img:last').click(function (){ $(this).parent().siblings('input').val('').keyup().focus(); });
     // prevent the search box from submitting
     $('input#search_box').submit(function () {
       return false;

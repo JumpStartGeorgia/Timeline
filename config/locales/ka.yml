@@ -56,6 +56,9 @@ ka:
     language:
       en: English
       ka: ქართული
+    about:
+      title: შესახებ
+      text: asdasd
     buttons:
       back: იხილეთ სრულად
       list: იხილეთ სრულად
@@ -110,8 +113,9 @@ ka:
       js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
       search: ძიება
+      search_result: "თქვენი საძიებო ფრაზის \"%{query}\" შედეგი არ მოიძებნა."
       og:
-        title: არჩევნების თაიმლაინი
+        title: საარჩევნო და პოლიტიკური კალენდარი
         desc: TBD
   admin:
     index:

@@ -56,6 +56,9 @@ en:
     language:
       en: English
       ka: ქართული
+    about:
+      title: about
+      text: asdasd
     buttons:
       back: View All
       list: View All
@@ -110,8 +113,9 @@ en:
       js_link_title: JumpStart Georgia - Communicating Information Better
       js_link_text: Built by
       search: Search
+      search_result: "Your search for \"%{query}\" returned 0 results."
       og:
-        title: Election Timeline
+        title: Elections And Political Timeline
         desc: TBD
   admin:
     index:

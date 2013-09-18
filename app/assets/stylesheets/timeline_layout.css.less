@@ -10,6 +10,20 @@ body#body_timeline {
   }
 
 
+  #search-alert {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    padding: 7px 10px;
+    z-index: 1111;
+    display: none;
+    @width: 300px;
+    width: @width;
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    margin-left: -@width/2;
+  }
+
 
   .navbar .navbar-inner{
     background:url('header_bg.png?2') repeat-x;
@@ -28,22 +42,35 @@ body#body_timeline {
         padding-top: 4px;
         position: relative;
         input{
-          background-color: #fff;
+          background: #fff;
           border-color: #6569a8;
+          padding-right: 27px;
           color: #000;
         }
-        .icon-search2 {
-            display: inline;
-            width: 12px;
-            height: 12px;
-            line-height: inherit;
-            vertical-align: baseline;
-            background-image: url('timeline_icon_search.png');
-            background-position: 0% 0%;
-            background-repeat:no-repeat;
-            position: absolute;
-            top: 13px;
-            right: 7px;
+        .imgs {
+          position: absolute;
+          top: 13px;
+          right: 11px;
+          img {
+            vertical-align: top;
+            &:first-of-type {
+              display: block;
+            }
+            &:last-of-type {
+              display: none;
+              cursor: pointer;
+            }
+          }
+        }
+        &.focused {
+          img {
+            &:first-of-type {
+              display: none;
+            }
+            &:last-of-type {
+              display: block;
+            }
+          }
         }
       }
 
@@ -160,7 +187,6 @@ body#body_timeline {
       }
       a{
         font-family: 'Arial' !important;
-        text-decoration: none;
         background-color: #fff;
         padding: 5px 10px;
         display: inline-block;
@@ -173,6 +199,7 @@ body#body_timeline {
         -khtml-border-radius: 5px;
         border-radius: 5px;
         margin-left: 4px;
+        text-decoration: none;
         -webkit-box-shadow: 2px 2px 0px rgb(217, 217, 221);
            -moz-box-shadow: 2px 2px 0px rgb(217, 217, 221);
                 box-shadow: 2px 2px 0px rgb(217, 217, 221);

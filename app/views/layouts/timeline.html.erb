@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta property="og:title" content="<%= t('.og.title').html_safe %>" />
-		<meta property="og:description" content="<%= t('.og.desc').html_safe %>" />
+		<meta id="og_title" property="og:title" content="<%= t('.og.title').html_safe %>" />
+		<meta id="og_desc" property="og:description" content="<%= t('.og.desc').html_safe %>" />
 		<meta property="og:type" content="non_profit" />
-		<meta property="og:url" content="<%= current_url %>" />
+		<meta id="og_url" property="og:url" content="<%= current_url %>" />
 		<meta property="og:image" content="<%= full_url(image_path('fb-img.jpg')) %>" />
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
@@ -34,7 +34,6 @@
     <%= favicon_link_tag '/favicon.ico?v1', :rel => 'shortcut icon' %>
   </head>
   <body id="body_timeline">
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -91,14 +90,19 @@
           </ul>
           <form class="navbar-search pull-right">
             <input id="search_box" type="text" class="search-query" placeholder="<%= t('.search')%>">
-            <i class="icon-search2"></i>
+            <div class="imgs">
+              <img src="/assets/timeline_icon_search.png" />
+              <img src="http://blog.amadeusconsulting.com/wp-content/uploads/2013/04/cancel-icon.png" />
+            </div>
           </form>
           <ul id="about_link" class="nav pull-right">
-						<li><%= '' %><a href="javascript:;">about</a></li>
+						<li><%= link_to t('app.about.title'), about_path %></li>
           </ul>
         </div>
       </div>
     </div>
+
+    <div id="search-alert" data-query="__query__"><%= t('layouts.timeline.search_result', :query => '__query__') %></div>
 
 		<div id="wrapper">
 		  <div id="container-content" class="container-fluid">
@@ -147,7 +151,6 @@
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "5e03882d-880c-43e2-b015-163ee338d8c0", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
     
-
 		<% if Rails.env.production? %>
       <script type="text/javascript">
         var _gaq = _gaq || [];
