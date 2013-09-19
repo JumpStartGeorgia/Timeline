@@ -422,6 +422,7 @@
     background-image:url('arrow_left.png');
     background-repeat:no-repeat;
     background-position:0% 0%;
+    background-size: auto;
     width:33px;
     height:64px;
     overflow:hidden;
@@ -434,14 +435,41 @@
     background-image:url('arrow_right.png');
     background-repeat:no-repeat;
     background-position:0% 0%;
+    background-size: auto;
     width:33px;
     height:64px;
     overflow:hidden;
     position: absolute;
     right: 0;
   }
-  
+
+  .vco-skinny.vco-notouch .vco-slider .nav-previous .icon {
+    background-image: url('arrow_right.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+  }
+
+  .vco-skinny.vco-notouch .vco-slider .nav-next .icon {
+    background-image: url('arrow_right.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+  }
 }
+
+
+
+
+
+
+
 
 
 .vco-notouch .vco-slider .nav-previous:hover, .vco-notouch .vco-slider .nav-next:hover{
