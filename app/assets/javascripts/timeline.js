@@ -101,7 +101,7 @@ $(document).ready(function() {
       var item = $('#hidden_input_' + id).closest('.slider-item');
       if (item.length == 0)
       {
-        alert();
+        return;
       }
 
       var socials = item.find('.event_social_links');
