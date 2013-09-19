@@ -119,7 +119,7 @@ $(document).ready(function() {
       sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
       console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
     */
-      var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').attr('content'); // if you don't specify the title, it will automatically get og:title
+      var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
 
       //var spans = new Array(5).join('<span></span>');
       //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
@@ -134,7 +134,7 @@ $(document).ready(function() {
       });
     */
       var summary = item.find('.content .content-container .text .container p').text();
-      var img = item.find('img.media-image').length ? item.find('img.media-image').attr('src') : $('meta[property="og:image"]').attr('content');
+      var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
       item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
 
       stWidget.addEntry({
