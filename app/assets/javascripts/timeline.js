@@ -99,9 +99,13 @@ $(document).ready(function() {
     function load_social_buttons (id)
     {
       var item = $('#hidden_input_' + id).closest('.slider-item');
+      if (item.length == 0)
+      {
+        alert();
+      }
 
       var socials = item.find('.event_social_links');
-      socials.children().each(function (){ $(this).empty(); });
+      socials.children().not('.fbshare').each(function (){ $(this).empty(); });
 
       var url = location.href;
 
@@ -120,6 +124,7 @@ $(document).ready(function() {
       //var spans = new Array(5).join('<span></span>');
       //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
 
+    /*
       stWidget.addEntry({
           "service": "facebook",
           "element": socials.children('.st_facebook_hcount')[0],
@@ -127,6 +132,10 @@ $(document).ready(function() {
           "title": title,
           "type": "hcount"
       });
+    */
+      var summary = item.find('.content .content-container .text .container p').text();
+      var img = item.find('img.media-image').length ? item.find('img.media-image').attr('src') : $('meta[property="og:image"]').attr('content');
+      item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
 
       stWidget.addEntry({
           "service": "googleplus",

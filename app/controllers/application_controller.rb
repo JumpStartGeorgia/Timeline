@@ -102,8 +102,10 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     # add social links
 
     x << "<div class='event_social_links'>"
-    x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
-    x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
+    img = 'http://dev-etimeline.jumpstart.ge/system/media_img/245/baqradze_nacionaluri_modzraobis_saprezidentho_kandidathi.jpg?1375784280';
+    x << '<a class="fbshare" title="Share on Facebook" href="" target="_blank"><img src="http://w.sharethis.com/images/facebook_counter.png" alt="Share on Facebook" /></a>'
+   #x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
+   #x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
     x << "  <span class='st_twitter_hcount' displayText='Tweet'></span>"
     x << "  <span class='st_sharethis_hcount' displayText='ShareThis'></span>"
     x << "</div>"
