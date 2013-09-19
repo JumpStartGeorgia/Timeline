@@ -40,10 +40,11 @@ var was_search_box_length = 0;
       return gon.json_data.timeline.date[parseInt(result.ref, 10)] }
     );
     if (new_dates.length == 0){
-      var alertbox = $('#search-alert');
-      alertbox.html(alertbox.html().replace(alertbox.data('query'), query)).data('query', query).stop(true, true).fadeIn();
+      var alertbox = $('#search-alert'),
+      searchbox = $('#search_box');
+      alertbox.html(alertbox.html().replace(alertbox.data('query'), query)).data('query', query).stop(true, true).css({left: searchbox.offset().left, width: searchbox.outerWidth()}).fadeIn();
       clearTimeout(sabt);
-      sabt = setTimeout(function (){ alertbox.fadeOut(); }, 2000);
+      sabt = setTimeout(function (){ alertbox.fadeOut(); }, 4000);
     }else{
       timeline_data.timeline.date = new_dates;
       $(global).unbind();
