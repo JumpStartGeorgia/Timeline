@@ -7,6 +7,7 @@ body#body_timeline {
 	  padding-left: 0;
 	  padding-right: 0;
     padding-top: 50px;
+    width: 100%;
   }
 
 
@@ -317,6 +318,36 @@ body#body_timeline {
   }
   body#body_timeline .navbar .navbar-inner .container-fluid .navbar-search {
     margin-right: 5px;
+  }
+}
+
+.navbar-inner {
+  .navbar-search {
+  }
+  .nav-collapse {
+    float: left;
+  }
+}
+
+@media (max-width: 979px) {
+  .navbar-inner {
+    .navbar-search {
+      margin-top: 1px;
+    }
+    .nav-collapse {
+      float: none;
+      margin-top: 45px;
+      background: #4B4F7E;
+    }
+    #about_link, #social_links {
+      margin-bottom: 0px;
+    }
+    button.btn-navbar {
+      background: #383B5E;
+      &:hover {
+        background: #2C2E49;
+      }
+    }
   }
 }
 
