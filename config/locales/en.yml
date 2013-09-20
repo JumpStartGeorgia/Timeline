@@ -135,3 +135,6 @@ en:
   root:
     index:
       no_data: I am sorry but there is no data to load into the timeline.
+    about:
+      p1: "This election and political timeline allows you, at a glance, to explore important political and electoral developments of Georgia. It is aimed to provide you with sufficient background information that will allow you to better interpret the quantitative data available on the data-related pages and to better understand the reasons behind developments and/or changes of voting patterns of the Georgian electorate. "
+      p2: "Georgian Elections Portal is a joint product of collaboration among prominent local NGOs International Society for Fair Elections and Democracy (ISFED), Georgian Young Lawyers' Association (GYLA) and Transparency International - Georgia (TI). The portal serves as a hub for all electoral incidents observed by these NGOs during pre- and post-election periods as well as on election day. The map of incidents allows you to immediately flag the most problematic districts."
