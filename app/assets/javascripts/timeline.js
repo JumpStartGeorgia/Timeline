@@ -31,6 +31,55 @@ var was_search_box_length = 0;
 		  debug:		false,
 		  start_at_end: true
 	  });
+
+
+    // when the hash changes,
+    // - change the hash to use the id from the table record
+    // - update the language switcher to also have this hash
+    $(window).on('hashchange', function() {
+      var new_hash = "#_"
+      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
+      {
+//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
+//        window.location.hash = new_hash;
+        new_hash = window.location.hash;
+      }
+      $('.lang_switcher a').each(function(){
+        url_ary = $(this).attr('href').split('#');
+        $(this).attr('href', url_ary[0] + new_hash);
+      });
+      load_social_buttons(new_hash.split('#')[1]);
+    })
+  /*
+    .load(function ()
+    {
+      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
+      load_social_buttons(id);
+
+      // making the source links open in new tab
+      $('.content .credit a').attr('target', '_blank');
+    });
+  */
+
+    check_items(50);
+  }
+
+  var i = 0;
+  function check_items (maxi)
+  {
+    if (i < maxi)
+    {
+      var id = location.hash.match(/[0-9]+$/);
+      if (id && $('#hidden_input_' + id[0]).length || $('.slider-item:last :input.hidden_input_id').length)
+      {
+        var id = id ? id[0] : $('.slider-item:last :input.hidden_input_id').val();
+        load_social_buttons(id);
+        i = 0;
+        return;
+      }
+      i ++;
+      setTimeout(check_items, 150, maxi);
+    }
   }
 
   // search for the provided text and then reload the timeline
@@ -54,13 +103,82 @@ var was_search_box_length = 0;
     }
   }
 
-  // reload the timeline with all data  
+  // reload the timeline with all data
   function reload_timeline(){
     timeline_data = JSON.parse(JSON.stringify(gon.json_data));
     $(global).unbind();
     $('#timeline-embed').html('');
     generate_timeline();
     window.location.hash = "_";
+  }
+
+
+  function load_social_buttons (id)
+  {
+    var item = $('#hidden_input_' + id).closest('.slider-item');
+    if (item.length == 0)
+    {
+      return;
+    }
+
+    var socials = item.find('.event_social_links');
+    socials.children().not('.fbshare').each(function (){ this.innerHTML = ''; });
+    
+    var url = location.href;
+
+  /*
+    var sep = '><|-'.split(''),
+    sep_reg = [];
+    for (var i = 0; i < sep.length; i ++)
+    {
+      sep_reg.push('\\' + sep[i]);
+    }
+    sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
+    console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
+  */
+    var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
+
+    //var spans = new Array(5).join('<span></span>');
+    //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
+
+  /*
+    stWidget.addEntry({
+        "service": "facebook",
+        "element": socials.children('.st_facebook_hcount')[0],
+        "url": url,
+        "title": title,
+        "type": "hcount"
+    });
+  */
+    var summary = item.find('.content .content-container .text .container p').text();
+    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
+    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
+
+  /*
+    stWidget.addEntry({
+        "service": "googleplus",
+        "element": socials.children('.st_googleplus_hcount')[0],
+        "url": url,
+        "title": title,
+        "type": "hcount"
+    });
+  */
+
+    stWidget.addEntry({
+        "service": "twitter",
+        "element": socials.children('.st_twitter_hcount')[0],
+        "url": url,
+        "title": title,
+        "type": "hcount"
+    });
+
+    stWidget.addEntry({
+        "service": "sharethis",
+        "element": socials.children('.st_sharethis_hcount')[0],
+        "url": url,
+        "title": title,
+        "type": "hcount"
+    });
   }
 
 $(document).ready(function() {
@@ -94,104 +212,10 @@ $(document).ready(function() {
         title: change_geo_to_en(gon.json_data.timeline.date[i].headline),
         body: change_geo_to_en($(gon.json_data.timeline.date[i].text).text())
       })
-    };    
-    
+    };
 
-    function load_social_buttons (id)
-    {
-      var item = $('#hidden_input_' + id).closest('.slider-item');
-      if (item.length == 0)
-      {
-        return;
-      }
 
-      var socials = item.find('.event_social_links');
-      socials.children().not('.fbshare').each(function (){ $(this).empty(); });
 
-      var url = location.href;
-
-    /*
-      var sep = '><|-'.split(''),
-      sep_reg = [];
-      for (var i = 0; i < sep.length; i ++)
-      {
-        sep_reg.push('\\' + sep[i]);
-      }
-      sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
-      console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
-    */
-      var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
-
-      //var spans = new Array(5).join('<span></span>');
-      //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
-
-    /*
-      stWidget.addEntry({
-          "service": "facebook",
-          "element": socials.children('.st_facebook_hcount')[0],
-          "url": url,
-          "title": title,
-          "type": "hcount"
-      });
-    */
-      var summary = item.find('.content .content-container .text .container p').text();
-      var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
-      item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
-
-      stWidget.addEntry({
-          "service": "googleplus",
-          "element": socials.children('.st_googleplus_hcount')[0],
-          "url": url,
-          "title": title,
-          "type": "hcount"
-      });
-
-      stWidget.addEntry({
-          "service": "twitter",
-          "element": socials.children('.st_twitter_hcount')[0],
-          "url": url,
-          "title": title,
-          "type": "hcount"
-      });
-
-      stWidget.addEntry({
-          "service": "sharethis",
-          "element": socials.children('.st_sharethis_hcount')[0],
-          "url": url,
-          "title": title,
-          "type": "hcount"
-      });
-      
-      $('#og_title').attr('content', title);
-      $('#og_url').attr('content', url);
-
-    }
-    
-    // when the hash changes, 
-    // - change the hash to use the id from the table record
-    // - update the language switcher to also have this hash
-    $(window).on('hashchange', function() {
-      var new_hash = "#_"
-      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
-      {
-//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
-//        window.location.hash = new_hash;
-        new_hash = window.location.hash;
-      }
-      $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#');
-        $(this).attr('href', url_ary[0] + new_hash);
-      });
-      load_social_buttons(new_hash.split('#')[1]);
-    })
-    .load(function ()
-    {
-      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
-      load_social_buttons(id);
-
-      // making the source links open in new tab
-      $('.content .credit a').attr('target', '_blank');
-    });
 
 
     // if url has hash and language link does not when page loads, add it
@@ -223,7 +247,7 @@ $(document).ready(function() {
       if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
         return;
       } else if ($(this).val().length == 0 && was_search_box_length > 0) {
-        reload_timeline();      
+        reload_timeline();
       } else {
         search_timeline($(this).val());
       }

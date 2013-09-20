@@ -106,8 +106,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     x << '<a class="fbshare" title="Share on Facebook" href="" target="_blank"><img src="http://w.sharethis.com/images/facebook_counter.png" alt="Share on Facebook" /></a>'
    #x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
    #x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
-    x << "  <span class='st_twitter_hcount' displayText='Tweet'></span>"
-    x << "  <span class='st_sharethis_hcount' displayText='ShareThis'></span>"
+    x << "  <span class='st_twitter_hcount' st_processed='yes' displayText='Tweet'></span>"
+    x << "  <span class='st_sharethis_hcount' st_processed='yes' displayText='ShareThis'></span>"
     x << "</div>"
 
 
