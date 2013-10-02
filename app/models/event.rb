@@ -343,6 +343,7 @@ puts "----------- - could not find en match for #{record["id"]}"
     x = Hash.new
     h["timeline"]["date"] << x
     x["type"] = "default"
+    x["id"] = self.id
     x["headline"] = self.headline
     x["text"] = self.story
     x["categories"] = self.categories.present? ? self.categories.map{|x| {:name => x.name, :permalink => x.permalink}} : nil
