@@ -11,14 +11,16 @@ class RootController < ApplicationController
     gon.show_timeline = gon.json_data.present? ? true : false
     @no_timeline_data = !gon.show_timeline
     
-    render :layout => 'timeline'
+    
+    respond_to do |format|
+      format.html { render :layout => 'timeline'}
+    end
   end
 
 
   def about
     respond_to do |format|
       format.html { render :layout => 'fancybox'}
-     #format.json { render json: @idea }
     end
   end
 
