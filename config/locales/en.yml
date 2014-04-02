@@ -75,7 +75,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: Elections And Political Timeline
+      app_name: Gudiashvili Timeline
       added_on: "Added on: %{date}" 
     msgs:
       does_not_exist: You tried to access a page that does not exist.
