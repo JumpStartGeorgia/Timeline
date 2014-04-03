@@ -1,9 +1,9 @@
 ##################################
 ##### SET THESE VARIABLES ########
 ##################################
-root = "/home/election-timeline-staging/Election-Timeline-Staging/current" # path to application current folder
-sock_name = "unicorn_Election-Timeline-Staging" # must be unique name with no '.'
-port_num = 8110 # must be a unique port number for this application
+root = "/home/gudiashvili-staging/Gudiashvili-Timeline-Staging/current" # path to application current folder
+sock_name = "unicorn_Gudiashvili-Timeline-Staging" # must be unique name with no '.'
+port_num = 8124 # must be a unique port number for this application
 tout = 30 # time in seconds before process dies - need a long time for data uploads
 ##################################
 
