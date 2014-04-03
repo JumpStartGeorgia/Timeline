@@ -6,7 +6,9 @@
 		<%= f.input :categories, :as => :check_boxes, :collection => @categories %>
 		<%= f.input :tags, :as => :check_boxes, :collection => @tags %>
 		<%= f.input :start_date, :as => :string, :input_html => {:size =>35} %>
+		<%= f.input :is_start_year_only, :as => :radio %>
 		<%= f.input :end_date, :as => :string, :input_html => {:size =>35} %>
+		<%= f.input :is_end_year_only, :as => :radio %>
 	<% end %>
 
   <% create_sorted_translation_objects(@event.event_translations).each do |trans| %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619134303) do
+ActiveRecord::Schema.define(:version => 20140403102624) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20130619134303) do
     t.datetime "updated_at"
     t.time     "start_time"
     t.time     "end_time"
+    t.boolean  "is_start_year_only", :default => false
+    t.boolean  "is_end_year_only",   :default => false
   end
 
   add_index "events", ["end_date", "end_time"], :name => "idx_events_end"

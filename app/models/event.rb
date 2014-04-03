@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :tags, :class_name => 'Category', :join_table => 'events_tags'
 	has_many :event_translations, :dependent => :destroy
   accepts_nested_attributes_for :event_translations
-  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids, :tag_ids
+  attr_accessible :event_translations_attributes, :event_type, :start_date, :start_time, :end_date, :end_time, :tag, :category_ids, :tag_ids,
+      :is_start_year_only, :is_end_year_only
 
   validates :start_date, :presence => true
 #  validate :required_category
@@ -57,11 +58,19 @@ class Event < ActiveRecord::Base
     read_attribute("end_time").in_time_zone('Tbilisi') if read_attribute("end_time").present?
   end
 
+  def start_date_timeline
+    if self.is_start_year_only?
+      self.start_date.year.to_s
+    else
+      I18n.l self.start_date, :format => :timeline
+    end
+  end
+
   def start_datetime_timeline
     if self.start_date.present? && self.start_time.present?
       "#{I18n.l self.start_date, :format => :timeline} #{I18n.l self.start_time, :format => :time_only}"
     elsif self.start_date.present?
-      I18n.l self.start_date, :format => :timeline
+      start_date_timeline
     else
       nil
     end
@@ -77,11 +86,19 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def end_date_timeline
+    if self.is_end_year_only?
+      self.end_date.year.to_s
+    else
+      I18n.l self.end_date, :format => :timeline
+    end
+  end
+
   def end_datetime_timeline
     if self.end_date.present? && self.end_time.present?
       "#{I18n.l self.end_date, :format => :timeline} #{I18n.l self.end_time, :format => :time_only}"
     elsif self.end_date.present?
-      I18n.l self.end_date, :format => :timeline
+      end_date_timeline
     else
       nil
     end

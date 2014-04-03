@@ -3,7 +3,7 @@ $(document).ready(function(){
 	if(gon.edit_event){
 		// load the date pickers
 /*
-		$('#event_start_date').datetimepicker({
+		$('#event_start_date').datepicker({
 				dateFormat: 'dd-mm-yy',
 				timeFormat: 'hh:mm',
 				separator: ' '
@@ -15,7 +15,7 @@ $(document).ready(function(){
 			$('#event_start_date').datepicker("setDate", new Date(gon.start_date));
 		}
 
-		$('#event_end_date').datetimepicker({
+		$('#event_end_date').datepicker({
 				dateFormat: 'dd-mm-yy',
 				timeFormat: 'hh:mm',
 				separator: ' '
@@ -31,20 +31,22 @@ $(document).ready(function(){
     var startDateTextBox = $('#event_start_date');
     var endDateTextBox = $('#event_end_date');
 
-    startDateTextBox.datetimepicker({ 
-			dateFormat: 'dd-mm-yy',
-			timeFormat: 'hh:mm',
+    startDateTextBox.datepicker({ 
+			dateFormat: 'yy-mm-dd',
 			separator: ' ',
+			changeMonth: true,
+      changeYear: true,
+      yearRange: "1790:2020",
 	    onClose: function(dateText, inst) {
 		    if (endDateTextBox.val() != '') {
-			    var testStartDate = startDateTextBox.datetimepicker('getDate');
-			    var testEndDate = endDateTextBox.datetimepicker('getDate');
+			    var testStartDate = startDateTextBox.datepicker('getDate');
+			    var testEndDate = endDateTextBox.datepicker('getDate');
 			    if (testStartDate > testEndDate)
-				    endDateTextBox.datetimepicker('setDate', testStartDate);
+				    endDateTextBox.datepicker('setDate', testStartDate);
 		    }
 	    },
 	    onSelect: function (selectedDateTime){
-		    endDateTextBox.datetimepicker('option', 'minDate', startDateTextBox.datetimepicker('getDate') );
+		    endDateTextBox.datepicker('option', 'minDate', startDateTextBox.datepicker('getDate') );
 	    }
     });
 
@@ -54,20 +56,22 @@ $(document).ready(function(){
 			startDateTextBox.datepicker("setDate", new Date(gon.start_date));
 		}
 
-    endDateTextBox.datetimepicker({ 
-			dateFormat: 'dd-mm-yy',
-			timeFormat: 'hh:mm',
+    endDateTextBox.datepicker({ 
+			dateFormat: 'yy-mm-dd',
 			separator: ' ',
+			changeMonth: true,
+      changeYear: true,
+      yearRange: "1790:2020",
 	    onClose: function(dateText, inst) {
 		    if (startDateTextBox.val() != '') {
-			    var testStartDate = startDateTextBox.datetimepicker('getDate');
-			    var testEndDate = endDateTextBox.datetimepicker('getDate');
+			    var testStartDate = startDateTextBox.datepicker('getDate');
+			    var testEndDate = endDateTextBox.datepicker('getDate');
 			    if (testStartDate > testEndDate)
-				    startDateTextBox.datetimepicker('setDate', testEndDate);
+				    startDateTextBox.datepicker('setDate', testEndDate);
 		    }
 	    },
 	    onSelect: function (selectedDateTime){
-		    startDateTextBox.datetimepicker('option', 'maxDate', endDateTextBox.datetimepicker('getDate') );
+		    startDateTextBox.datepicker('option', 'maxDate', endDateTextBox.datepicker('getDate') );
 	    }
     });
 
