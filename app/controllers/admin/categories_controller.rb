@@ -52,6 +52,8 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
 
+    add_missing_translation_content(@category.category_translations)
+
     respond_to do |format|
       if @category.save
         format.html { redirect_to admin_category_path(@category), notice: t('app.msgs.success_created', :obj => t('activerecord.models.category')) }
@@ -67,6 +69,10 @@ class Admin::CategoriesController < ApplicationController
   # PUT /categories/1.json
   def update
     @category = Category.find(params[:id])
+
+    @category.assign_attributes(params[:category])
+
+    add_missing_translation_content(@category.category_translations)
 
     respond_to do |format|
       if @category.update_attributes(params[:category])

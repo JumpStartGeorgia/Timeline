@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   validates :start_date, :presence => true
 #  validate :required_category
   before_save :add_type
-  before_validation :populate_missing_headlines
+#  before_validation :populate_missing_headlines
   before_destroy :remove_media_img, :prepend => true
 
   def remove_media_img

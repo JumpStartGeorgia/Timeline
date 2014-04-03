@@ -3,7 +3,7 @@
 
 	<%= f.input :type_id, :as => :select, :collection => Category.collection %>
 
-  <% @category.category_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
+  <% create_sorted_translation_objects(@category.category_translations).each do |trans| %>
 	  <%= f.fields_for :category_translations, trans do |translation| %>
 
 		  <div id="form-<%= trans.locale %>" class="multilanguage">

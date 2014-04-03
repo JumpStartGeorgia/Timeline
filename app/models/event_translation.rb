@@ -21,6 +21,24 @@ class EventTranslation < ActiveRecord::Base
 		self.media_original = self.has_attribute?(:media) ? self.media : nil
 	end
 
+  def required_data_provided?
+    provided = false
+    
+    provided = self.headline.present?
+    
+    return provided
+  end
+  
+  # only headline is required, but go ahead and add the rest of content
+  def add_required_data(obj)
+    self.headline = obj.headline if self.headline.blank?
+    self.story = obj.story if self.story.blank?
+    self.media = obj.media if self.media.blank?
+    self.credit = obj.credit if self.credit.blank?
+    self.caption = obj.caption if self.caption.blank?
+  end
+
+
   # if the url in the media field is for an image
   # download it and save to media_img
   def create_media_file

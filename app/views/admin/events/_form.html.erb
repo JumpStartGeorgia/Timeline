@@ -9,7 +9,7 @@
 		<%= f.input :end_date, :as => :string, :input_html => {:size =>35} %>
 	<% end %>
 
-  <% @event.event_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
+  <% create_sorted_translation_objects(@event.event_translations).each do |trans| %>
 	  <%= f.fields_for :event_translations, trans do |translation| %>
 
 		  <div id="form-<%= trans.locale %>" class="multilanguage">

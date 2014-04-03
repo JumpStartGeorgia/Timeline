@@ -40,7 +40,8 @@ class Admin::EventsController < ApplicationController
   def new
     @event = Event.new
     @tags = Category.by_type(Category::TYPES[:tag])
-
+    @categories = Category.by_type(Category::TYPES[:category])
+    
     # create the translation object for the locales that were selected
 	  # so the form will properly create all of the nested form fields
 		I18n.available_locales.each do |locale|
@@ -59,6 +60,7 @@ class Admin::EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @tags = Category.by_type(Category::TYPES[:tag])
+    @categories = Category.by_type(Category::TYPES[:category])
 
     gon.edit_event = true
 		gon.start_date = @event.start_date.strftime('%m/%d/%Y %H:%M') if @event.start_date.present?
@@ -69,6 +71,8 @@ class Admin::EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+
+    add_missing_translation_content(@event.event_translations)
 
     respond_to do |format|
       if @event.save
@@ -90,8 +94,12 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    @event.assign_attributes(params[:event])
+
+    add_missing_translation_content(@event.event_translations)
+
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.save
         format.html { redirect_to admin_event_path(@event), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.event')) }
         format.json { head :ok }
       else

@@ -63,6 +63,25 @@ module ApplicationHelper
     
   end
 
+
+	# put the default locale first and then sort the remaining locales
+	def create_sorted_translation_objects(trans)
+	  if trans.present?
+      # sort
+      trans.sort!{|x,y| x.locale <=> y.locale}
+
+      # move default locale to first position
+      default = trans.index{|x| x.locale == I18n.default_locale.to_s}
+      if default.present? && default > 0
+        trans.unshift(trans[default])
+        trans.delete_at(default+1)
+      end
+	  end
+    return trans
+	end
+	
+
+
 	# Based on https://gist.github.com/1182136
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
     protected
