@@ -114,20 +114,22 @@
     </div>
 
     <div id="search-alert" data-query="__query__"><%= t('layouts.timeline.search_result', :query => '__query__') %></div>
-
-		<div id="wrapper">
+    
+    
+		<div id="wrapper"> <%= yield %> </div><!--/wrapper-->
+    <!-- 
 		  <div id="container-content" class="container-fluid">
 		    <div class="content-fluid">
 		      <div class="row-fluid">
 		         <div class="span12">
 
-	            <%= yield %>
+	          
 	          </div><!--/span-->
 		      </div><!--/row-->
 		    </div><!--/content-->
 		   </div> <!-- /container -->
 		</div><!--/wrapper-->
-
+ -->
     <div class="push"><!--//--></div>
 
     <footer class="clear">

@@ -270,4 +270,10 @@ $(document).ready(function() {
     });
 
   }
+  var s = skrollr.init({forceHeight: true,
+        render: function(data) {
+            //Debugging - Log the current scroll position.
+            //console.log(data.curTop);
+        }
+    });
 });
