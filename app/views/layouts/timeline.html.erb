@@ -9,7 +9,7 @@
 		<meta id="og_desc" property="og:description" content="<%= t('.og.desc').html_safe %>" />
 		<meta property="og:type" content="non_profit" />
 		<meta id="og_url" property="og:url" content="<%= current_url %>" />
-		<meta property="og:image" content="<%= full_url(image_path('fb-img.jpg')) %>" />
+		<meta property="og:image" content="<%= full_url(image_path('fb_share.jpg')) %>" />
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
     <meta name="google" value="notranslate">
@@ -31,7 +31,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag '/favicon.ico?v1', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag '/favicon.png?v1', :rel => 'shortcut icon' %>
   </head>
   <body id="body_timeline">
     <div class="navbar navbar-inverse navbar-fixed-top">
