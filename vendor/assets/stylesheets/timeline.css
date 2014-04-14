@@ -317,3 +317,113 @@
 {
 	background-color:#c75619;
 }
+
+.vco-slider .nav-previous,.vco-slider .nav-previous .date
+, .vco-slider .nav-next,.vco-slider .nav-next .date{
+  color: #999;
+}
+
+
+
+.nav-next .date, .nav-previous .date {
+	opacity: 1.0;
+}
+
+.vco-slider .nav-previous .icon{
+  margin-left:0;
+  background-image:url('arrow_left.png');
+  background-repeat:no-repeat;
+  background-position:0% 0%;
+  width:33px;
+  height:64px;
+  overflow:hidden;
+  position: absolute;
+  left: 0;
+  opacity:0.5;
+}
+
+.vco-notouch .vco-slider .nav-previous:hover .icon{
+  background-image:url('arrow_left.png');
+  opacity:1.0;
+  margin-left:0px;
+}
+.vco-slider .nav-previous .date,.vco-slider .nav-next .date{
+	color:#999;
+}
+.vco-slider .nav-previous:hover .date,.vco-slider .nav-next:hover .date{
+	color:#333;
+}
+.vco-notouch .vco-slider .nav-previous .date,.vco-notouch .vco-slider .nav-previous .title{
+	position:relative;
+	left:30px;	
+}
+.vco-notouch .vco-slider .nav-next .date,.vco-notouch .vco-slider .nav-next .title{
+	position:relative;
+	right:30px;	
+}
+.vco-slider .nav-next .icon{
+  margin-left:0;
+  background-image:url('arrow_right.png');
+  background-repeat:no-repeat;
+  background-position:0% 0%;
+  width:33px;
+  height:64px;
+  overflow:hidden;
+  position: absolute;
+  right: 0;
+  opacity:0.5;
+}
+
+.vco-notouch .vco-slider .nav-next:hover .icon{
+  background-image:url('arrow_right.png');
+  opacity:1.0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2){
+  .vco-slider .nav-previous .icon{
+    margin-left: 0;
+    background-image: url('arrow_left.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: auto;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+  }
+  
+  .vco-slider .nav-next .icon{
+    margin-left: 0;
+    background-image: url('arrow_right.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: auto;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+  }
+
+  .vco-skinny.vco-notouch .vco-slider .nav-previous .icon {
+    background-image: url('arrow_right.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+  }
+
+  .vco-skinny.vco-notouch .vco-slider .nav-next .icon {
+    background-image: url('arrow_right.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 33px;
+    height: 64px;
+    overflow: hidden;
+  }
+}.vco-slider{
+	background: url('/assets/page_bg.jpg');
+}}
