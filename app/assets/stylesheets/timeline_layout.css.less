@@ -36,8 +36,8 @@ body#body_timeline {
 
 
   .navbar .navbar-inner{
-    background:url('header_bg.png?2') repeat-x;
-	  height: 50px;
+    background: #242424;
+	  height: 70px;
 
     box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -52,10 +52,14 @@ body#body_timeline {
         padding-top: 4px;
         position: relative;
         input{
-          background: #fff;
-          border-color: #6569a8;
+          background: #3c3c3c;
+          border-color: #242424;
           padding-right: 27px;
-          color: #000;
+          color: #fff;
+	        -webkit-box-shadow: none;
+	        -moz-box-shadow: none;
+	        box-shadow: none;          
+	        text-shadow: none;
         }
         .imgs {
           position: absolute;
@@ -121,9 +125,6 @@ body#body_timeline {
     }
   }
 
-  .brand{
-    padding-top: 17px;
-  }
   #social_links{
     margin-right: 30px;
     li {
@@ -157,14 +158,18 @@ body#body_timeline {
   }
 
   .brand {
-    padding-top: 17px;
+    padding-top: 4px;
+    padding-left: 7px;
     font-size: 24px;
 	  font-weight: bold;
     text-transform: uppercase;
     color: #fff !important;
     font-family: bpg_nino;
+    img{
+      vertical-align: middle;
+    }
   }
-  .lang_switcher, #about_link {
+  .lang_switcher {
     padding-top: 7px;
 	  padding-right: 20px;
     font-size: 16px;
@@ -175,10 +180,6 @@ body#body_timeline {
       font-family: bpg_nino;
     } 
   }
-  #about_link {
-    
-  }
-
   footer{
 	  background:url('page_bg.jpg') !important;
   }
@@ -303,7 +304,7 @@ body#body_timeline {
       margin-right: 0px;
     }
   }
-  body#body_timeline .lang_switcher, body#body_timeline #about_link {
+  body#body_timeline .lang_switcher {
     padding-right: 3px;
     margin-right: 3px;
     a {
@@ -332,8 +333,8 @@ body#body_timeline {
 @media (max-width: 979px) {
   body#body_timeline .navbar .navbar-inner {
     .brand {
-      padding-left: 3px;
-      padding-top: 9px;
+      padding-left: 7px;
+      padding-top: 7px;
     }
     .navbar-search {
       margin-top: 1px;
@@ -343,7 +344,7 @@ body#body_timeline {
       margin-top: 45px;
       background: #4B4F7E;
     }
-    #about_link, #social_links {
+    #social_links {
       margin-bottom: 0px;
     }
     button.btn-navbar {
