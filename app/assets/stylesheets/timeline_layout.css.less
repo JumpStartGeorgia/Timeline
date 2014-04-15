@@ -95,11 +95,14 @@ body#body_timeline {
         li{
           padding-top: 7px;
           a{
-	          color: #fff !important;
+	          color: grey !important;
             font-family: bpg_dejavu_light;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            text-transform: uppercase;
+            text-transform: capitalize;
+            &:hover{
+      	      color: #fff !important;
+            }
           }
         }
       }
@@ -180,12 +183,15 @@ body#body_timeline {
     .lang_switcher {
       padding-top: 7px;
 	    padding-right: 20px;
-      font-size: 16px;
+      font-size: 14px;
 	    font-weight: bold;
       text-transform: uppercase;
       a {
-	      color: #fff !important;
+	      color: grey !important;
         font-family: bpg_dejavu_light;
+        &:hover{
+  	      color: #fff !important;
+        }
       } 
     }
   }
