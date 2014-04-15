@@ -112,6 +112,7 @@ ka:
       sign_out: გასვლა
       events: მოვლენები
       categories: კატეგორიები
+      about: შესახებ
       users: მომხმარებლები
       js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
@@ -128,8 +129,8 @@ ka:
       categories: კატეგორიები
       about: შესახებ
     about:
-      title: About Text
-      submit: Save the Text
+      title: ტექსტის შესახებ
+      submit: შევინახოთ ტექსტი
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე
