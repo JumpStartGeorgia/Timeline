@@ -11,16 +11,14 @@ class RootController < ApplicationController
     gon.show_timeline = gon.json_data.present? ? true : false
     @no_timeline_data = !gon.show_timeline
     
-    
+    # get the about text
+    if File.exists?(@about_path)
+      about_text = JSON.parse(File.read(@about_path))
+      @about = about_text[I18n.locale.to_s]
+    end
+
     respond_to do |format|
       format.html { render :layout => 'timeline'}
-    end
-  end
-
-
-  def about
-    respond_to do |format|
-      format.html { render :layout => 'fancybox'}
     end
   end
 
@@ -29,6 +27,7 @@ class RootController < ApplicationController
       format.html { render :layout => 'scroll'}
     end
   end
+
 
 
 private

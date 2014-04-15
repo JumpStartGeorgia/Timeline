@@ -271,9 +271,24 @@ $(document).ready(function() {
 
   }
   var s = skrollr.init({forceHeight: true,
-        render: function(data) {
+        render: function(data) {          
             //Debugging - Log the current scroll position.
             //console.log(data.curTop);
         }
     });
+
+      
+      window.onresize = function()
+      {
+
+        $('#panorama').css('height', $(window).height());
+        $('#panorama').css('background-size',  '4344px ' + $(window).height() + 'px');          
+        $('#panorama-reel').css('height', $(window).height());
+     
+      }
+    
+        $('#panorama').css('height', $(window).height());
+        $('#panorama').css('background-size',  '4344px ' + $(window).height() + 'px');          
+        $('#panorama-reel').css('height', $(window).height());
+
 });

@@ -45,6 +45,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
 	def preload_global_variables
     @categories = Category.by_type(Category::TYPES[:category]).with_events
+    @about_path = Rails.root.join('public/system/about/about.json')
 	end
 
 	def set_locale

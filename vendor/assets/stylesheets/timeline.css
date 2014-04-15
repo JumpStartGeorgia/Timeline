@@ -360,7 +360,7 @@
 	color:#999;
 }
 .vco-slider .nav-previous:hover .date,.vco-slider .nav-next:hover .date{
-	color:#333;
+	color:#666;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2){

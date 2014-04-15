@@ -89,6 +89,7 @@ en:
       admin: Admin
       events: Events
       categories: Categories
+      about: About
       users: Users
       sign_out: Sign Out
       js_link_title: JumpStart Georgia - Communicating Information Better
@@ -125,6 +126,10 @@ en:
       users: Users
       events: Events
       categories: Categories
+      about: About
+    about:
+      title: About Text
+      submit: Save the Text
     users:
       edit:
         title: Editing User
@@ -137,5 +142,4 @@ en:
   root:
     index:
       no_data: I am sorry but there is no data to load into the timeline.
-    about:
-      p1: "something here ..."
+

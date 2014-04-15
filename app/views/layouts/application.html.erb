@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
           </a>
           <%= link_to(t('app.common.app_name'), root_path(:locale => I18n.locale),:class=>"brand font")%>
-          <div class="container-fluid nav-collapse">
+          <div class="container-fluid pull-right">
             <% if @categories.present? %>
               <ul class="nav">
                 <% @categories.each do |cat| %>
@@ -42,7 +42,8 @@
               </ul>
             <% end %>
 
-	          <ul class="nav pull-right">
+            
+	          <ul class="nav">
 		          <% if user_signed_in? %>
 				        <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -50,6 +51,9 @@
 				                <b class="caret"></b>
 				          </a>
 				          <ul class="dropdown-menu">
+               			<li>
+                     <%= link_to t('.about'), admin_about_path %>
+                    </li>
                			<li>
                      <%= link_to t('.events'), admin_events_path %>
                     </li>

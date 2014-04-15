@@ -6,11 +6,15 @@ BootstrapStarter::Application.routes.draw do
 	#--------------------------------
 	scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
-    match '/about', :to => 'root#about', :as => :about, :via => :get
+    
     match '/home', :to => 'root#home', :as => :home, :via => :get
 
-		match '/admin', :to => 'admin#index', :as => :admin, :via => :get
 		devise_for :users, :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+
+		match '/admin', :to => 'admin#index', :as => :admin, :via => :get
+		match '/admin/about', :to => 'admin#about', :as => :admin_about, :via => :get
+		match '/admin/about', :to => 'admin#about', :as => :admin_about, :via => :post
+
 
 		namespace :admin do
 			resources :users

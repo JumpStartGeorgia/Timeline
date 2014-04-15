@@ -1,0 +1,28 @@
+<% title t('.title') %>
+
+<%= form_tag admin_about_path, method: :post  do %>
+
+<% create_sorted_locales.each do |locale| %>
+  <div id="form-<%= locale %>" class="multilanguage">
+	  <h3><%= t("app.language.#{locale}") %></h3>
+
+    <div class="text control-group" id="about_<%=locale%>">
+      <label class=" control-label" for="about_<%=locale%>">
+      <%= t('.title') %>              
+      </label>
+      <div class="controls">
+        <%= text_area_tag "about_#{locale}", @about_text[locale.to_s], rows: 10, class: 'span9' %>
+      </textarea>
+    </div>
+
+  </div>
+<% end %>
+
+
+  <div class="form-actions">
+    <%= submit_tag t('.submit'), class: 'btn btn-primary' %> 
+    <%= button_tag t('.helpers.links.reset'), type: 'reset', class: 'btn btn-warning' %> 
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_path, :class => 'btn btn-warning' %>
+  </div>
+<% end %>

@@ -77,7 +77,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: გუდიაშვილის თაიმლაინი
+      app_name: გუდიაშვილის ბაღის ისთორია
       added_on: "დამატებულია: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
@@ -89,6 +89,7 @@ ka:
       admin: ადმინისტრატო
       events: მოვლენები
       categories: კატეგორიები
+      about: შესახებ
       users: მომხმარებლები
       sign_out: გასვლა
       js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
@@ -125,6 +126,10 @@ ka:
       users: მომხმარებლები
       events: მოვლენები
       categories: კატეგორიები
+      about: შესახებ
+    about:
+      title: About Text
+      submit: Save the Text
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე
@@ -137,5 +142,4 @@ ka:
   root:
     index:
       no_data: 'სამწუხაროდ, მონაცემები არ მოიპოვება "დროის ხაზზე" ჩასატვირთად'
-    about:
-      p1: "something here ..."
+
