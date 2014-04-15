@@ -45,9 +45,16 @@
           </button>
           <%= link_to root_path(:locale => I18n.locale),:class=>"brand font" do %>
             <%= image_tag 'logo_small.png' %>
-            <%= t('app.common.app_name') %>
+            <span><%= t('app.common.app_name') %></span>
           <% end %>
           <div class="pull-right">
+              <% if @categories.present? %>
+                <ul id="category_nav" class="nav">
+                  <% @categories.each do |cat| %>
+                    <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
             <form class="navbar-search">
               <input id="search_box" type="text" class="search-query" placeholder="<%= t('.search')%>">
               <div class="imgs">
@@ -98,13 +105,6 @@
 						      <% end %>
 					      <% end %>
               </ul>
-              <% if @categories.present? %>
-                <ul id="category_nav" class="nav">
-                  <% @categories.each do |cat| %>
-                    <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
-                  <% end %>
-                </ul>
-              <% end %>
             </div>
           </div>
 
