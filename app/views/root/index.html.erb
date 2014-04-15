@@ -55,6 +55,11 @@ section
 	        </div>
 	    </div>
 	</section>
+  <% if @about %>
+	<section id="about">
+	  <%= simple_format(@about) %>
+	</section>
+	<% end %>
 	<section class="timeline">
 		<div id="timeline-embed"></div>	  	
 	</section>

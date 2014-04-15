@@ -63,6 +63,19 @@ module ApplicationHelper
     
   end
 
+	# put the default locale first and then sort the remaining locales
+	def create_sorted_locales
+    locales = I18n.available_locales.sort{|x,y| x.to_s <=> y.to_s}
+
+    # move default locale to first position
+    default = locales.index{|x| x == I18n.default_locale}
+    if default.present? && default > 0
+      locales.unshift(locales[default])
+      locales.delete_at(default+1)
+    end
+
+    return locales
+	end
 
 	# put the default locale first and then sort the remaining locales
 	def create_sorted_translation_objects(trans)
