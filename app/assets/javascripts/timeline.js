@@ -183,8 +183,6 @@ var was_search_box_length = 0;
 
 $(document).ready(function() {
 
-  $('#about_link a').fancybox();
-
   if (gon.show_timeline){
     // clone the json data so searching can search through the original
     timeline_data = JSON.parse(JSON.stringify(gon.json_data));
@@ -277,18 +275,12 @@ $(document).ready(function() {
         }
     });
 
-      
-      window.onresize = function()
+      var panoramaResize = function()
       {
-
-        $('#panorama').css('height', $(window).height());
-        $('#panorama').css('background-size',  '4344px ' + $(window).height() + 'px');          
+        $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
         $('#panorama-reel').css('height', $(window).height());
-     
       }
-    
-        $('#panorama').css('height', $(window).height());
-        $('#panorama').css('background-size',  '4344px ' + $(window).height() + 'px');          
-        $('#panorama-reel').css('height', $(window).height());
-
+      window.onresize = panoramaResize();
+      panoramaResize();
+         
 });

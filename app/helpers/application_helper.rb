@@ -35,7 +35,7 @@ module ApplicationHelper
 	# since the url contains english or georgian text, the text must be updated to the correct language
 	# for the language switcher link to work
 	# - only applies to categories and tags
-	def generate_language_switcher_link(locale)
+	def generate_language_switcher_link(locale,short = false)
     cat_permalink = nil
     tag_permalink = nil
     
@@ -46,18 +46,22 @@ module ApplicationHelper
     if params[:tag].present?
       tag_permalink = Category.get_differnt_locale_permalink(Category::TYPES[:tag], locale, params[:tag])
     end
-    
+    link_text = t("app.language.#{locale}")
+    if short
+      link_text = t("app.short_language.#{locale}")
+    end
+
     if cat_permalink && tag_permalink
-			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+			link_to link_text, params.merge(:locale => locale,
         :category => cat_permalink, :tag => tag_permalink)
     elsif cat_permalink
-			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+			link_to link_text, params.merge(:locale => locale,
         :category => cat_permalink, :tag => nil)
     elsif tag_permalink
-			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+			link_to link_text, params.merge(:locale => locale,
         :category => nil, :tag => tag_permalink)
     else
-			link_to t("app.language.#{locale}"), params.merge(:locale => locale,
+			link_to link_text, params.merge(:locale => locale,
         :category => nil, :tag => nil)
     end
     

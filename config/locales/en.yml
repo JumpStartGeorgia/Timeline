@@ -58,6 +58,9 @@ en:
     language:
       en: English
       ka: ქართული
+    short_language:
+      en: En
+      ka: ქა
     about:
       title: about
       text: asdasd

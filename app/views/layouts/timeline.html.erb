@@ -33,105 +33,10 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.png?v1', :rel => 'shortcut icon' %>
   </head>
-  <body id="body_timeline">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
+  <body>
 
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to root_path(:locale => I18n.locale),:class=>"brand font" do %>
-            <%= image_tag 'logo_small.png' %>
-            <span><%= t('app.common.app_name') %></span>
-          <% end %>
-          <div class="pull-right">
-              <% if @categories.present? %>
-                <ul id="category_nav" class="nav">
-                  <% @categories.each do |cat| %>
-                    <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-            <form class="navbar-search">
-              <input id="search_box" type="text" class="search-query" placeholder="<%= t('.search')%>">
-              <div class="imgs">
-                <img src="/assets/timeline_icon_search.png" />
-                <img src="/assets/x.png" />
-              </div>
-            </form>
-            <div class="nav-collapse collapse">
-              <ul id="social_links" class="nav">
-                <li>
-			            <a href="http://www.facebook.com/share.php?u=<%= root_url %>" title="facebook" target="_blank"><img src="/assets/icon_fb.png" alt="facebook"><img src="/assets/icon_fb_hover.png" alt="facebook"></a>
-                </li>
-                <li style="display: none;">
-			            <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=<%= root_url %>" title="google+" target="_blank"><img src="/assets/icon_goggle.png" alt="google+"><img src="/assets/icon_goggle_hover.png" alt="google+"></a>
-                </li>
-                <li>
-			            <a href="https://twitter.com/share?url=<%= root_url %>" title="twitter" target="_blank"><img src="/assets/icon_twitter.png" alt="twitter"><img src="/assets/icon_twitter_hover.png" alt="twitter"></a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <% if user_signed_in? %>
-		              <li class="dropdown" id="admin_menu">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                      <%= current_user.nickname %>
-		                      <b class="caret"></b>
-		                </a>
-		                <ul class="dropdown-menu">
-                 			<li>
-                       <%= link_to t('.about'), admin_about_path %>
-                      </li>
-                 			<li>
-                       <%= link_to t('.events'), admin_events_path %>
-                      </li>
-                      <li>
-                        <%= link_to t('.categories'), admin_categories_path  %>
-                      </li>
-                      <% if current_user.role? User::ROLES[:admin] %>
-                   			<li>
-                         <%= link_to t('.users'), admin_users_path %>
-                        </li>
-                      <% end %> 		
-				              <li>
-		       		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
-								      </li>
-		                </ul>
-		              </li>
-                <% end %>
-					      <% I18n.available_locales.each do |locale| %>
-						      <% if locale != I18n.locale %>
-							      <li class="lang_switcher"><%= generate_language_switcher_link(locale) %></li>
-						      <% end %>
-					      <% end %>
-              </ul>
-            </div>
-          </div>
+    <div class="scroll-wrapper"><%= yield %></div>
 
-        </div>
-      </div>
-    </div>
-
-    <div id="search-alert" data-query="__query__"><%= t('layouts.timeline.search_result', :query => '__query__') %></div>
-    
-    <div style="height:100%;">  <%= yield %> </div>
-
-    <div class="push"><!--//--></div>
-
-    <footer class="clear">
-			<div id="left">
-		  </div>
-		  <div id="middle">
-			  &copy; <%= Time.now.year %>
-			</div>
-			<div id="right" class="clear">
-				<%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
-						:title => t(".js_link_title")	) %>
-			</div>
-    </footer>
 
 
     <!-- Javascripts

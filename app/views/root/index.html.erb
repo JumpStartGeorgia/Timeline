@@ -4,75 +4,192 @@
   </div>
 <% else %>
 <style>
-.wrapper
+html,body{
+  height:100%;
+  width:100%;
+  margin:0px;
+}
+.scroll-wrapper
 {
-	height:100% !important;
+  height:100%;
+  width:100%;
 }
 section
-{height:100%;}
-	.hsContainer {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    opacity: 0;
-}
-.hsContent {
-    max-width: 450px;
-    margin: -150px auto 0 auto;
-    display: table-cell;
-    vertical-align: middle;
-    color: #ebebeb;
-    padding: 0 8%;
-    text-align: center
-}
-	.bcg {
+{height:100%;  width:100%;}
+
+  .bg {
+    /*background-image:url('/assets/bg_image.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover;*/
     height: 100%;
     width: 100%;
 }
-#intro .bc {background-image:url('assets/hamqari_timeline.png')}
+
+
+.stamp
+{
+  width:474px;
+  height:474px;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -237px;
+  margin-top: -237px;    
+}
+.doughnut { 
+    border: 95px solid #c56d38;
+    border-radius: 100%;
+    height:284px;
+    width:284px;
+    opacity: 0.67;
+    position:relative;    
+    z-index: 155;
+}
+.caption
+{      
+  color:#fff;
+  width:100%;
+  text-align:center;
+  position:absolute;  
+  top: 50%;   
+  margin-top: -18px;
+  z-index: 156;  
+}
+.caption h1 
+{
+  color:#fff;
+  font-size:25px !important;
+}
+.logo-small
+{
+    background-image:url('/assets/logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;      
+    height: 172px;
+    width: 168px;
+    position:relative;  
+    left: 50%; 
+    margin-left: -84px;    
+    bottom:134px;   
+    z-index: 157;
+}
+.about
+{
+  color:#fff;  
+  font-weight: bold;
+  font-family: bpg_dejavu_light;  
+  background-color: #c56d38;  
+  width:500px;
+  height:350px;  
+  padding:25px;  
+  position:absolute;
+  left:50%;
+  margin-left: -275px;    
+  margin-top:200px;
+  opacity:0;
+}
+.timeline
+{
+  position:absolute;
+
+}
+.lang_switcher
+{
+  position:fixed;  
+  top:-40px;
+  right:-40px;
+  background-color: #c56d38;
+  color:#fff;
+  font-weight: bold;
+  font-size:17px;
+  padding:5px;
+  border-radius: 100%;
+  height:80px;
+  width:80px;
+    
+  z-index: 157;
+  color:#fff;
+}
+.lang_switcher a
+{
+  color:#fff;
+  text-decoration:none;
+  position:relative;
+  top:45px;
+  left:15px;
+   border-radius: 100%;
+     height:80px;
+  width:80px;
+}
+.panorama-wrapper
+{
+   position:fixed; 
+   top:0px;
+   left:0px;
+   width:100%;
+   height:100%;
+}
+
 </style>
-<div class="wrapper">
-	<section id="intro">
-	    <div class="bcg"
-	        data-center="background-position: 50% 0px;"
-	        data-top-bottom="background-position: 50% -100px;"
-	        data-anchor-target="#intro">
-	        <div class="hsContainer">
-	            <div class="hsContent"
-	                data-center="opacity: 1"
-	                data-106-top="opacity: 0"
-	                data-anchor-target="#intro h2"
-	            >
-	                <h2>Fade out elements before <br>they leave viewport</h2>
-	            </div>
-	        </div>
-	    </div>
-	</section>
-  <% if @about %>
-	<section id="about">
-	  <%= simple_format(@about) %>
-	</section>
-	<% end %>
-	<section class="timeline">
-		<div id="timeline-embed"></div>	  	
-	</section>
-</div>
 
-<!-- 
 
-  <div class="intro">intro</div>
-  <div class="about">about</div>  
-  <div class="timeline">
-  timeline
-	
-  </div>  
-  </div> -->
+  <section id="intro">  
+    <div data-0p="top:0%;" data-100p="top:0%;" class="panorama-wrapper">
+           <img class="reel"
+              data-frames='2172' 
+              data-image='/assets/bg_image.jpg' 
+              data-indicator='0' 
+              data-speed='0.01' 
+              data-delay='5'
+              data-stitched='4344'  
+              data-cursor="hand" 
+              data-frame='595'            
+              width='100%'
+              id='panorama' 
+              responsive='false'
+              src='/assets/bg_static.jpg'/>
+      </div>  
+      <div class="bg">
+          
+             <% I18n.available_locales.each do |locale| %>
+                  <% if locale != I18n.locale %>
+                    <div class="lang_switcher"><%= generate_language_switcher_link(locale,true) %></div>
+                  <% end %>
+                <% end %>
+          
+         
+
+      
+      <div class="stamp" data-anchor-target="#intro"  data-0p="top:50%;opacity:1;" data-100p="top:-50%;opacity:0;">
+        <div class="caption"><h1><%= t('app.common.app_name') %></h1></div>
+        <div class="doughnut"></div>
+        <div class="logo-small"></div>
+      </div>
+      <% if @about %>        
+          <div class="about" data-0p="opacity:0;" data-100p="top:110%;opacity:0.8;" >
+              <%= simple_format(@about) %>
+          </div>       
+    <% end %>
+      
+      </div>
+  </section>  
+  <section class="timeline" data-100p="position:relative;top:0px;">
+    <div id="timeline-embed"></div>    
+        <div class="push"><!--//--></div>
+
+    <footer class="clear">
+      <div id="left">
+      </div>
+      <div id="middle">
+        &copy; <%= Time.now.year %>
+      </div>
+      <div id="right" class="clear">
+        <%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
+            :title => t(".js_link_title") ) %>
+      </div>
+    </footer> 
+  </section>
+
 <% end %>
-
