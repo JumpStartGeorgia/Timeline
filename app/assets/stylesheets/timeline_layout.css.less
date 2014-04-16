@@ -98,11 +98,14 @@ body#body_timeline {
         li{
           padding-top: 7px;
           a{
-	          color: #fff !important;
+	          color: grey !important;
             font-family: bpg_dejavu_light;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            text-transform: uppercase;
+            text-transform: capitalize;
+            &:hover{
+      	      color: #fff !important;
+            }
           }
         }
       }
@@ -182,12 +185,15 @@ body#body_timeline {
     .lang_switcher {
       padding-top: 7px;
 	    padding-right: 20px;
-      font-size: 16px;
+      font-size: 14px;
 	    font-weight: bold;
       text-transform: uppercase;
       a {
-	      color: #fff !important;
+	      color: grey !important;
         font-family: bpg_dejavu_light;
+        &:hover{
+  	      color: #fff !important;
+        }
       } 
     }
   }
@@ -224,7 +230,7 @@ body#body_timeline {
            -moz-box-shadow: 2px 2px 0px rgb(217, 217, 221);
                 box-shadow: 2px 2px 0px rgb(217, 217, 221);
         &:hover{
-          background-color: #636aad;
+          background-color: #3c3c3c;
           color: #fff;
           -webkit-box-shadow: none;
              -moz-box-shadow: none;
@@ -282,7 +288,28 @@ body#body_timeline {
 
 
 
-.slider-item {
+.slider-item .event_social_links{
+    span{
+      padding:0px 45px 45px 0;
+      margin-right: 15px;
+      &:last-of-type{
+        margin-right: 0;
+      }
+      &:hover{
+        cursor: pointer;
+        opacity: 0.7;
+      }
+      &.st_facebook_custom{
+        background: url("fb.png") no-repeat scroll left top transparent;
+      }
+      &.st_twitter_custom{
+        background: url("twitter.png") no-repeat scroll left top transparent;
+      }
+      &.st_sharethis_custom{
+        background: url("share.png") no-repeat scroll left top transparent;
+      }
+    }
+/*
   .fbshare {
     margin-right: 10px;
     img {
@@ -296,36 +323,47 @@ body#body_timeline {
       display: none !important;
     }
   }
+*/  
 }
 
 @media (max-width: 1200px) {
-  body#body_timeline .navbar .navbar-inner {
-    .brand {
-      padding-left: 23px;
-      padding-top: 14px;
+  body#body_timeline {
+    padding: 70px 10px 0;
+    
+    .navbar .navbar-inner {
+      .brand {
+        padding-left: 23px;
+        padding-top: 11px;
+        img{
+          width: 30px;
+        }
+        span{
+          padding-top: 20px;
+        }
+      }
+      & > .container-fluid {
+        padding-left: 0px;
+      }
+      .nav.pull-right:first-of-type {
+        margin-right: 0px;
+      }
     }
-    & > .container-fluid {
-      padding-left: 0px;
+    .lang_switcher {
+      padding-right: 3px;
+      margin-right: 3px;
+      a {
+        padding: 10px 7px 5px;
+      }
     }
-    .nav.pull-right:first-of-type {
-      margin-right: 0px;
+    #search_box {
+      width: 120px;
     }
-  }
-  body#body_timeline .lang_switcher {
-    padding-right: 3px;
-    margin-right: 3px;
-    a {
-      padding: 10px 7px 5px;
+    #social_links {
+      margin-right: 5px;
     }
-  }
-  #search_box {
-    width: 120px;
-  }
-  body#body_timeline #social_links {
-    margin-right: 5px;
-  }
-  body#body_timeline .navbar .navbar-inner .container-fluid .navbar-search {
-    margin-right: 5px;
+    .navbar .navbar-inner .container-fluid .navbar-search {
+      margin-right: 5px;
+    }
   }
 }
 
@@ -338,27 +376,39 @@ body#body_timeline {
 }
 
 @media (max-width: 979px) {
-  body#body_timeline .navbar .navbar-inner {
-    .brand {
-      padding-left: 7px;
-      padding-top: 7px;
-    }
-    .navbar-search {
-      margin-top: 1px;
-    }
-    .nav-collapse {
-      float: none;
-      margin-top: 45px;
-      background: #4B4F7E;
-    }
-    #social_links {
-      margin-bottom: 0px;
-    }
-    button.btn-navbar {
-      background: #383B5E;
-      &:hover {
-        background: #2C2E49;
+  body#body_timeline {
+    .navbar .navbar-inner {
+      height: 50px;
+      .brand {
+        padding-left: 7px;
+        padding-top: 0;
+        font-size: 13px;
+        img{
+          width: 25px;
+        }
+        span{
+          padding-top: 14px;
+        }
       }
+      .navbar-search {
+        margin-top: 1px;
+      }
+      .nav-collapse {
+        float: none;
+        background: #3c3c3c;
+      }
+      #social_links {
+        margin-bottom: 0px;
+      }
+      button.btn-navbar {
+        background: #3c3c3c;
+        &:hover {
+          background: #6c6c6c;
+        }
+      }
+    }
+    .slider-item .event_social_links{
+      margin-bottom: 33px;
     }
   }
 }

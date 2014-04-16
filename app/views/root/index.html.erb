@@ -136,8 +136,6 @@ html,body{
   opacity:0;
 }
 </style>
-<!--         data-speed='0.01' 
-              data-delay='5' -->
    <% I18n.available_locales.each do |locale| %>
         <% if locale != I18n.locale %>
           <div class="lang_switcher"><%= generate_language_switcher_link(locale,true) %></div>
@@ -180,6 +178,7 @@ html,body{
 <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container-fluid">
+
 
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>

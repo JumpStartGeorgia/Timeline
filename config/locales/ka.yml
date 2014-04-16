@@ -80,7 +80,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: გუდიაშვილის ბაღის ისთორია
+      app_name: გუდიაშვილის ბაღის ისტორია
       added_on: "დამატებულია: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
@@ -115,6 +115,7 @@ ka:
       sign_out: გასვლა
       events: მოვლენები
       categories: კატეგორიები
+      about: შესახებ
       users: მომხმარებლები
       js_link_title: ჯამპსტარტ ჯორჯიას - ჩვენ გაწვდით ინფორმაციას უკეთ
       js_link_text: აგებულია
@@ -131,8 +132,8 @@ ka:
       categories: კატეგორიები
       about: შესახებ
     about:
-      title: About Text
-      submit: Save the Text
+      title: ტექსტის შესახებ
+      submit: შევინახოთ ტექსტი
     users:
       edit:
         title: ცვლილებების შეტანა მომხმარებლის გვერდზე

@@ -1,5 +1,6 @@
 /************************/
 /* timeline styles */
+
 .vco-storyjs .vco-feature h1, .vco-storyjs .vco-feature h2, .vco-storyjs .vco-feature h3, .vco-storyjs .vco-feature h4, .vco-storyjs .vco-feature h5, .vco-storyjs .vco-feature h6, .vco-storyjs h1, .vco-storyjs h2, .vco-storyjs h3, .vco-storyjs h4, .vco-storyjs h5, .vco-storyjs h6{
   font-family: bpg_dejavu_light !important;
 }
@@ -16,7 +17,7 @@
 
 
 .vco-storyjs .vco-feature h1, .vco-storyjs .vco-feature h2, .vco-storyjs .vco-feature h3, .vco-storyjs .vco-feature h4, .vco-storyjs .vco-feature h5, .vco-storyjs .vco-feature h6{
-  font-family: zwo !important;
+  font-family: dejavu !important;
 }
 
 
