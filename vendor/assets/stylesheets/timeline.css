@@ -315,7 +315,7 @@
 
 .vco-slider .nav-previous .icon{
   margin-left:0;
-  background-image:url('arrow_left.png');
+  background-image:url(arrow_left.png);
   background-repeat:no-repeat;
   background-position:0% 0%;
   width:33px;
@@ -328,7 +328,7 @@
 
 .vco-slider .nav-next .icon{
   margin-left:67px;
-  background-image:url('arrow_right.png');
+  background-image:url(right.png);
   background-repeat:no-repeat;
   background-position:0% 0%;
   width:33px;
@@ -348,11 +348,11 @@
 }
 
 .vco-notouch .vco-slider .nav-next:hover .icon{
-  background-image:url('arrow_right.png');
+  background-image:url(right.png);
   opacity:1.0;
 }
 .vco-notouch .vco-slider .nav-previous:hover .icon{
-  background-image:url('arrow_left.png');
+  background-image:url(arrow_left.png);
   opacity:1.0;
   margin-left:0px;
 }
@@ -366,7 +366,7 @@
 @media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2){
   .vco-slider .nav-previous .icon{
     margin-left: 0;
-    background-image: url('arrow_left.png');
+    background-image: url(arrow_left.png);
     background-repeat: no-repeat;
     background-position: 0px 0px;
     background-size: auto;
@@ -379,7 +379,7 @@
   
   .vco-slider .nav-next .icon{
     margin-left: 67px;
-    background-image: url('arrow_right.png');
+    background-image: url(right.png);
     background-repeat: no-repeat;
     background-position: 0px 0px;
     background-size: auto;
@@ -391,7 +391,7 @@
   }
 
   .vco-skinny.vco-notouch .vco-slider .nav-previous .icon {
-    background-image: url('arrow_right.png');
+    background-image: url(arrow_left.png);
     background-size: auto;
     background-repeat: no-repeat;
     background-position: 0px 0px;
@@ -401,7 +401,7 @@
   }
 
   .vco-skinny.vco-notouch .vco-slider .nav-next .icon {
-    background-image: url('arrow_right.png');
+    background-image: url(right.png);
     background-size: auto;
     background-repeat: no-repeat;
     background-position: 0px 0px;

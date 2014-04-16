@@ -33,7 +33,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.png?v1', :rel => 'shortcut icon' %>
   </head>
-  <body>
+  <body id="body_timeline">
 
     <div class="scroll-wrapper"><%= yield %></div>
 
@@ -49,7 +49,7 @@
 			
 			var asset_location = '';
 			<% if !Rails.env.development? %>
-			  asset_location = 'assets/';
+			  asset_location = 'assets';
 			<% end %>
 		</script>
 
