@@ -194,18 +194,19 @@ $(document).ready(function() {
       $('#panorama').prop('src', '/assets/bg_static.jpg');
     }
     
+    // adjust image to start with statue in middle of circle
     var orig_w = 1905;
     var orig_f = 580;
     var ratio = 0.255
     var new_f = (orig_w-$(window).width())*ratio+orig_f;
     console.log('width: ' + $(window).width() + '; frames: ' + new_f);
 
+    // make image fit height of screen
     var panoramaResize = function()
     {
       $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
       $('#panorama-reel').css('height', $(window).height());
     }
-    
     panoramaResize();
 
 	  // resize the panorama timeline when the screen changes
