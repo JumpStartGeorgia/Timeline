@@ -199,7 +199,6 @@ $(document).ready(function() {
     var orig_f = 580;
     var ratio = 0.255
     var new_f = (orig_w-$(window).width())*ratio+orig_f;
-    console.log('width: ' + $(window).width() + '; frames: ' + new_f);
 
     // make image fit height of screen
     var panoramaResize = function()
@@ -219,7 +218,7 @@ $(document).ready(function() {
     // if this is not a small screen, turn on the scrolling panaorame
     if ($(window).width() > 978){
       $('#panorama').data('frame', new_f);
-//      $('#panorama').reel($('#panorama').data());
+      $('#panorama').reel($('#panorama').data());
     }
 
     
