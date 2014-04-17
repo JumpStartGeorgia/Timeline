@@ -49,22 +49,14 @@ var was_search_box_length = 0;
         $(this).attr('href', url_ary[0] + new_hash);
       });
       load_social_buttons(new_hash.split('#')[1]);
-    })
-  /*
-    .load(function ()
-    {
-      var id = location.hash.length > 1 ? location.hash.split('#')[1] : $('.slider-item:last :input.hidden_input_id').val();
-      load_social_buttons(id);
 
-      // making the source links open in new tab
-      $('.content .credit a').attr('target', '_blank');
-    });
-  */
+    })
 
     check_items(50);
   }
 
   var i = 0;
+  // load the social buttons for the items in the timeline
   function check_items (maxi)
   {
     if (i < maxi)
@@ -74,6 +66,7 @@ var was_search_box_length = 0;
       {
         var id = id ? id[0] : $('.slider-item:last :input.hidden_input_id').val();
         load_social_buttons(id);
+        $('.content .credit a').attr('target', '_blank');
         i = 0;
         return;
       }
@@ -150,35 +143,38 @@ var was_search_box_length = 0;
         "type": "hcount"
     });
   */
+
     var summary = item.find('.content .content-container .text .container p').text();
     var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
-    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
 
-  /*
+//    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
+
     stWidget.addEntry({
-        "service": "googleplus",
-        "element": socials.children('.st_googleplus_hcount')[0],
+        "service": "facebook",
+        "element": socials.children('.st_facebook_custom')[0],
         "url": url,
         "title": title,
-        "type": "hcount"
+        "image": img,
+//      	"summary": summary,
+        "type": "custom"
     });
-  */
 
     stWidget.addEntry({
         "service": "twitter",
-        "element": socials.children('.st_twitter_hcount')[0],
+        "element": socials.children('.st_twitter_custom')[0],
         "url": url,
         "title": title,
-        "type": "hcount"
+        "type": "custom"
     });
 
     stWidget.addEntry({
         "service": "sharethis",
-        "element": socials.children('.st_sharethis_hcount')[0],
+        "element": socials.children('.st_sharethis_custom')[0],
         "url": url,
         "title": title,
-        "type": "hcount"
+        "type": "custom"
     });
+
   }
 
 $(document).ready(function() {
@@ -216,13 +212,38 @@ $(document).ready(function() {
 
 
 
-    // if url has hash and language link does not when page loads, add it
+    // if url has hash 
+    // - scroll down to timeline
+    // - and language link does not when page loads, add it
     if (window.location.hash.length > 0){
       $('.lang_switcher a').each(function(){
         url_ary = $(this).attr('href').split('#');
         $(this).attr('href', url_ary[0] + window.location.hash);
       });
+      
+      $('html, body').animate({
+        scrollTop: $("#timeline-embed").offset().top
+      }, 2000);
     }
+    
+    // if url has tag or category params, scroll down to timeline
+    (window.onpopstate = function () {
+        var match,
+            pl     = /\+/g,  // Regex for replacing addition symbol with a space
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query  = window.location.search.substring(1);
+
+        urlParams = {};
+        while (match = search.exec(query))
+           urlParams[decode(match[1])] = decode(match[2]);
+           
+        if ('category' in urlParams || 'tag' in urlParams){
+          $('html, body').animate({
+            scrollTop: $("#timeline-embed").offset().top
+          }, 2000);
+        }
+    })();    
 
     // search box
     var debounce = function (fn) {
@@ -268,20 +289,22 @@ $(document).ready(function() {
     });
 
   }
+
   var s = skrollr.init({
     //forceHeight: true,
-        render: function(data) {          
-            //Debugging - Log the current scroll position.
-            //console.log(data.curTop);
-        }
-    });
+    render: function(data) {          
+        //Debugging - Log the current scroll position.
+        //console.log(data.curTop);
+    }
+  });
 
-      var panoramaResize = function()
-      {
-        $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
-        $('#panorama-reel').css('height', $(window).height());
-      }
-      window.onresize = panoramaResize();
-      panoramaResize();
+  var panoramaResize = function()
+  {
+    $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
+    $('#panorama-reel').css('height', $(window).height());
+  }
+  
+  window.onresize = panoramaResize();
+  panoramaResize();
          
 });

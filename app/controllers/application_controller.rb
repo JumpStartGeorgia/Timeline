@@ -101,18 +101,18 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     if story.present?
       x << view_context.simple_format(story.clone) 
     end
-
+    
     # add social links
     x << "<div class='event_social_links'>"
     x << "  <span class='st_facebook_custom' displayText='Facebook' title='Facebook'></span>"
     x << "  <span class='st_twitter_custom' displayText='Tweet' title='Tweet'></span>"
     x << "  <span class='st_sharethis_custom' displayText='ShareThis' title='ShareThis'></span>"
 
-#    x << '<a class="fbshare" title="Share on Facebook" href="" target="_blank"><img src="/assets/fb.png" alt="Share on Facebook" /></a>'
+#    x << '<a class="fbshare" title="Facebook" href="" target="_blank"><img src="/assets/fb.png" alt="Facebook" /></a>'
    #x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
    #x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"
-#    x << "  <span class='st_twitter_hcount' st_processed='yes' displayText='Tweet'><img src='/assets/twitter.png' alt='Share on Facebook' /></span>"
-#    x << "  <span class='st_sharethis_hcount' st_processed='yes' displayText='ShareThis'><img src='/assets/share.png' alt='Share on Facebook' /></span>"
+#    x << "  <span class='st_twitter_hcount' st_processed='yes' displayText='Tweet'><img src='/assets/twitter.png' alt='Tweet' /></span>"
+#    x << "  <span class='st_sharethis_hcount' st_processed='yes' displayText='ShareThis'><img src='/assets/share.png' alt='ShareThis' /></span>"
     x << "</div>"
 
 

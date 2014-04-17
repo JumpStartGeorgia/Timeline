@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta id="og_title" property="og:title" content="<%= t('.og.title').html_safe %>" data-original-content="<%= t('.og.title').html_safe %>" />
-		<meta id="og_desc" property="og:description" content="<%= t('.og.desc').html_safe %>" />
+		<meta id="og_title" property="og:title" content="<%= t('app.common.app_name').html_safe %>" data-original-content="<%= t('app.common.app_name').html_safe %>" />
+		<meta id="og_desc" property="og:description" content="<%= @about.present? ? @about.html_safe : '' %>" />
 		<meta property="og:type" content="non_profit" />
 		<meta id="og_url" property="og:url" content="<%= current_url %>" />
 		<meta property="og:image" content="<%= full_url(image_path('fb_share.jpg')) %>" />
