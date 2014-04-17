@@ -185,11 +185,26 @@ $(document).ready(function() {
 
     generate_timeline();
     
-	  // resize the timeline when the screen changes
+    var panoramaResize = function()
+    {
+      $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
+      $('#panorama-reel').css('height', $(window).height());
+    }
+    
+    panoramaResize();
+
+	  // resize the panorama timeline when the screen changes
     window.onresize = function()
     {
+      panoramaResize();
       $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()-$('footer').height()) + "px");
     }
+    
+    // if this is not a small screen, turn on the scrolling panaorame
+    if ($(window).width() > 978){
+      $('#panorama').reel($('#panorama').data());
+    }
+
     
     // create index of all items in timeline for searching
     search_index = lunr(function () {
@@ -288,23 +303,16 @@ $(document).ready(function() {
       return false;
     });
 
-  }
+  /*
+    var s = skrollr.init({
+      //forceHeight: true,
+      render: function(data) {          
+          //Debugging - Log the current scroll position.
+          //console.log(data.curTop);
+      }
+    });
+  */
 
-  var s = skrollr.init({
-    //forceHeight: true,
-    render: function(data) {          
-        //Debugging - Log the current scroll position.
-        //console.log(data.curTop);
-    }
-  });
-
-  var panoramaResize = function()
-  {
-    $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
-    $('#panorama-reel').css('height', $(window).height());
   }
-  
-  window.onresize = panoramaResize();
-  panoramaResize();
          
 });
