@@ -185,6 +185,21 @@ $(document).ready(function() {
 
     generate_timeline();
     
+    // if screen is small, switch out the background image
+    if ($(window).width() < 427){
+      $('#panorama').prop('src', '/assets/bg_mobile_small.jpg');
+    }else if ($(window).width() < 623){
+      $('#panorama').prop('src', '/assets/bg_mobile_big.jpg');
+    }else{
+      $('#panorama').prop('src', '/assets/bg_static.jpg');
+    }
+    
+    var orig_w = 1905;
+    var orig_f = 580;
+    var ratio = 0.255
+    var new_f = (orig_w-$(window).width())*ratio+orig_f;
+    console.log('width: ' + $(window).width() + '; frames: ' + new_f);
+
     var panoramaResize = function()
     {
       $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
@@ -202,6 +217,7 @@ $(document).ready(function() {
     
     // if this is not a small screen, turn on the scrolling panaorame
     if ($(window).width() > 978){
+      $('#panorama').data('frame', new_f);
       $('#panorama').reel($('#panorama').data());
     }
 
