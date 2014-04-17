@@ -219,7 +219,7 @@ $(document).ready(function() {
     // if this is not a small screen, turn on the scrolling panaorame
     if ($(window).width() > 978){
       $('#panorama').data('frame', new_f);
-      $('#panorama').reel($('#panorama').data());
+//      $('#panorama').reel($('#panorama').data());
     }
 
     

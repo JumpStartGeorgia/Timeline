@@ -1,5 +1,26 @@
+
 /* timeline styles */
 body#body_timeline {
+
+  @keyframes move_arrow
+  {
+    from {
+      top: 0px;
+    }
+    to {
+      top: 15px;
+    }
+  }
+  @-webkit-keyframes move_arrow
+  {
+    from {
+      top: 0px;
+    }
+    to {
+      top: 15px;
+    }
+  }
+
   font-family: dejavu;
   height:100% !important;
   width:100% !important;
@@ -73,7 +94,29 @@ body#body_timeline {
           bottom:134px;   
           z-index: 157;
       }
+      .down-arrow
+      {
+          background-image:url('/assets/down_arrow.png');
+          background-position: center center;
+          background-repeat: no-repeat;      
+          height: 9px;
+          width: 14px;
+          position:relative;  
+          left: 50%; 
+          margin-left: -7px;    
+          bottom:134px;   
+          z-index: 158;
+                  animation-duration: 1.5s;
+          -webkit-animation-duration: 1.5s;
+                  animation-name: move_arrow;
+          -webkit-animation-name: move_arrow;
+                  animation-iteration-count: infinite;
+          -webkit-animation-iteration-count: infinite;
+                  animation-direction: alternate;
+          -webkit-animation-direction: alternate;
+      }
     }
+
 
     .about
     {
@@ -650,17 +693,6 @@ body#body_timeline {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
