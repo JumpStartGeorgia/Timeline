@@ -498,19 +498,34 @@ body#body_timeline {
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   body#body_timeline {
     padding: 70px 10px 0;
 
     .intro
     {
-      .stamp{
+      .stamp
+      {
+        position:absolute;
+        top: 25%;
+        left: 50%;
+        margin-left: -237px;
+        margin-top: -88px;    
         .arrow-wrap {
           bottom: -125px;
         }
       }
+      .about
+      {
+        width:350px;
+        padding:15px;  
+        position:absolute;
+        top: 120%;
+        left:50%;
+        margin-left: -175px;      
+      }
     }
-    
+  
     .navbar .navbar-inner {
       .brand {
         padding-left: 23px;
@@ -676,6 +691,22 @@ body#body_timeline {
     {
       position:absolute;
       top:315%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  body#body_timeline {
+    .intro
+    {
+      .about
+      {
+        top: 120%;
+      }
+    }
+    .timeline
+    {
+      top:250%;
     }
   }
 }
