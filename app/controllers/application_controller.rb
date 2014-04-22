@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
 	def is_browser_supported?
 		user_agent = UserAgent.parse(request.user_agent)
 logger.debug "////////////////////////// BROWSER = #{user_agent}"
+
+    # check if this is facebook robot so timeline content can be shared properly
+    @is_fb_robot = user_agent.browser == "facebookexternalhit"
+
 =begin
 		if SUPPORTED_BROWSERS.any? { |browser| user_agent < browser }
 			# browser not supported

@@ -20,6 +20,7 @@ BootstrapStarter::Application.routes.draw do
       resources :categories
 		end
 
+    match "/fb_record/:id", :to => 'root#fb_record', :as => :fb_record, :via => :get, :defaults => {:format => 'json'}
 
 		root :to => 'root#index'
 	  match "*path", :to => redirect("/#{I18n.default_locale}") # handles /en/fake/path/whatever

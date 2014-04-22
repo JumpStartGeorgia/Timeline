@@ -5,12 +5,6 @@ class RootController < ApplicationController
 	CACHE_KEY = "[locale]/[data]"
 
   def index
-    
-    gon.highlight_first_form_field = false
-    gon.json_data = get_event_json
-    gon.show_timeline = gon.json_data.present? ? true : false
-    @no_timeline_data = !gon.show_timeline
-    
     # get the about text
     if File.exists?(@about_path)
       about_text = JSON.parse(File.read(@about_path))
@@ -18,10 +12,35 @@ class RootController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => 'timeline'}
+      if @is_fb_robot && !params[:fb].present?
+        @ajax_url = fb_record_path('xxx')
+        format.html { render 'fb_robot', :layout => 'fb_robot'}
+      else
+        gon.highlight_first_form_field = false
+        gon.json_data = get_event_json
+        gon.show_timeline = gon.json_data.present? ? true : false
+        @no_timeline_data = !gon.show_timeline
+        
+        format.html { render :layout => 'timeline'}
+      end
     end
   end
 
+
+  def fb_record
+    json = nil
+    jsons = get_event_json
+    
+    # pull out the specific record
+    json = jsons['timeline']['date'].select{|x| x['id'] == params[:id]}.first
+
+    title_input = '<input type="hidden" class="title_here" />'.html_safe;
+    json['headline'].gsub!(title_input, '')
+
+    respond_to do |format|
+      format.json { render json: json.to_json}
+    end
+  end
 
 private
 
