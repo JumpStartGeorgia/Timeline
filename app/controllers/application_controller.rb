@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 	before_filter :set_locale
-#	before_filter :is_browser_supported?
+  before_filter :is_browser_supported?
 	before_filter :initialize_gon
 	before_filter :preload_global_variables
 
@@ -36,11 +36,13 @@ class ApplicationController < ActionController::Base
 	def is_browser_supported?
 		user_agent = UserAgent.parse(request.user_agent)
 logger.debug "////////////////////////// BROWSER = #{user_agent}"
+=begin
 		if SUPPORTED_BROWSERS.any? { |browser| user_agent < browser }
 			# browser not supported
 logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 			render "layouts/unsupported_browser", :layout => false
 		end
+=end		
 	end
 
 	def preload_global_variables
