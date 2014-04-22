@@ -49,7 +49,7 @@
 			
 			var asset_location = '';
 			<% if !Rails.env.development? %>
-			  asset_location = 'assets';
+			  asset_location = 'assets/';
 			<% end %>
 		</script>
 
@@ -58,18 +58,7 @@
     <script type="text/javascript">stLight.options({publisher: "5e03882d-880c-43e2-b015-163ee338d8c0", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
 
 		<% if Rails.env.production? %>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-12801815-19']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-  		</script>
 		<% elsif Rails.env.staging? %>
-			<!-- insert google analytics for staging site here -->
 		<% end %>
 
   </body>
