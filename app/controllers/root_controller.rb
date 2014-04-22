@@ -22,13 +22,6 @@ class RootController < ApplicationController
     end
   end
 
-  def home
-    respond_to do |format|
-      format.html { render :layout => 'scroll'}
-    end
-  end
-
-
 
 private
 
