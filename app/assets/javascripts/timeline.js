@@ -173,7 +173,6 @@ console.log('load social btn: title = ' + title);
     });
 */
 
-$(socials.children('.st_fb_custom')[0]).attr('st_url', url).attr('st_title', title);
 $(socials.children('.st_twitter_custom')[0]).attr('st_url', url).attr('st_title', title);
 $(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_title', title);
 
