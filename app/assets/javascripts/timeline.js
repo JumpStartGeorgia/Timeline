@@ -45,10 +45,10 @@ var was_search_box_length = 0;
         new_hash = window.location.hash;
       }
       $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#');
+        url_ary = $(this).attr('href').split('#!');
         $(this).attr('href', url_ary[0] + new_hash);
       });
-      load_social_buttons(new_hash.split('#')[1]);
+      load_social_buttons(new_hash.split('#!')[1]);
 
     })
 
@@ -106,7 +106,7 @@ var was_search_box_length = 0;
   }
 
 
-  function load_social_buttons (id)
+  function load_social_buttons(id)
   {
     var item = $('#hidden_input_' + id).closest('.slider-item');
     if (item.length == 0)
@@ -144,11 +144,10 @@ var was_search_box_length = 0;
     });
   */
 
-//    var summary = item.find('.content .content-container .text .container p').text();
-//    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
+    var summary = item.find('.content .content-container .text .container p').text();
+    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
 
 //    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
-
     stWidget.addEntry({
         "service": "facebook",
         "element": socials.children('.st_facebook_custom')[0],
