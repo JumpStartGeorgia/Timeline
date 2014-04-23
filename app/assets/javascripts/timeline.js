@@ -109,14 +109,9 @@ var hash_marker = '#!';
 
   function load_social_buttons(id)
   {
-console.log('---------------------');  
-console.log('load social btn: start');  
-console.log('load social btn: -id = ' + id);  
     var item = $('#hidden_input_' + id).closest('.slider-item');
     if (item.length == 0)
     {
-console.log('load social btn: - could not find the item, stopping');  
-console.log('---------------------');  
       return;
     }
 
@@ -128,7 +123,6 @@ console.log('---------------------');
       // id is not in url yet, so add it for sharing
       url += hash_marker + id;
     }
-console.log('load social btn: url = ' + url);  
 
   /*
     var sep = '><|-'.split(''),
@@ -141,7 +135,6 @@ console.log('load social btn: url = ' + url);
     console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
   */
     var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
-console.log('load social btn: title = ' + title);  
 
     //var spans = new Array(5).join('<span></span>');
     //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
@@ -193,8 +186,6 @@ $(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_titl
         "type": "custom"
     });
 */
-console.log('load social btn: end');  
-console.log('---------------------');  
   }
 
 $(document).ready(function() {
@@ -238,7 +229,7 @@ $(document).ready(function() {
     // if this is not a small screen, turn on the scrolling panaorame
     if ($(window).width() > 978){
       $('#panorama').data('frame', new_f);
-      $('#panorama').reel($('#panorama').data());
+//      $('#panorama').reel($('#panorama').data());
     }
 
 
