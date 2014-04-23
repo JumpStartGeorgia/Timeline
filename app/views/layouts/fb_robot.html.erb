@@ -1,85 +1,78 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-		<script type="text/javascript">
-      var new_hash = "#_"
-      var id;
-      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
-      {
-        id = window.location.hash.split('#')[1];
-      }
-      if (id == undefined){
-        window.location = '<%= full_url("/#{I18n.locale}?fb=fail") %>';
-      }else {
-        $.get( '<%= @ajax_url.gsub('xxx', '') %>' + id, function( data ) {
-          console.log(data);
-          if (data != undefined){
-            // title
-            $('#story #headline').html(data['headline']);
-            $('title').html(data['headline'] + $('title').html());
-            $('#og_title').prop('content', data['headline'] + ' | ' + $('#og_title').data('original-content'));
-          
-            // dates
-            if (data['startDate']){
-              $('#story #date').html(data['startDate']);
-            }
-            if (data['endDate']){
-              if ($('#story #date').html().length > 0){
-                $('#story #date').append(' - ' + data['endDate']);
-              }else{
-                $('#story #date').html(data['endDate']);
-              }
-            }
-            
-            // content
-            var text = '';
-            var paragraphs = $(data['text']).filter('p')
-            $(paragraphs).each(function(){
-              text = text + ' ' + $(this).text();
-            });
-            $('#og_desc').prop('content', text);
-            $('#story #content').html(paragraphs);
-          
-            // image
-            if (data['asset']['media'].length > 1 && data['asset']['media'].indexOf($('#og_image').data('default-url')) == 0){
-              $('#og_image').prop('content', data['asset']['media']);
-            }
-          
-            // url
-            $('#og_url').prop('content', $('#og_url').prop('content') + '#' + id);
-          }
-        });        
-      }
-          
-    </script>
-  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta id="og_title" property="og:title" content="<%= t('app.common.app_name').html_safe %>" data-original-content="<%= t('app.common.app_name').html_safe %>" />
-		<meta id="og_desc" property="og:description" content="" />
+		<meta id="og_title" property="og:title" content="<%= "#{@record['headline']} | #{t('app.common.app_name').html_safe}" %>" />
+		<meta id="og_desc" property="og:description" content="<%= @record['text']%>" />
 		<meta property="og:type" content="non_profit" />
-		<meta id="og_url" property="og:url" content="<%= current_url %>" />
-		<meta id="og_image" property="og:image" content="<%= full_url(image_path('fb_share.jpg')) %>" data-default-url="<%= full_url('') %>"/>
+		<%
+		  # change _escaped_fragment_ to hashbang
+      new_url = ''
+      url = current_url
+      url_ary = url.split('?')
+      if url_ary.length == 2
+        new_url << url_ary[0]
+        
+        found_param = false
+        url_ary[1].split('&').each do |param|
+          if param.index('_escaped_fragment_').nil?
+            if !found_param
+              new_url << '?'
+              found_param = true
+            end
+            new_url << param
+            new_url << '&'
+          end
+        end
+        
+        new_url << '#!'
+        new_url << params['_escaped_fragment_']
+      end
+		%>
+		<meta id="og_url" property="og:url" content="<%= new_url %>" />
+    <% if @record['asset']['media'].length > 1 && @record['asset']['media'].index(full_url('')) == 0  %>
+    		<meta id="og_image" property="og:image" content="<%= @record['asset']['media'] %>" />
+    <% else %>
+    		<meta id="og_image" property="og:image" content="<%= full_url(image_path('fb_share.jpg')) %>" />
+    <% end %>
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
     <meta name="google" value="notranslate">
 
-    <title><%= " | #{t('app.common.app_name')}" %></title>
+    <title><%= "#{@record['headline']} | #{t('app.common.app_name')}" %></title>
 
     <%= csrf_meta_tags %>
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.png?v1', :rel => 'shortcut icon' %>
+    
+		<script type="text/javascript">
+      
+    </script>
   </head>
   <body>
 
   <div id="story">
-    <h1 id="headline"></h1>
-    <div id="date"></div>
-    <div id="content"></div>
+    <h1 id="headline"><%= @record['headline']%></h1>
+    <div id="date">
+      <% 
+        date = ''
+        if @record['startDate']
+          date << @record['startDate']
+        end
+        if @record['endDate']
+          if date.length > 0
+            date << ' - '
+          end
+          date << @record['endDate']
+        end
+      %>
+      <%= date %>
+    </div>
+    <div id="content"><%= @record['text']%></div>
   </div>
 
 

@@ -6887,6 +6887,10 @@ if(typeof VMM != 'undefined' && typeof VMM.StoryJS == 'undefined') {
 /*
   ************** EDITED BY JUMPSTART GEORGIA *************************
   ************** http://jumpstart.ge  ********************************
+  **************    22 APRIL 2014 ********************************
+  * Updated setHash to include '!' after hash
+  * Created function called getHash to get the hash and check for '!' in the process
+
   **************    10 SEPTEMBER 2013 ********************************
   * Added option to have unique id as hash tag that is supplied from source data
   * new config options:
@@ -7066,7 +7070,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 		if(window.location.hash && config.hash_bookmark) {
     trace('----------------');		
     trace('started with hash and hash_bookmark is true');		
-      var hash					=	window.location.hash.substring(1);
+      var hash					=	getHash();
       if (!isNaN(hash)) {
         config.current_slide	=	parseInt(hash);
       }
@@ -7075,7 +7079,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 		window.onhashchange = function () {
       trace('----------------');		
       trace('on hash change event');		
-			var hash					=	window.location.hash.substring(1);
+			var hash					=	getHash();
 			if (config.hash_bookmark) {
         trace('-> using hash_change, going to event at hash = ' + hash);		
 				if (is_moving) {
@@ -7247,11 +7251,19 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 			} 
 		}
 		
+		function getHash(){
+		  index = 1;
+		  if (window.location.hash.indexOf('!') != -1){
+  		  index += 1;
+		  }
+		  return window.location.hash.substring(index);
+		}
+		
 		function setHash(n) {
       trace('----------------');		
       trace('sethash event for index ' + n);		
 			if (config.hash_bookmark) {
-				window.location.hash = "#" + n.toString();
+				window.location.hash = "#!" + n.toString();
 			}
 
 			// if using hash unique bookmark, get correct value for hash
@@ -7259,7 +7271,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
       trace('index to id = ' + index_to_ids[n]);
 		  if (config.hash_unique_bookmark && config.hash_unique_bookmark_field != undefined && index_to_ids[n] != undefined){
       trace('-> using unique bookmark and setting hash to ' + index_to_ids[n]);		
-				window.location.hash = "#" + index_to_ids[n].toString();
+				window.location.hash = "#!" + index_to_ids[n].toString();
 		  }
 		}
 		
@@ -7651,11 +7663,11 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
         }
 
 
-        trace('-> existing hash = ' + window.location.hash.substring(1));
+        trace('-> existing hash = ' + getHash());
         // if hash exists, translate it to index
-    		if(window.location.hash && ids_to_index[window.location.hash.substring(1)] != undefined) {
+    		if(window.location.hash && ids_to_index[getHash()] != undefined) {
         trace(' -> hash exists, setting current slide to index ' + ids_to_index[window.location.hash]);		
-          config.current_slide =	ids_to_index[window.location.hash.substring(1)];
+          config.current_slide =	ids_to_index[getHash()];
     		}
       }
 			

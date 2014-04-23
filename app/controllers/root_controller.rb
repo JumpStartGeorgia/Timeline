@@ -11,16 +11,38 @@ class RootController < ApplicationController
       @about = about_text[I18n.locale.to_s]
     end
 
-    respond_to do |format|
-      if @is_fb_robot && !params[:fb].present?
-        @ajax_url = fb_record_path('xxx')
-        format.html { render 'fb_robot', :layout => 'fb_robot'}
-      else
-        gon.highlight_first_form_field = false
-        gon.json_data = get_event_json
-        gon.show_timeline = gon.json_data.present? ? true : false
-        @no_timeline_data = !gon.show_timeline
+    data = get_event_json
+@is_fb_robot = true
+    if @is_fb_robot && params['_escaped_fragment_'].present? && !params[:fb].present?
+#        @ajax_url = fb_record_path('xxx')
+      # pull out the specific record
+      @record = data['timeline']['date'].select{|x| x['id'] == params['_escaped_fragment_']}.first
+      if @record.present?
+        # remove input tag
+        title_input = '<input type="hidden" class="title_here" />'.html_safe;
+        @record['headline'].gsub!(title_input, '')
         
+        # only keep text in p tags
+        texts = @record['text'].scan(/<p>(.*?)<\/p>/)
+        if texts.present?
+          @record['text'] = texts.map{|x| x.first}.join(' ')
+        else
+          @record['text'] = ''
+        end
+
+        respond_to do |format|
+          format.html { render 'fb_robot', :layout => 'fb_robot'}
+        end
+      else
+        redirect_to root_path(locale: I18n.locale)
+      end
+    else
+      gon.highlight_first_form_field = false
+      gon.json_data = data
+      gon.show_timeline = gon.json_data.present? ? true : false
+      @no_timeline_data = !gon.show_timeline
+      
+      respond_to do |format|
         format.html { render :layout => 'timeline'}
       end
     end

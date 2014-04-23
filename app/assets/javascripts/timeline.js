@@ -144,8 +144,8 @@ var was_search_box_length = 0;
     });
   */
 
-    var summary = item.find('.content .content-container .text .container p').text();
-    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
+//    var summary = item.find('.content .content-container .text .container p').text();
+//    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
 
 //    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
 
@@ -155,7 +155,6 @@ var was_search_box_length = 0;
         "url": url,
         "title": title,
         "image": img,
-//      	"summary": summary,
         "type": "custom"
     });
 
