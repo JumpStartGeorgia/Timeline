@@ -7,6 +7,7 @@ var eng_geo_chars =
 		['a','b','g','d','e','v','z','t','i','k','l','m','n','o','p','zh',
 		  'r','s','t','u','p','q','gh','qkh','sh','ch','ts','dz','ts','tch','kh','j','h'];
 var was_search_box_length = 0;
+var hash_marker = '#!';
   // lunr.js does not work with geo chars so convert to eng chars
   function change_geo_to_en(text){
     var new_text = new String(text); 
@@ -45,10 +46,10 @@ var was_search_box_length = 0;
         new_hash = window.location.hash;
       }
       $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#!');
+        url_ary = $(this).attr('href').split(hash_marker);
         $(this).attr('href', url_ary[0] + new_hash);
       });
-      load_social_buttons(new_hash.split('#!')[1]);
+      load_social_buttons(new_hash.split(hash_marker)[1]);
 
     })
 
@@ -108,9 +109,14 @@ var was_search_box_length = 0;
 
   function load_social_buttons(id)
   {
+console.log('---------------------');  
+console.log('load social btn: start');  
+console.log('load social btn: -id = ' + id);  
     var item = $('#hidden_input_' + id).closest('.slider-item');
     if (item.length == 0)
     {
+console.log('load social btn: - could not find the item, stopping');  
+console.log('---------------------');  
       return;
     }
 
@@ -118,6 +124,11 @@ var was_search_box_length = 0;
     socials.children().not('.fbshare').each(function (){ this.innerHTML = ''; });
     
     var url = location.href;
+    if (window.location.hash.length == 0){
+      // id is not in url yet, so add it for sharing
+      url += hash_marker + id;
+    }
+console.log('load social btn: url = ' + url);  
 
   /*
     var sep = '><|-'.split(''),
@@ -130,6 +141,7 @@ var was_search_box_length = 0;
     console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
   */
     var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
+console.log('load social btn: title = ' + title);  
 
     //var spans = new Array(5).join('<span></span>');
     //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
@@ -144,10 +156,13 @@ var was_search_box_length = 0;
     });
   */
 
-    var summary = item.find('.content .content-container .text .container p').text();
-    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
+//    var summary = item.find('.content .content-container .text .container p').text();
+//    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
 
 //    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
+
+      item.find('.fbshare').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+/*
     stWidget.addEntry({
         "service": "facebook",
         "element": socials.children('.st_facebook_custom')[0],
@@ -156,7 +171,13 @@ var was_search_box_length = 0;
         "image": img,
         "type": "custom"
     });
+*/
 
+$(socials.children('.st_fb_custom')[0]).attr('st_url', url).attr('st_title', title);
+$(socials.children('.st_twitter_custom')[0]).attr('st_url', url).attr('st_title', title);
+$(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_title', title);
+
+/*
     stWidget.addEntry({
         "service": "twitter",
         "element": socials.children('.st_twitter_custom')[0],
@@ -172,7 +193,9 @@ var was_search_box_length = 0;
         "title": title,
         "type": "custom"
     });
-
+*/
+console.log('load social btn: end');  
+console.log('---------------------');  
   }
 
 $(document).ready(function() {

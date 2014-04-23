@@ -476,17 +476,14 @@ body#body_timeline {
 
 
 .slider-item .event_social_links{
-    span{
+    span, a{
       padding:0px 45px 45px 0;
       margin-right: 15px;
-      &:last-of-type{
-        margin-right: 0;
-      }
       &:hover{
         cursor: pointer;
         opacity: 0.7;
       }
-      &.st_facebook_custom{
+      &.st_facebook_custom, &.fbshare{
         background: url("fb.png") no-repeat scroll left top transparent;
       }
       &.st_twitter_custom{
@@ -495,6 +492,9 @@ body#body_timeline {
       &.st_sharethis_custom{
         background: url("share.png") no-repeat scroll left top transparent;
       }
+    }
+    span:last-of-type{
+      margin-right: 0;
     }
 }
 
