@@ -20,40 +20,42 @@ var hash_marker = '#!';
   }
 
   function generate_timeline(){
-	  createStoryJS({
-		  type:		'timeline',
-		  width:		'100%',
-      lang:     I18n.locale,
-		  height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
-		  source:		timeline_data,
-		  embed_id:	'timeline-embed',
-      hash_unique_bookmark: true,
-      start_zoom_adjust: -1,
-		  debug:		false,
-		  start_at_end: true
-	  });
+    if (!$.isEmptyObject(gon.json_data)){
+	    createStoryJS({
+		    type:		'timeline',
+		    width:		'100%',
+        lang:     I18n.locale,
+		    height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
+		    source:		timeline_data,
+		    embed_id:	'timeline-embed',
+        hash_unique_bookmark: true,
+        start_zoom_adjust: -1,
+		    debug:		false,
+		    start_at_end: true
+	    });
 
 
-    // when the hash changes,
-    // - change the hash to use the id from the table record
-    // - update the language switcher to also have this hash
-    $(window).on('hashchange', function() {
-      var new_hash = "#_"
-      if (window.location.hash.length >= 2 && window.location.hash != new_hash)
-      {
-//        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
-//        window.location.hash = new_hash;
-        new_hash = window.location.hash;
-      }
-      $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split(hash_marker);
-        $(this).attr('href', url_ary[0] + new_hash);
-      });
-      load_social_buttons(new_hash.split(hash_marker)[1]);
+      // when the hash changes,
+      // - change the hash to use the id from the table record
+      // - update the language switcher to also have this hash
+      $(window).on('hashchange', function() {
+        var new_hash = "#_"
+        if (window.location.hash.length >= 2 && window.location.hash != new_hash)
+        {
+  //        new_hash = "#" + gon.json_data.timeline.date[window.location.hash.replace(/#/g, '')].id;
+  //        window.location.hash = new_hash;
+          new_hash = window.location.hash;
+        }
+        $('.lang_switcher a').each(function(){
+          url_ary = $(this).attr('href').split(hash_marker);
+          $(this).attr('href', url_ary[0] + new_hash);
+        });
+        load_social_buttons(new_hash.split(hash_marker)[1]);
 
-    })
+      })
 
-    check_items(50);
+      check_items(50);
+    }
   }
 
   var i = 0;
@@ -190,12 +192,7 @@ $(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_titl
 
 $(document).ready(function() {
 
-  if (gon.show_timeline){
-    // clone the json data so searching can search through the original
-    timeline_data = JSON.parse(JSON.stringify(gon.json_data));
-
-    generate_timeline();
-    
+  if (gon.is_home_page){
     // if screen is small, switch out the background image
     if ($(window).width() < 427){
       $('#panorama').prop('src', '/assets/bg_mobile_small.jpg');
@@ -254,6 +251,14 @@ $(document).ready(function() {
       $('.arrow-wrap').css('opacity', position);
 
     });
+    
+  }
+
+  if (gon.show_timeline){
+    // clone the json data so searching can search through the original
+    timeline_data = JSON.parse(JSON.stringify(gon.json_data));
+
+    generate_timeline();
     
     // create index of all items in timeline for searching
     search_index = lunr(function () {

@@ -39,9 +39,10 @@ class RootController < ApplicationController
     else
       gon.highlight_first_form_field = false
       gon.json_data = data
-      gon.show_timeline = gon.json_data.present? ? true : false
+      gon.show_timeline = gon.json_data.present?
       @no_timeline_data = !gon.show_timeline
-      
+      gon.is_home_page = true
+
       respond_to do |format|
         format.html { render :layout => 'timeline'}
       end
