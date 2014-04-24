@@ -95,7 +95,7 @@
                       <li>
                         <%= link_to t('.categories'), admin_categories_path  %>
                       </li>
-                      <% if current_user.role? User::ROLES[:admin] %>
+                      <% if current_user.role? User::ROLES[:user_manager] %>
                         <li>
                          <%= link_to t('.users'), admin_users_path %>
                         </li>

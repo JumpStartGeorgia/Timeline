@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   # use role inheritence
   # - a role with a larger number can do everything that smaller numbers can do
-  ROLES = {:user => 0, :admin => 99}
+  ROLES = {:user => 0, :user_manager => 50, :admin => 99}
   def role?(base_role)
     if base_role && ROLES.values.index(base_role)
       return base_role <= self.role
