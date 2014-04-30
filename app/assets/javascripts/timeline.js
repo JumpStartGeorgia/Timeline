@@ -202,16 +202,26 @@ $(document).ready(function() {
       $('#panorama').prop('src', '/assets/bg_static.jpg');
     }
     
+    
+    
     // adjust image to start with statue in middle of circle
-    var orig_w = 1905;
-    var orig_f = 580;
-    var ratio = 0.255
-    var new_f = (orig_w-$(window).width())*ratio+orig_f;
+    // formula: (frames to middle) - ( (1/2 width of screen) / (frame width) )
+    var img_ratio = $(window).height() / $('#panorama').data('orig-height');
+    var new_width = $('#panorama').data('orig-width') * img_ratio;
+    var frames_middle = 1086;
+    var frame_width = new_width / $('#panorama').data('frames');
+    var new_f = frames_middle - ($(window).width()/2/frame_width);
 
     // make image fit height of screen
     var panoramaResize = function()
     {
-      $('#panorama').css('height', $(window).height()).css('background-size',  '4344px ' + $(window).height() + 'px');        
+      var ratio = $(window).height() / $('#panorama').data('orig-height');
+      var new_height = $('#panorama').data('orig-height') * ratio;
+      var new_width = $('#panorama').data('orig-width') * ratio;
+      $('#panorama').css('height', new_height).css('background-size',  new_width + 'px ' + new_height + 'px');        
+//      $('#panorama').css('height', new_height).css('background-size',  '4344px ' + new_height + 'px');        
+//      $('#panorama').css('width', new_width);        
+      $('#panorama').data('stitched', new_width);        
       $('#panorama-reel').css('height', $(window).height());
     }
     panoramaResize();
@@ -223,10 +233,10 @@ $(document).ready(function() {
       $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()-$('footer').height()) + "px");
     }
     
-    // if this is not a small screen, turn on the scrolling panaorame
+    // if this is not a small screen, turn on the scrolling panaorama
     if ($(window).width() > 978){
       $('#panorama').data('frame', new_f);
-//      $('#panorama').reel($('#panorama').data());
+      $('#panorama').reel($('#panorama').data());
     }
 
 

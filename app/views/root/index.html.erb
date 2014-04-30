@@ -14,15 +14,17 @@
           data-speed='0.01' 
           data-delay='5'
           data-stitched='4344'  
-          data-cursor="hand" 
-          data-frame='580'
+          data-cursor='hand' 
+          data-frame='692.4'
           data-duration='120'
+          data-orig-height='800'
+          data-orig-width='4344'
           width='100%'
           id='panorama' 
           responsive='false'
           />
   </div>   
-  <div class="stamp" data-0p-start="top:50%;opacity:1;" data-100p-start="top:-50%;opacity:0;"> 
+  <div class="stamp"> 
     <div class="header"><h1><%= t('app.common.app_name') %></h1></div>
     <div class="doughnut"></div>
     <div class="logo-small">
@@ -32,7 +34,7 @@
     </div>
   </div>
   <% if @about %>        
-    <div class="about" data-0p-start="top:150%;opacity:0;" data-100p-start="top:110%;opacity:1.0;" >
+    <div class="about">
       <%= simple_format(@about) %>
     </div>       
   <% end %>
