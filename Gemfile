@@ -29,6 +29,7 @@ gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser det
 #gem "rails_autolink", "~> 1.0.9" # convert string to link if it is url
 #gem 'acts_as_commentable', '2.0.1' #comments
 #gem "paper_trail", "~> 2.6.3" # keep audit log of all transactions
+gem 'tinymce-rails', "~> 3.5.8" #tinymce editor https://github.com/spohlenz/tinymce-rails/tree/tinymce-4
 
 # Gems used only for assets and not required
 # in production environments by default.

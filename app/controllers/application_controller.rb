@@ -105,7 +105,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     end
 
     if story.present?
-      x << view_context.simple_format(story.clone) 
+      x << view_context.simple_format_no_tags(story.clone) 
     end
     
     # add social links

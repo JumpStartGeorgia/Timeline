@@ -1,3 +1,6 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+
 <%= semantic_form_for([:admin,@event]) do |f| %>
 	<%= f.error_messages %>
 
@@ -18,7 +21,7 @@
 			  <h3><%= t("app.language.#{trans.locale}") %></h3>
 
 			  <%= translation.input :headline %>
-			  <%= translation.input :story, :input_html => {:rows => 4} %>
+			  <%= translation.input :story, :as => :text, :input_html => {:class => "tinymce", :rows => 10} %>
 			  <%= translation.input :media %>
 			  <%= translation.input :credit %>
 			  <%= translation.input :caption %>
