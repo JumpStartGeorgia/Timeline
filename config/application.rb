@@ -51,7 +51,8 @@ module BootstrapStarter
     # tell the assest pipeline to add the public/locale dir as assets path
     config.assets.paths << "#{Rails.root}/public/css/"
     config.assets.paths << "#{Rails.root}/public/locale/"
-
+    config.assets.precompile << "tinymce-jquery.js"
+    
     # tell the assest pipeline to include the fancybox.js and font styles
     config.assets.precompile += ['fonts_en.css', 'fonts_ka.css', 'timeline-min.js', 'timeline.css']
 
