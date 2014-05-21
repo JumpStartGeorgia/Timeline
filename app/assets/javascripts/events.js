@@ -36,7 +36,7 @@ $(document).ready(function(){
 			separator: ' ',
 			changeMonth: true,
       changeYear: true,
-      yearRange: "1790:2020",
+      yearRange: "1700:2020",
 	    onClose: function(dateText, inst) {
 		    if (endDateTextBox.val() != '') {
 			    var testStartDate = startDateTextBox.datepicker('getDate');
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			separator: ' ',
 			changeMonth: true,
       changeYear: true,
-      yearRange: "1790:2020",
+      yearRange: "1700:2020",
 	    onClose: function(dateText, inst) {
 		    if (startDateTextBox.val() != '') {
 			    var testStartDate = startDateTextBox.datepicker('getDate');
