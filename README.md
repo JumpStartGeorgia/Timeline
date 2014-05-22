@@ -1,4 +1,4 @@
-#Election Timeline
+#Gudiashvili Timeline
 
 This is a rails app that uses timeline.js to render events in a nice timeline format.  Features of the site include:
 * TimelineJS - https://github.com/VeriteCo/TimelineJS/
