@@ -45,6 +45,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
 	def preload_global_variables
     @categories = Category.by_type(Category::TYPES[:category]).with_events
+    @tags = Category.by_type(Category::TYPES[:tag])
 	end
 
 	def set_locale

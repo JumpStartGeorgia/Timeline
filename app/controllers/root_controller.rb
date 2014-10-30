@@ -6,9 +6,14 @@ class RootController < ApplicationController
 
   def index
     
-    if params[:category].blank? && params[:tag].blank?
+    # if the category params does not exist or is not valid, reset it
+    if (params[:category].blank? && params[:tag].blank?) || @categories.map{|x| x.permalink}.index(params[:category]).nil?
       # default to latest year
       params[:category] = @categories[@categories.length-1].permalink
+    end
+
+    if params[:tag].present? && @tags.map{|x| x.permalink}.index(params[:tag]).nil?
+      params[:tag] = nil
     end
 
     @events = get_event_json
