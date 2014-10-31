@@ -50,10 +50,6 @@ group :development do
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
 end
 
-group :staging do
-	gem "unicorn", "~> 4.2.1" # http server
-end
-
-group :production do
-	gem "unicorn", "~> 4.2.1" # http server
+group :staging, :production do
+	gem "unicorn", "~> 4.2.1" # rails server
 end
