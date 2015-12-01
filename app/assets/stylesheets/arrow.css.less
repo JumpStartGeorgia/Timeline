@@ -1,3 +1,23 @@
+.arrow {
+  float:left;
+  position:relative;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 3em 3em 0 3em;
+  border-color: #ffffff transparent transparent transparent;
+  -webkit-transform:rotate(360deg);/* added for better anti-aliasing on webkit browsers */
+  opacity: .5;
+          animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+          animation-name: arrows;
+  -webkit-animation-name: arrows;
+          animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+          animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+}
+
 .arrow-wrap {
   position:absolute;
   z-index:160;
@@ -11,25 +31,6 @@
   border-radius:50%;
   font-size:0.5em;
   display:block;
-  .arrow {
-    float:left;
-    position:relative;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 3em 3em 0 3em;
-    border-color: #ffffff transparent transparent transparent;
-    -webkit-transform:rotate(360deg);/* added for better anti-aliasing on webkit browsers */
-    opacity: .5;
-            animation-duration: 1.5s;
-    -webkit-animation-duration: 1.5s;
-            animation-name: arrows;
-    -webkit-animation-name: arrows;
-            animation-iteration-count: infinite;
-    -webkit-animation-iteration-count: infinite;
-            animation-direction: alternate;
-    -webkit-animation-direction: alternate;
-  }
 
   @-webkit-keyframes arrows {
     from {
