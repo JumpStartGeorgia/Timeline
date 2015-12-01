@@ -47,8 +47,8 @@ end
 group :development do
 #	gem "mailcatcher", "0.5.5" # small smtp server for dev, http://mailcatcher.me/
 #	gem "wkhtmltopdf-binary", "~> 0.9.5.3" # web kit that takes html and converts to pdf
-  gem 'rb-inotify', '~> 0.8.8' # rails dev boost needs this
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
+  # gem 'rb-inotify', '~> 0.8.8' # rails dev boost needs this
+  # gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
 end
 
 group :staging do
