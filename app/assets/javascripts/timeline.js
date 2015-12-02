@@ -230,7 +230,7 @@ $(document).ready(function() {
     window.onresize = function()
     {
       panoramaResize();
-      $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()-$('footer').height()) + "px");
+      $('#timeline-embed').css('height', String($(window).height()-$('footer').height()) + "px");
     }
 
     // if this is not a small screen, turn on the scrolling panaorama
