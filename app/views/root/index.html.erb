@@ -1,15 +1,18 @@
+<header>
 
-<% I18n.available_locales.each do |locale| %>
-  <% if locale != I18n.locale %>
-    <div class="lang_switcher"><%= generate_language_switcher_link(locale,true) %></div>
+  <% I18n.available_locales.each do |locale| %>
+    <% if locale != I18n.locale %>
+      <div class="lang_switcher"><%= generate_language_switcher_link(locale,true) %></div>
+    <% end %>
   <% end %>
-<% end %>
 
-<h1 class="heading mod-home-page-primary">
-  <%= t('app.common.app_name') %>
-</h1>
+  <h1 class="heading mod-home-page-primary">
+    <%= t('app.common.app_name') %>
+  </h1>
 
- <div  class="panorama-wrapper">
+</header>
+
+ <section class="panorama-wrapper">
      <img
         data-frames='2172'
         data-image='/assets/bg_image.jpg'
@@ -26,15 +29,15 @@
         id='panorama'
         responsive='false'
         />
-</div>
+</section>
 
 <% if @about %>
-  <div class="about">
+  <section class="about">
     <%= simple_format(@about) %>
-  </div>
+  </section>
 <% end %>
 
-<div class="timeline row-fluid">
+<section class="timeline row-fluid">
   <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -130,4 +133,4 @@
         </div>
       </footer>
     </div>
-</div>
+</section>
