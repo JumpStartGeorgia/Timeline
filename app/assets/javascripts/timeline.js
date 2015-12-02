@@ -256,10 +256,6 @@ $(document).ready(function() {
       //invert the percentage
       position = 1 - position;
 
-      //define arrow opacity as based on how far up the page the user has scrolled
-      //no scrolling = 1, half-way up the page = 0
-      $('.js-transition-arrow-wrap-opacity').css('opacity', position);
-
     });
 
   }
