@@ -42,7 +42,7 @@
               </ul>
             <% end %>
 
-            
+
 	          <ul class="nav">
 		          <% if user_signed_in? %>
 				        <li class="dropdown">
@@ -64,7 +64,7 @@
                  			<li>
                        <%= link_to t('.users'), admin_users_path %>
                       </li>
-                    <% end %> 		
+                    <% end %>
 						        <li>
 				 		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
 										</li>
@@ -114,7 +114,7 @@
 
     <div class="push"><!--//--></div>
 
-    <footer class="clear">
+    <footer class="clear js-get-footer-height">
 			<div id="left">
 		  </div>
 		  <div id="middle">

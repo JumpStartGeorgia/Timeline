@@ -25,7 +25,7 @@ var hash_marker = '#!';
 		    type:		'timeline',
 		    width:		'100%',
         lang:     I18n.locale,
-		    height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
+		    height:		String($(window).height()-$('.navbar').height()-$('.js-get-footer-height').height()),
 		    source:		timeline_data,
 		    embed_id:	'timeline-embed',
         hash_unique_bookmark: true,
@@ -230,7 +230,7 @@ $(document).ready(function() {
     window.onresize = function()
     {
       panoramaResize();
-      $('#timeline-embed').css('height', String($(window).height()-$('footer').height()) + "px");
+      $('#timeline-embed').css('height', String($(window).height()-$('.js-get-footer-height').height()) + "px");
     }
 
     // if this is not a small screen, turn on the scrolling panaorama
