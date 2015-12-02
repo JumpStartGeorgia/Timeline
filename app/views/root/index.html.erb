@@ -120,19 +120,18 @@
     <% else %>
       <div id="timeline-embed"></div>
     <% end %>
-
-
-    <div class="footer"  >
-      <footer class="clear" >
-        <div id="left">
-          &copy; <%= Time.now.year %>
-        </div>
-        <div id="middle">
-        </div>
-        <div id="right" class="clear">
-          <%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
-              :title => t("layouts.application.js_link_title") ) %>
-        </div>
-      </footer>
-    </div>
 </section>
+
+<div class="footer"  >
+  <footer class="clear" >
+    <div id="left">
+      &copy; <%= Time.now.year %>
+    </div>
+    <div id="middle">
+    </div>
+    <div id="right" class="clear">
+      <%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
+          :title => t("layouts.application.js_link_title") ) %>
+    </div>
+  </footer>
+</div>
