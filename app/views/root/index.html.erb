@@ -5,36 +5,34 @@
   <% end %>
 <% end %>
 
-<div class="intro">
-  <h1 class="heading mod-home-page-primary">
-    <%= t('app.common.app_name') %>
-  </h1>
+<h1 class="heading mod-home-page-primary">
+  <%= t('app.common.app_name') %>
+</h1>
 
-   <div  class="panorama-wrapper">
-       <img
-          data-frames='2172'
-          data-image='/assets/bg_image.jpg'
-          data-indicator='0'
-          data-speed='0.01'
-          data-delay='5'
-          data-stitched='4344'
-          data-cursor='hand'
-          data-frame='692.4'
-          data-duration='120'
-          data-orig-height='800'
-          data-orig-width='4344'
-          width='100%'
-          id='panorama'
-          responsive='false'
-          />
-  </div>
+ <div  class="panorama-wrapper">
+     <img
+        data-frames='2172'
+        data-image='/assets/bg_image.jpg'
+        data-indicator='0'
+        data-speed='0.01'
+        data-delay='5'
+        data-stitched='4344'
+        data-cursor='hand'
+        data-frame='692.4'
+        data-duration='120'
+        data-orig-height='800'
+        data-orig-width='4344'
+        width='100%'
+        id='panorama'
+        responsive='false'
+        />
+</div>
 
-  <% if @about %>
-    <div class="about">
-      <%= simple_format(@about) %>
-    </div>
-  <% end %>
+<% if @about %>
+  <div class="about">
+    <%= simple_format(@about) %>
   </div>
+<% end %>
 
 <div class="timeline row-fluid">
   <div class="navbar navbar-inverse">
