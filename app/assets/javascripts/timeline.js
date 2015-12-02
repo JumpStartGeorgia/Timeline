@@ -25,7 +25,7 @@ var hash_marker = '#!';
 		    type:		'timeline',
 		    width:		'100%',
         lang:     I18n.locale,
-		    height:		String($(window).height()-$('.navbar').height()-$('.js-get-footer-height').height()),
+		    height:		String($(window).height()-$('.js-get-footer-height').height()),
 		    source:		timeline_data,
 		    embed_id:	'timeline-embed',
         hash_unique_bookmark: true,
