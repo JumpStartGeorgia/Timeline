@@ -214,109 +214,106 @@ $(document).ready(function() {
 
   });
 
-  if (gon.show_timeline){
-    // clone the json data so searching can search through the original
-    timeline_data = JSON.parse(JSON.stringify(gon.json_data));
+	// clone the json data so searching can search through the original
+  timeline_data = JSON.parse(JSON.stringify(gon.json_data));
 
-    generate_timeline();
+  generate_timeline();
 
-    // create index of all items in timeline for searching
-    search_index = lunr(function () {
-      this.field('title'),
-      this.field('body'),
-      this.ref('id')
-    });
+  // create index of all items in timeline for searching
+  search_index = lunr(function () {
+    this.field('title'),
+    this.field('body'),
+    this.ref('id')
+  });
 
-    var s_title, s_body;
-    for (var i=0; i<gon.json_data.timeline.date.length; i++){
-      // remove any html and just keep plain text
-      search_index.add({
-        id: i,
-        title: change_geo_to_en(gon.json_data.timeline.date[i].headline),
-        body: change_geo_to_en($(gon.json_data.timeline.date[i].text).text())
-      })
-    };
-
-
-
-
-
-    // if url has hash
-    // - scroll down to timeline
-    // - and language link does not when page loads, add it
-    if (window.location.hash.length > 0){
-      $('.lang_switcher a').each(function(){
-        url_ary = $(this).attr('href').split('#');
-        $(this).attr('href', url_ary[0] + window.location.hash);
-      });
-
-      $('html, body').animate({
-        scrollTop: $("#timeline-embed").offset().top
-      }, 2000);
-    }
-
-    // if url has tag or category params, scroll down to timeline
-    (window.onpopstate = function () {
-        var match,
-            pl     = /\+/g,  // Regex for replacing addition symbol with a space
-            search = /([^&=]+)=?([^&]*)/g,
-            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-            query  = window.location.search.substring(1);
-
-        urlParams = {};
-        while (match = search.exec(query))
-           urlParams[decode(match[1])] = decode(match[2]);
-
-        if ('category' in urlParams || 'tag' in urlParams){
-          $('html, body').animate({
-            scrollTop: $("#timeline-embed").offset().top
-          }, 2000);
-        }
-    })();
-
-    // search box
-    var debounce = function (fn) {
-      var timeout
-      return function () {
-        var args = Array.prototype.slice.call(arguments),
-            ctx = this
-
-        clearTimeout(timeout)
-        timeout = setTimeout(function () {
-          fn.apply(ctx, args)
-        }, 500)
-      }
-    }
-
-    // perform search
-    $('input#search_box')
-    .bind('keyup', debounce(function () {
-      // if text length is 1 or the length has not changed (e.g., press arrow keys), do nothing
-      if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
-        return;
-      } else if ($(this).val().length == 0 && was_search_box_length > 0) {
-        reload_timeline();
-      } else {
-        search_timeline($(this).val());
-      }
-      was_search_box_length = $(this).val().length;
-    }))
-    .keyup(function () {
-      if ($(this).val().length == 0)
-      {
-        $(this).parent().removeClass('focused');
-      }
-      else
-      {
-        $(this).parent().addClass('focused');
-      }
+  var s_title, s_body;
+  for (var i=0; i<gon.json_data.timeline.date.length; i++){
+    // remove any html and just keep plain text
+    search_index.add({
+      id: i,
+      title: change_geo_to_en(gon.json_data.timeline.date[i].headline),
+      body: change_geo_to_en($(gon.json_data.timeline.date[i].text).text())
     })
-    .siblings('.imgs').children('img:last').click(function (){ $(this).parent().siblings('input').val('').keyup().focus(); });
-    // prevent the search box from submitting
-    $('input#search_box').submit(function () {
-      return false;
+  };
+
+
+
+
+
+  // if url has hash
+  // - scroll down to timeline
+  // - and language link does not when page loads, add it
+  if (window.location.hash.length > 0){
+    $('.lang_switcher a').each(function(){
+      url_ary = $(this).attr('href').split('#');
+      $(this).attr('href', url_ary[0] + window.location.hash);
     });
 
+    $('html, body').animate({
+      scrollTop: $("#timeline-embed").offset().top
+    }, 2000);
   }
+
+  // if url has tag or category params, scroll down to timeline
+  (window.onpopstate = function () {
+      var match,
+          pl     = /\+/g,  // Regex for replacing addition symbol with a space
+          search = /([^&=]+)=?([^&]*)/g,
+          decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+          query  = window.location.search.substring(1);
+
+      urlParams = {};
+      while (match = search.exec(query))
+         urlParams[decode(match[1])] = decode(match[2]);
+
+      if ('category' in urlParams || 'tag' in urlParams){
+        $('html, body').animate({
+          scrollTop: $("#timeline-embed").offset().top
+        }, 2000);
+      }
+  })();
+
+  // search box
+  var debounce = function (fn) {
+    var timeout
+    return function () {
+      var args = Array.prototype.slice.call(arguments),
+          ctx = this
+
+      clearTimeout(timeout)
+      timeout = setTimeout(function () {
+        fn.apply(ctx, args)
+      }, 500)
+    }
+  }
+
+  // perform search
+  $('input#search_box')
+  .bind('keyup', debounce(function () {
+    // if text length is 1 or the length has not changed (e.g., press arrow keys), do nothing
+    if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
+      return;
+    } else if ($(this).val().length == 0 && was_search_box_length > 0) {
+      reload_timeline();
+    } else {
+      search_timeline($(this).val());
+    }
+    was_search_box_length = $(this).val().length;
+  }))
+  .keyup(function () {
+    if ($(this).val().length == 0)
+    {
+      $(this).parent().removeClass('focused');
+    }
+    else
+    {
+      $(this).parent().addClass('focused');
+    }
+  })
+  .siblings('.imgs').children('img:last').click(function (){ $(this).parent().siblings('input').val('').keyup().focus(); });
+  // prevent the search box from submitting
+  $('input#search_box').submit(function () {
+    return false;
+  });
 
 });
