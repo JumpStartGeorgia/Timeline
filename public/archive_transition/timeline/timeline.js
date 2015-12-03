@@ -58,29 +58,6 @@ function generate_timeline(){
   }
 }
 
-var i = 0;
-
-// search for the provided text and then reload the timeline
-sabt = 0;
-function search_timeline(query){
-  var new_dates = search_index.search(change_geo_to_en(query)).map(function (result) {
-    return gon.json_data.timeline.date[parseInt(result.ref, 10)] }
-  );
-  if (new_dates.length == 0){
-    var alertbox = $('#search-alert'),
-    searchbox = $('#search_box');
-    alertbox.html(alertbox.html().replace(alertbox.data('query'), query)).data('query', query).stop(true, true).css({left: searchbox.offset().left, width: searchbox.outerWidth()}).fadeIn();
-    clearTimeout(sabt);
-    sabt = setTimeout(function (){ alertbox.fadeOut(); }, 4000);
-  }else{
-    timeline_data.timeline.date = new_dates;
-    $(global).unbind();
-    $('#timeline-embed').html('');
-    generate_timeline();
-    window.location.hash = "_";
-  }
-}
-
 // reload the timeline with all data
 function reload_timeline(){
   timeline_data = JSON.parse(JSON.stringify(gon.json_data));
