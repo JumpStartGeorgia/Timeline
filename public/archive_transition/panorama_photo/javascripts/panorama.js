@@ -2,11 +2,11 @@ $(document).ready(function() {
 
   // if screen is small, switch out the background image
   if ($(window).width() < 427){
-    $('#panorama').prop('src', '/assets/bg_mobile_small.jpg');
+    $('#panorama').prop('src', '/archive_transition/panorama_photo/images/bg_mobile_small.jpg');
   }else if ($(window).width() < 623){
-    $('#panorama').prop('src', '/assets/bg_mobile_big.jpg');
+    $('#panorama').prop('src', '/archive_transition/panorama_photo/images/bg_mobile_big.jpg');
   }else{
-    $('#panorama').prop('src', '/assets/bg_static.jpg');
+    $('#panorama').prop('src', '/archive_transition/panorama_photo/images/bg_static.jpg');
   }
 
   // adjust image to start with statue in middle of circle
