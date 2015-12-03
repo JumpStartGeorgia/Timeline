@@ -10,8 +10,6 @@ $(document).ready(function() {
       $('#panorama').prop('src', '/assets/bg_static.jpg');
     }
 
-
-
     // adjust image to start with statue in middle of circle
     // formula: (frames to middle) - ( (1/2 width of screen) / (frame width) )
     var img_ratio = $(window).height() / $('#panorama').data('orig-height');
