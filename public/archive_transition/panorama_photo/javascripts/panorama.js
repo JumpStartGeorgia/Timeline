@@ -35,7 +35,6 @@ $(document).ready(function() {
   window.onresize = function()
   {
     panoramaResize();
-    $('#timeline-embed').css('height', String($(window).height()-$('.js-get-footer-height').height()) + "px");
   }
 
   // if this is not a small screen, turn on the scrolling panaorama
