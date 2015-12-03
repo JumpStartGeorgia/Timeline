@@ -96,49 +96,10 @@ $(document).ready(function() {
     $('#timeline-embed').css('height', String($(window).height()-$('.js-get-footer-height').height()) + "px");
   }
 
-  // as the window scrolls, hide the arrow
-  $(window).scroll( function(){
-
-    //get scroll position
-    var topWindow = $(window).scrollTop();
-    //multiply by 1.5 so the arrow will become transparent half-way up the page
-    var topWindow = topWindow * 1.5;
-
-    //get height of window
-    var windowHeight = $(window).height();
-
-    //set position as percentage of how far the user has scrolled
-    var position = topWindow / windowHeight;
-    //invert the percentage
-    position = 1 - position;
-
-  });
-
 	// clone the json data so searching can search through the original
   timeline_data = JSON.parse(JSON.stringify(gon.json_data));
 
   generate_timeline();
-
-  // create index of all items in timeline for searching
-  search_index = lunr(function () {
-    this.field('title'),
-    this.field('body'),
-    this.ref('id')
-  });
-
-  var s_title, s_body;
-  for (var i=0; i<gon.json_data.timeline.date.length; i++){
-    // remove any html and just keep plain text
-    search_index.add({
-      id: i,
-      title: change_geo_to_en(gon.json_data.timeline.date[i].headline),
-      body: change_geo_to_en($(gon.json_data.timeline.date[i].text).text())
-    })
-  };
-
-
-
-
 
   // if url has hash
   // - scroll down to timeline
