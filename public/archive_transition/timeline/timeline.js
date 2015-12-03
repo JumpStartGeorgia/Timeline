@@ -50,7 +50,6 @@ var hash_marker = '#!';
           url_ary = $(this).attr('href').split(hash_marker);
           $(this).attr('href', url_ary[0] + new_hash);
         });
-        load_social_buttons(new_hash.split(hash_marker)[1]);
 
       })
 
@@ -59,24 +58,6 @@ var hash_marker = '#!';
   }
 
   var i = 0;
-  // load the social buttons for the items in the timeline
-  function check_items (maxi)
-  {
-    if (i < maxi)
-    {
-      var id = location.hash.match(/[0-9]+$/);
-      if (id && $('#hidden_input_' + id[0]).length || $('.slider-item:last :input.hidden_input_id').length)
-      {
-        var id = id ? id[0] : $('.slider-item:last :input.hidden_input_id').val();
-        load_social_buttons(id);
-        $('.content .credit a').attr('target', '_blank');
-        i = 0;
-        return;
-      }
-      i ++;
-      setTimeout(check_items, 150, maxi);
-    }
-  }
 
   // search for the provided text and then reload the timeline
   sabt = 0;
@@ -106,88 +87,6 @@ var hash_marker = '#!';
     $('#timeline-embed').html('');
     generate_timeline();
     window.location.hash = "_";
-  }
-
-
-  function load_social_buttons(id)
-  {
-    var item = $('#hidden_input_' + id).closest('.slider-item');
-    if (item.length == 0)
-    {
-      return;
-    }
-
-    var socials = item.find('.event_social_links');
-    socials.children().not('.fbshare').each(function (){ this.innerHTML = ''; });
-
-    var url = location.href;
-    if (window.location.hash.length == 0){
-      // id is not in url yet, so add it for sharing
-      url += hash_marker + id;
-    }
-
-  /*
-    var sep = '><|-'.split(''),
-    sep_reg = [];
-    for (var i = 0; i < sep.length; i ++)
-    {
-      sep_reg.push('\\' + sep[i]);
-    }
-    sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
-    console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
-  */
-    var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
-
-    //var spans = new Array(5).join('<span></span>');
-    //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
-
-  /*
-    stWidget.addEntry({
-        "service": "facebook",
-        "element": socials.children('.st_facebook_hcount')[0],
-        "url": url,
-        "title": title,
-        "type": "hcount"
-    });
-  */
-
-//    var summary = item.find('.content .content-container .text .container p').text();
-//    var img = item.find('img.media-image').length ? item.find('img.media-image')[0].src : $('meta[property="og:image"]').attr('content');
-
-//    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
-
-      item.find('.fbshare').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
-/*
-    stWidget.addEntry({
-        "service": "facebook",
-        "element": socials.children('.st_facebook_custom')[0],
-        "url": url,
-        "title": title,
-        "image": img,
-        "type": "custom"
-    });
-*/
-
-$(socials.children('.st_twitter_custom')[0]).attr('st_url', url).attr('st_title', title);
-$(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_title', title);
-
-/*
-    stWidget.addEntry({
-        "service": "twitter",
-        "element": socials.children('.st_twitter_custom')[0],
-        "url": url,
-        "title": title,
-        "type": "custom"
-    });
-
-    stWidget.addEntry({
-        "service": "sharethis",
-        "element": socials.children('.st_sharethis_custom')[0],
-        "url": url,
-        "title": title,
-        "type": "custom"
-    });
-*/
   }
 
 $(document).ready(function() {
