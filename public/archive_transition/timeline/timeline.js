@@ -134,47 +134,4 @@ $(document).ready(function() {
       }
   })();
 
-  // search box
-  var debounce = function (fn) {
-    var timeout
-    return function () {
-      var args = Array.prototype.slice.call(arguments),
-          ctx = this
-
-      clearTimeout(timeout)
-      timeout = setTimeout(function () {
-        fn.apply(ctx, args)
-      }, 500)
-    }
-  }
-
-  // perform search
-  $('input#search_box')
-  .bind('keyup', debounce(function () {
-    // if text length is 1 or the length has not changed (e.g., press arrow keys), do nothing
-    if ($(this).val().length == 1 || $(this).val().length == was_search_box_length) {
-      return;
-    } else if ($(this).val().length == 0 && was_search_box_length > 0) {
-      reload_timeline();
-    } else {
-      search_timeline($(this).val());
-    }
-    was_search_box_length = $(this).val().length;
-  }))
-  .keyup(function () {
-    if ($(this).val().length == 0)
-    {
-      $(this).parent().removeClass('focused');
-    }
-    else
-    {
-      $(this).parent().addClass('focused');
-    }
-  })
-  .siblings('.imgs').children('img:last').click(function (){ $(this).parent().siblings('input').val('').keyup().focus(); });
-  // prevent the search box from submitting
-  $('input#search_box').submit(function () {
-    return false;
-  });
-
 });
