@@ -23,9 +23,13 @@ function generate_timeline(timeline_data){
   }
 }
 
+function timeline_events_json_url() {
+  return 'http://localhost:3000/ka/timeline_events.json';
+}
+
 function load_timeline() {
   $.getJSON(
-    'http://localhost:3000/ka/timeline_events.json',
+    timeline_events_json_url(),
     function(data) {
       generate_timeline(data)
     }
