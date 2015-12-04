@@ -6,7 +6,7 @@ BootstrapStarter::Application.routes.draw do
 	#--------------------------------
 	scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
-    
+
 		devise_for :users, :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 
 		match '/admin', :to => 'admin#index', :as => :admin, :via => :get
@@ -20,7 +20,8 @@ BootstrapStarter::Application.routes.draw do
       resources :categories
 		end
 
-    match "/fb_record/:id", :to => 'root#fb_record', :as => :fb_record, :via => :get, :defaults => {:format => 'json'}
+		match "/fb_record/:id", :to => 'root#fb_record', :as => :fb_record, :via => :get, :defaults => {:format => 'json'}
+    match "/timeline_events", :to => 'root#timeline_events', :via => :get, :defaults => {:format => 'json'}
 
 		root :to => 'root#index'
 	  match "*path", :to => redirect("/#{I18n.default_locale}") # handles /en/fake/path/whatever
