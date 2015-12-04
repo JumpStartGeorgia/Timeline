@@ -5,7 +5,7 @@ function generate_timeline(){
     createStoryJS({
 	    type:		'timeline',
 	    width:		'100%',
-      lang:     I18n.locale,
+      lang:     'ka',
 	    height:		String($(window).height()-$('.js-get-footer-height').height()),
 	    source:		timeline_data,
 	    embed_id:	'timeline-embed',
