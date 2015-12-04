@@ -1,7 +1,5 @@
-var timeline_data;
-
-function generate_timeline(){
-  if (!$.isEmptyObject(gon.json_data)){
+function generate_timeline(timeline_data){
+  if (!$.isEmptyObject(timeline_data)){
     createStoryJS({
 	    type:		'timeline',
 	    width:		'100%',
@@ -15,26 +13,21 @@ function generate_timeline(){
 	    start_at_end: true
     });
   }
-}
-
-// reload the timeline with all data
-function reload_timeline(){
-  timeline_data = JSON.parse(JSON.stringify(gon.json_data));
-  $(global).unbind();
-  $('#timeline-embed').html('');
-  generate_timeline();
-  window.location.hash = "_";
-}
-
-$(document).ready(function() {
 
   window.onresize = function() {
     $('#timeline-embed').css('height', String($(window).height()-$('.js-get-footer-height').height()) + "px");
   }
+}
 
-	// clone the json data so searching can search through the original
-  timeline_data = JSON.parse(JSON.stringify(gon.json_data));
+function load_timeline() {
+  $.getJSON(
+    'http://localhost:3000/ka/timeline_events.json',
+    function(data) {
+      generate_timeline(data)
+    }
+  );
+}
 
-  generate_timeline();
-
+$(document).ready(function() {
+  load_timeline();
 });
