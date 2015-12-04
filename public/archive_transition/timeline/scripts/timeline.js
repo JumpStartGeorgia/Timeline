@@ -35,7 +35,7 @@ function load_timeline() {
   $.getJSON(
     timeline_events_json_url(),
     function(data) {
-      generate_timeline(data)
+      generate_timeline(data);
     }
   );
 }
