@@ -2,8 +2,8 @@ function timeline_height() {
   return $(window).height();
 }
 
-function generate_timeline(timeline_data){
-  if (!$.isEmptyObject(timeline_data)){
+function generate_timeline(timeline_data) {
+  if (!$.isEmptyObject(timeline_data)) {
     createStoryJS({
 	    type:		'timeline',
 	    width:		'100%',
