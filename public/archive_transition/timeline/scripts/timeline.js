@@ -1,10 +1,14 @@
+function timeline_height() {
+  return $(window).height();
+}
+
 function generate_timeline(timeline_data){
   if (!$.isEmptyObject(timeline_data)){
     createStoryJS({
 	    type:		'timeline',
 	    width:		'100%',
       lang:     'ka',
-	    height:		String($(window).height()-$('.js-get-footer-height').height()),
+	    height:		String(timeline_height()),
 	    source:		timeline_data,
 	    embed_id:	'timeline-embed',
       hash_unique_bookmark: true,
@@ -15,7 +19,7 @@ function generate_timeline(timeline_data){
   }
 
   window.onresize = function() {
-    $('#timeline-embed').css('height', String($(window).height()-$('.js-get-footer-height').height()) + "px");
+    $('#timeline-embed').css('height', String(timeline_height() + "px"));
   }
 }
 
