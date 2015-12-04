@@ -5,38 +5,38 @@
   <% end %>
 <% end %>
 
-<div class="intro"> 
+<div class="intro">
    <div  class="panorama-wrapper">
-       <img 
-          data-frames='2172' 
-          data-image='/assets/bg_image.jpg' 
-          data-indicator='0' 
-          data-speed='0.01' 
+       <img
+          data-frames='2172'
+          data-image='/assets/bg_image.jpg'
+          data-indicator='0'
+          data-speed='0.01'
           data-delay='5'
-          data-stitched='4344'  
+          data-stitched='4344'
           data-cursor='hand'
           data-frame='692.4'
           data-duration='120'
           data-orig-height='800'
           data-orig-width='4344'
           width='100%'
-          id='panorama' 
+          id='panorama'
           responsive='false'
           />
-  </div>   
-  <div class="stamp"> 
+  </div>
+  <div class="stamp">
     <div class="header"><h1><%= t('app.common.app_name') %></h1></div>
     <div class="doughnut"></div>
-    <div class="logo-small">
+    <div class="arrow-wrap-container">
       <div class="arrow-wrap">
         <span class="arrow"></span>
-      </div>    
+      </div>
     </div>
   </div>
-  <% if @about %>        
+  <% if @about %>
     <div class="about">
       <%= simple_format(@about) %>
-    </div>       
+    </div>
   <% end %>
   </div>
 
@@ -50,7 +50,6 @@
             <span class="icon-bar"></span>
           </button>
           <%= link_to root_path(:locale => I18n.locale),:class=>"brand font" do %>
-            <%= image_tag 'logo_small.png' %>
             <span><%= t('app.common.app_name') %></span>
           <% end %>
           <div class="pull-right">
@@ -101,13 +100,13 @@
                         <li>
                          <%= link_to t('.users'), admin_users_path %>
                         </li>
-                      <% end %>     
+                      <% end %>
                       <li>
                        <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
                       </li>
                     </ul>
                   </li>
-                <% end %>     
+                <% end %>
               </ul>
             </div>
           </div>
@@ -116,13 +115,13 @@
     </div>
 
     <div id="search-alert" data-query="__query__"><%= t('layouts.timeline.search_result', :query => '__query__') %></div>
-    
+
     <% if @no_timeline_data %>
       <div id="no_data">
         <%= t('.no_data') %>
       </div>
     <% else %>
-      <div id="timeline-embed"></div>   
+      <div id="timeline-embed"></div>
     <% end %>
     <div class="footer"  >
       <footer class="clear" >
@@ -135,9 +134,6 @@
           <%= link_to(image_tag("jumpstart-logo.png"), "http://www.jumpstart.ge", :target => "_blank",
               :title => t("layouts.application.js_link_title") ) %>
         </div>
-      </footer> 
-    </div>   
+      </footer>
+    </div>
 </div>
-
-     
-

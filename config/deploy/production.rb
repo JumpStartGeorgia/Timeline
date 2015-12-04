@@ -1,7 +1,7 @@
 ##################################
 ##### SET THESE VARIABLES ########
 ##################################
-server "hamkari.ge", :web, :app, :db, primary: true # server where app is located
+server "gamma.jumpstart.ge", :web, :app, :db, primary: true # server where app is located
 set :application, "Gudiashvili-Timeline" # unique name of application
 set :user, "gudiashvili"# name of user on server
 set :ngnix_conf_file_loc, "production/nginx.conf" # location of nginx conf file

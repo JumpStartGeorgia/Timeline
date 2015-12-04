@@ -6,14 +6,6 @@ GIT
       jquery-rails
 
 GIT
-  remote: git://github.com/thedarkone/rails-dev-boost.git
-  revision: d21b297863221d6682a99c0207ac3d219a5e7ba4
-  specs:
-    rails-dev-boost (0.2.1)
-      listen (>= 0.5)
-      rails (>= 3.0)
-
-GIT
   remote: https://github.com/cgunther/formtastic-bootstrap.git
   revision: 3428fef4f7870b01241d65893b882ad32cfc18d8
   branch: bootstrap-2
@@ -95,7 +87,6 @@ GEM
       actionmailer (>= 3.0.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    ffi (1.7.0)
     formtastic (2.1.1)
       actionpack (~> 3.0)
     globalize3 (0.2.0)
@@ -125,7 +116,6 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.3.10.4)
-    listen (0.7.2)
     mail (2.3.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -178,8 +168,6 @@ GEM
       thor (~> 0.14.6)
     raindrops (0.10.0)
     rake (10.0.3)
-    rb-inotify (0.8.8)
-      ffi (>= 0.5.0)
     rdoc (3.12.1)
       json (~> 1.4)
     sass (3.2.1)
@@ -246,8 +234,6 @@ DEPENDENCIES
   paperclip (~> 3.4.0)
   psych (~> 1.2.2)
   rails (= 3.1.10)
-  rails-dev-boost!
-  rb-inotify (~> 0.8.8)
   sass-rails (= 3.1.4)
   therubyracer
   tinymce-rails (~> 3.5.8)

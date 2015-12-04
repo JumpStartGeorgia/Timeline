@@ -65,6 +65,12 @@ class RootController < ApplicationController
     end
   end
 
+	def timeline_events
+		respond_to do |format|
+			format.json { render json: get_event_json }
+		end
+	end
+
 private
 
   # format:
