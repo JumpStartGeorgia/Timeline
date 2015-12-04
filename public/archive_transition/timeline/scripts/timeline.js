@@ -1,3 +1,7 @@
+function timeline_language() {
+  return 'ka';
+}
+
 function timeline_height() {
   return $(window).height();
 }
@@ -7,7 +11,7 @@ function generate_timeline(timeline_data) {
     createStoryJS({
 	    type:		'timeline',
 	    width:		'100%',
-      lang:     'ka',
+      lang:     timeline_language(),
 	    height:		String(timeline_height()),
 	    source:		timeline_data,
 	    embed_id:	'timeline-embed',
@@ -24,8 +28,7 @@ function generate_timeline(timeline_data) {
 }
 
 function timeline_events_json_url() {
-  var locale = 'ka';
-  return 'http://localhost:3000/' + locale + '/timeline_events.json';
+  return 'http://localhost:3000/' + timeline_language() + '/timeline_events.json';
 }
 
 function load_timeline() {
