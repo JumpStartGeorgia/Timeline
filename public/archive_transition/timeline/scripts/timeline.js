@@ -1,5 +1,5 @@
 function timeline_language() {
-  return 'ka';
+  return $('html').prop('lang');
 }
 
 function timeline_height() {
