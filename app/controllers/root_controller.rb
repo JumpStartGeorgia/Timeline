@@ -21,7 +21,7 @@ class RootController < ApplicationController
         # remove input tag
         title_input = '<input type="hidden" class="title_here" />'.html_safe;
         @record['headline'].gsub!(title_input, '')
-        
+
         # only keep text in p tags
         texts = @record['text'].scan(/<p>(.*?)<\/p>/)
         if texts.present?
@@ -53,7 +53,7 @@ class RootController < ApplicationController
   def fb_record
     json = nil
     jsons = get_event_json
-    
+
     # pull out the specific record
     json = jsons['timeline']['date'].select{|x| x['id'] == params[:id]}.first
 
@@ -98,7 +98,7 @@ private
         title_input = '<input type="hidden" class="title_here" />'.html_safe;
 
         if title.present?
-          title = title.first            
+          title = title.first
           h["timeline"]["type"] = "default"
           h["timeline"]["id"] = record.id.to_s
           h["timeline"]["headline"] = title.headline + title_input # to find this from javascript
@@ -108,7 +108,7 @@ private
           h["timeline"]["asset"] = Hash.new
           if title.media_url.index('/system/') == 0
             h["timeline"]["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{title.media_url}"
-          else 
+          else
             h["timeline"]["asset"]["media"] = title.media_url
           end
 
@@ -119,7 +119,7 @@ private
           h["timeline"]["type"] = "default"
           h["timeline"]["headline"] = nil
         end
-        
+
         # now add all of the rest of the data
         if the_rest.present?
           the_rest.each do |record|
@@ -134,7 +134,7 @@ private
             x["asset"] = Hash.new
             if record.media_url.index('/system/') == 0
               x["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{record.media_url}"
-            else 
+            else
               x["asset"]["media"] = record.media_url
             end
             x["asset"]["credit"] = record.credit
@@ -142,7 +142,7 @@ private
           end
         end
       end
-      
+
       h.to_json
     }
 
