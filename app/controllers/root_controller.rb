@@ -67,7 +67,7 @@ class RootController < ApplicationController
 
 	def timeline_events
 		respond_to do |format|
-			format.json { render json: get_event_json }
+			format.json { render json: get_event_json, callback: params[:callback] }
 		end
 	end
 
