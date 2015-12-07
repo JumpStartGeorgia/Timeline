@@ -32,12 +32,22 @@ function timeline_events_json_url() {
 }
 
 function load_timeline() {
-  $.getJSON(
-    timeline_events_json_url(),
-    function(data) {
-      generate_timeline(data);
+  $.ajax({
+
+    url: timeline_events_json_url(),
+
+    // The name of the callback parameter, as specified by the YQL service
+    jsonp: "callback",
+
+    // Tell jQuery we're expecting JSONP
+    dataType: "jsonp",
+
+    // Work with the response
+    success: function(response) {
+      generate_timeline(response);
     }
-  );
+
+  });
 }
 
 $(document).ready(function() {
