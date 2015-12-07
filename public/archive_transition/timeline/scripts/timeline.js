@@ -28,7 +28,7 @@ function generate_timeline(timeline_data) {
 }
 
 function timeline_events_json_url() {
-  return 'http://localhost:3000/' + timeline_language() + '/timeline_events.json';
+  return 'http://gudiashvili.jumpstart.ge/'+ timeline_language() + '/timeline_events.json';
 }
 
 function load_timeline() {
