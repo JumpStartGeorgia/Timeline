@@ -39,6 +39,10 @@ body {
   font-family: 'adelle_georgian_thin' !important;
 }*/
 
+.vco-storyjs .vco-slider .nav-container .date {
+  line-height: normal;
+}
+
 .vco-storyjs .vco-feature .text h3 {
   font-family: 'adelle_georgian_bold' !important;
 }
