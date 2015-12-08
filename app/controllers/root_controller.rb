@@ -106,17 +106,20 @@ private
         if title.present?
           title = title.first
           h["timeline"]["type"] = "default"
-          h["timeline"]["id"] = record.id.to_s
+          h["timeline"]["id"] = title.id.to_s
           h["timeline"]["headline"] = title.headline + title_input # to find this from javascript
-          h["timeline"]["text"] = build_story(title.story, title.categories, title.tags, record.id)
+          h["timeline"]["text"] = build_story(title.story, title.categories, title.tags, title.id)
           h["timeline"]["startDate"] = title.start_datetime_timeline
           h["timeline"]["endDate"] = title.end_datetime_timeline
           h["timeline"]["asset"] = Hash.new
-          if title.media_url.index('/system/') == 0
-            h["timeline"]["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{title.media_url}"
-          else
-            h["timeline"]["asset"]["media"] = title.media_url
-          end
+
+					if title.media_url.present?
+						if title.media_url.index('/system/') == 0
+	            h["timeline"]["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{title.media_url}"
+	          else
+	            h["timeline"]["asset"]["media"] = title.media_url
+	          end
+					end
 
           h["timeline"]["asset"]["credit"] = title.credit
           h["timeline"]["asset"]["caption"] = title.caption
@@ -138,11 +141,15 @@ private
             x["startDate"] = record.start_datetime_timeline
             x["endDate"] = record.end_datetime_timeline
             x["asset"] = Hash.new
-            if record.media_url.index('/system/') == 0
-              x["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{record.media_url}"
-            else
-              x["asset"]["media"] = record.media_url
-            end
+
+						if record.media_url.present?
+							if record.media_url.index('/system/') == 0
+	              x["asset"]["media"] = "#{request.protocol}#{request.host_with_port}#{record.media_url}"
+	            else
+	              x["asset"]["media"] = record.media_url
+	            end
+						end
+
             x["asset"]["credit"] = record.credit
             x["asset"]["caption"] = record.caption
           end
