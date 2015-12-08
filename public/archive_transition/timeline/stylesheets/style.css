@@ -35,10 +35,6 @@ body {
   font-family: 'adelle_georgian_thin' !important;
 }
 
-/*.vco-storyjs .vco-feature h1, .vco-storyjs .vco-feature h2, .vco-storyjs .vco-feature h3, .vco-storyjs .vco-feature h4, .vco-storyjs .vco-feature h5, .vco-storyjs .vco-feature h6, .vco-storyjs h1, .vco-storyjs h2, .vco-storyjs h3, .vco-storyjs h4, .vco-storyjs h5, .vco-storyjs h6 {
-  font-family: 'adelle_georgian_thin' !important;
-}*/
-
 .vco-storyjs .vco-slider .nav-container .date {
   line-height: normal;
 }
