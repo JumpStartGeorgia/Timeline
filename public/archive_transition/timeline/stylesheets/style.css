@@ -10,20 +10,20 @@ body {
   font-family: 'adelle_georgian_thin';
   font-style: normal;
   font-weight: normal;
-  src: url('AdelleSansGeorbetaTh.eot'); /* IE9 Compat Modes */
-  src: url('AdelleSansGeorbetaTh.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('AdelleSansGeorbetaTh.woff') format('woff'), /* Pretty Modern Browsers */
-       url('AdelleSansGeorbetaTh.svg') format('svg'); /* Legacy iOS */
+  src: url('fonts/AdelleSansGeorbetaTh.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AdelleSansGeorbetaTh.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AdelleSansGeorbetaTh.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/AdelleSansGeorbetaTh.svg') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
   font-family: 'adelle_georgian_bold';
   font-style: normal;
   font-weight: normal;
-  src: url('AdelleSansGeorbeta-Bold.eot'); /* IE9 Compat Modes */
-  src: url('AdelleSansGeorbeta-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('AdelleSansGeorbeta-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-       url('AdelleSansGeorbeta-Bold.svg') format('svg'); /* Legacy iOS */
+  src: url('fonts/AdelleSansGeorbeta-Bold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AdelleSansGeorbeta-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AdelleSansGeorbeta-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/AdelleSansGeorbeta-Bold.svg') format('svg'); /* Legacy iOS */
 }
 
 /************************/
