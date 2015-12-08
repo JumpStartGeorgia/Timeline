@@ -41,6 +41,7 @@ body {
 
 .vco-storyjs .vco-feature .text h3 {
   font-family: 'adelle_georgian_bold' !important;
+  text-transform: uppercase !important;
 }
 
 .time-interval-major div {
