@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+}
+
+/*
+ * font-face best practices from:
+ * https://css-tricks.com/snippets/css/using-font-face/
+ */
+@font-face {
+  font-family: 'adelle_georgian_thin';
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/AdelleSans-Thin.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AdelleSans-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AdelleSans-Thin.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/AdelleSans-Thin.svg') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'adelle_georgian_bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/AdelleSans-Bold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AdelleSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AdelleSans-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/AdelleSans-Bold.svg') format('svg'); /* Legacy iOS */
+}
+
+/************************/
+/* timeline styles */
+
+.vco-storyjs p, .vco-storyjs div, .vco-storyjs blockquote, .vco-storyjs pre, .vco-storyjs a, .vco-storyjs abbr, .vco-storyjs acronym, .vco-storyjs address, .vco-storyjs cite, .vco-storyjs code, .vco-storyjs del, .vco-storyjs dfn, .vco-storyjs em, .vco-storyjs img, .vco-storyjs q, .vco-storyjs s, .vco-storyjs samp, .vco-storyjs small, .vco-storyjs strike, .vco-storyjs strong, .vco-storyjs sub, .vco-storyjs sup, .vco-storyjs tt, .vco-storyjs var, .vco-storyjs dd, .vco-storyjs dl, .vco-storyjs dt, .vco-storyjs li, .vco-storyjs ol, .vco-storyjs ul, .vco-storyjs fieldset, .vco-storyjs form, .vco-storyjs label, .vco-storyjs legend, .vco-storyjs button, .vco-storyjs table, .vco-storyjs tbody, .vco-storyjs tfoot, .vco-storyjs thead, .vco-storyjs tr, .vco-storyjs th, .vco-storyjs td, .vco-storyjs .vco-container, .vco-storyjs .content-container, .vco-storyjs .media, .vco-storyjs .text, .vco-storyjs .vco-slider, .vco-storyjs .slider, .vco-storyjs .date, .vco-storyjs .title, .vco-storyjs .messege, .vco-storyjs .map, .vco-storyjs .vco-feedback, .vco-storyjs .vco-feature, .vco-storyjs .toolbar, .vco-storyjs .marker, .vco-storyjs .dot, .vco-storyjs .line, .vco-storyjs .flag, .vco-storyjs .time, .vco-storyjs .era, .vco-storyjs .major, .vco-storyjs .minor, .vco-storyjs .vco-navigation, .vco-storyjs .start, .vco-storyjs .active,
+.vco-storyjs .timenav h1, .vco-storyjs .flag-content h1, .vco-storyjs .era h1, .vco-storyjs .timenav h2, .vco-storyjs .flag-content h2, .vco-storyjs .era h2, .vco-storyjs .timenav h3, .vco-storyjs .flag-content h3, .vco-storyjs .era h3, .vco-storyjs .timenav h4, .vco-storyjs .flag-content h4, .vco-storyjs .era h4, .vco-storyjs .timenav h5, .vco-storyjs .flag-content h5, .vco-storyjs .era h5, .vco-storyjs .timenav h6, .vco-storyjs .flag-content h6, .vco-storyjs .era h6,
+.vco-storyjs .twitter, .vco-storyjs .vcard, .vco-storyjs .messege, .vco-storyjs .zoom-in, .vco-storyjs .zoom-out, .vco-storyjs .back-home, .vco-storyjs .nav-container {
+  font-family: 'adelle_georgian_thin' !important;
+}
+
+.vco-storyjs.vco-timeline.vco-notouch .vco-container.vco-main .vco-feature .vco-slider .date {
+  line-height: normal;
+}
+
+.vco-storyjs .vco-feature .text h3 {
+  font-family: 'adelle_georgian_bold' !important;
+  text-transform: uppercase !important;
+}
+
+.time-interval-major div {
+  font-family: 'adelle_georgian_bold' !important;
+}
