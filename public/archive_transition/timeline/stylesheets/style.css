@@ -35,7 +35,7 @@ body {
   font-family: 'adelle_georgian_thin' !important;
 }
 
-.vco-storyjs .vco-slider .nav-container .date {
+.vco-storyjs.vco-timeline.vco-notouch .vco-container.vco-main .vco-feature .vco-slider .date {
   line-height: normal;
 }
 
