@@ -145,13 +145,19 @@ class Event < ActiveRecord::Base
     if json.present?
       Event.transaction do
         json.each_with_index do |record, index|
+          break if index > 10
+          puts "============"
           puts index
+          puts "============"
           # make sure times are in proper timezone
           e = Event.new(:event_type => record["event_type"],
                         :start_date => record["start_date"], 
                         :start_time => record["start_time"].present? ? Time.strptime(record["start_time"], '%H:%M') : nil, 
                         :end_date => record["end_date"], 
-                        :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil)
+                        :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil,
+                        :is_start_year_only => record["is_start_year_only"],
+                        :is_end_year_only => record["is_end_year_only"]
+                        )
 
           # if category value exists, add it
           if record["category"].present?
@@ -207,7 +213,9 @@ class Event < ActiveRecord::Base
                         :start_date => record["start_date"], 
                         :start_time => record["start_time"].present? ? Time.strptime(record["start_time"], '%H:%M') : nil, 
                         :end_date => record["end_date"], 
-                        :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil)
+                        :end_time => record["end_time"].present? ? Time.strptime(record["end_time"], '%H:%M') : nil,
+                        :is_start_year_only => record["is_start_year_only"],
+                        :is_end_year_only => record["is_end_year_only"])
 
           # if category value exists, add it
           if record["category"].present?

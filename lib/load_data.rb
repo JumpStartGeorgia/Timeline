@@ -2,7 +2,10 @@ module LoadData
 	require 'net/http'
 	require 'net/https'
   require 'json_cache'
-  
+
+# en_url = "https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json"
+# ka_url = "https://spreadsheets.google.com/feeds/list/1VzRim2UMlKY1jIQF1P_G93h6fer0zQeQTnEn6zu0F0c/od6/public/values?alt=json"
+
 
   def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
     en_json = format_data(en_url)
@@ -114,6 +117,10 @@ protected
         h["credit"] = j["gsx$mediacredit"].present? && j["gsx$mediacredit"]["$t"].present? ? j["gsx$mediacredit"]["$t"] : nil
         h["caption"] = j["gsx$mediacaption"].present? && j["gsx$mediacaption"]["$t"].present? ? j["gsx$mediacaption"]["$t"] : nil
         h["category"] = j["gsx$category"].present? && j["gsx$category"]["$t"].present? ? j["gsx$category"]["$t"] : nil
+
+        h["is_start_year_only"] = j["gsx$onlystartyear"]["$t"].present?
+        h["is_end_year_only"] = j["gsx$onlyendyear"]["$t"].present?
+
       end
     end
 

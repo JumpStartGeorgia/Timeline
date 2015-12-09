@@ -3,7 +3,14 @@ class EventTranslation < ActiveRecord::Base
 	require 'utf8_converter'
 
 	belongs_to :event
-	has_attached_file :media_img, :url => "/system/media_img/:id/:filename"
+	has_attached_file :media_img, 
+    :url => "/system/media_img/:id/:style/:filename",
+    :styles => {
+        :'processed' => {:geometry => "800>"}
+    },
+    :convert_options => { 
+      :'processed' => '-quality 85'
+    }
 
   attr_accessible :event_id, :locale, :headline, :story, :media, :credit, :caption,
     :media_img, :media_img_file_name, :media_img_content_type, :media_img_file_size, :media_img_updated_at, :media_img_verified
@@ -47,7 +54,7 @@ class EventTranslation < ActiveRecord::Base
         file = open(self.media)
         if file.present?
           case file.content_type
-          when "image/png", "image/gif", "image/jpeg"
+          when "image/png", "image/gif", "image/jpeg", "image/pjpeg"
             # create the file name that paperclip will read in
             extension = File.extname(URI.parse(self.media).path)
             # if extension is not in url, us the content type
@@ -61,6 +68,11 @@ class EventTranslation < ActiveRecord::Base
               "#{name}#{extension}"
             end
             self.media_img = file
+          else
+            puts "!!!!!!!!!!!!!!!!!!!!!"
+            puts self.media
+            puts "the file is not an image"
+            puts "!!!!!!!!!!!!!!!!!!!!!"
           end
           self.media_img_verified = true
         end
@@ -77,7 +89,7 @@ class EventTranslation < ActiveRecord::Base
 
   def media_url
     if self.media_img_file_name.present?
-      self.media_img.url
+      self.media_img.url(:processed)
     else
       self.media
     end

@@ -21,8 +21,8 @@ private
     events.map do |event|
       [
         link_to(I18n.t("helpers.links.view"), admin_event_path(:id => event.id, :locale => I18n.locale), :class => 'btn btn-mini'),
-        event.start_datetime_formatted,
-        event.end_datetime_formatted,
+        event.start_datetime_timeline,
+        event.end_datetime_timeline,
         event.headline,
         event.categories.present? ? event.categories.map{|x| x.name}.join(', ') : nil,
         event.tags.present? ? event.tags.map{|x| x.name}.join(', ') : nil,
