@@ -145,7 +145,6 @@ class Event < ActiveRecord::Base
     if json.present?
       Event.transaction do
         json.each_with_index do |record, index|
-          break if index > 10
           puts "============"
           puts index
           puts "============"
