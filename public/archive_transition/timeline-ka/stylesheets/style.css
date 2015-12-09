@@ -42,6 +42,15 @@ body {
 .vco-storyjs .vco-feature .text h3 {
   font-family: 'adelle_georgian_bold' !important;
   text-transform: uppercase !important;
+
+  /* Makes Georgian title appear above baseline (almost like uppercase) */
+  -webkit-font-feature-settings: "case"; /* No variation */
+     -moz-font-feature-settings: "case=1"; /* Firefox 4.0 to 14.0 */
+     -moz-font-feature-settings: "case"; /* Firefox 15.0 onwards */
+     -moz-font-feature-settings: "case" 1; /* Firefox 15.0 onwards explicitly set feature values */
+          font-feature-settings: "case"; /* No variation */
+
+  -webkit-font-smoothing:antialiased;
 }
 
 .time-interval-major div {
