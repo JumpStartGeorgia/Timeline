@@ -3,7 +3,7 @@ module LoadData
 	require 'net/https'
   require 'json_cache'
 
-# en_url = "https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json"
+# en_url = "https://spreadsheets.google.com/feeds/list/1jV1_gBjQnCCpg84BTgarTJCS_Z_nhKCY_u9sBYemKZY/od6/public/values?alt=json"
 # ka_url = "https://spreadsheets.google.com/feeds/list/1VzRim2UMlKY1jIQF1P_G93h6fer0zQeQTnEn6zu0F0c/od6/public/values?alt=json"
 
 
