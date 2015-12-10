@@ -96,7 +96,7 @@
 .vco-slider .nav-previous .date,.vco-slider .nav-previous .title{text-align:left;padding-left:15px;}
 .vco-slider .nav-next{float:right;text-align:right;}.vco-slider .nav-next .icon{margin-left:61px;background-image:url(timeline.png?v4.3);background-repeat:no-repeat;background-position:-184px 0;width:24px;height:24px;overflow:hidden;}
 .vco-slider .nav-next .date,.vco-slider .nav-next .title{text-align:right;padding-right:15px;}
-.vco-slider .slider-item{position:absolute;width:700px;height:100%;padding:0px;margin:0px;display:table;overflow-y:auto;}.vco-slider .slider-item .content{display:table-cell;vertical-align:middle;}.vco-slider .slider-item .content .pad-top .text .container{padding-top:15px;}
+.vco-slider .slider-item{position:absolute;width:700px;height:100%;padding:10px 0 0;margin:0px;display:table;overflow-y:auto;}.vco-slider .slider-item .content{display:table-cell;vertical-align:middle;}.vco-slider .slider-item .content .pad-top .text .container{padding-top:15px;}
 .vco-slider .slider-item .content .pad-right .text .container{padding-right:15px;}
 .vco-slider .slider-item .content .pad-left .text .container{padding-left:30px;}
 .vco-slider .slider-item .content .pad-left .media.text-media .media-wrapper .media-container{border:none;background-color:#ffffff;}
