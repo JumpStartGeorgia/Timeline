@@ -80,7 +80,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: Gudiashvili Timeline
+      app_name: '#TSU16'
       added_on: "Added on: %{date}"
     msgs:
       does_not_exist: You tried to access a page that does not exist.
