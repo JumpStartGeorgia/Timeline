@@ -21,13 +21,6 @@
 
           <div class="pull-right">
             <div class="nav-collapse collapse">
-              <% if @categories.present? %>
-                <ul id="category_nav" class="nav">
-                  <% @categories.each do |cat| %>
-                    <li><%= link_to cat.name, root_path(:category => cat.permalink) %></li>
-                  <% end %>
-                </ul>
-              <% end %>
               <form class="navbar-search">
                 <input id="search_box" type="text" class="search-query" placeholder="<%= t('.search')%>">
                 <div class="imgs">
