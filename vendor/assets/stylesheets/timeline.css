@@ -289,14 +289,6 @@
 	background: url('page_bg.png');
 }
 
-.marker .flag-content h3
-{
-	color:#ababab !important;
-}
-.marker.active .flag-content h3
-{
-	color:#c75619 !important;
-}
 .marker.active .dot
 {
 	background-color:#ac3e1c !important;

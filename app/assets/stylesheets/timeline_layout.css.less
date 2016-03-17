@@ -1,3 +1,5 @@
+@primary-color: #fccb8a;
+@secondary-color: #005297;
 
 /* timeline styles */
 body#body_timeline {
@@ -217,7 +219,7 @@ body#body_timeline {
     margin-bottom:0px;
   }
   .navbar .navbar-inner{
-    background: #005297;
+    background: @secondary-color;
 	  height: 70px;
 
     box-sizing:border-box;
@@ -355,7 +357,7 @@ body#body_timeline {
       float: left;
     }
     span{
-      color: #fccb8a;
+      color: @primary-color;
       display: inline-block;
       padding-top: 27px;
       padding-left: 10px;
@@ -574,7 +576,7 @@ body#body_timeline {
           width: 30px;
         }
         span{
-          color: #fccb8a;
+          color: @primary-color;
           padding-top: 20px;
         }
       }
@@ -647,7 +649,7 @@ body#body_timeline {
           width: 25px;
         }
         span{
-          color: #fccb8a;
+          color: @primary-color;
           padding-top: 14px;
         }
       }
@@ -745,4 +747,8 @@ body#body_timeline {
       }
     }
   }
+}
+
+.vco-timeline .vco-navigation .timenav .content .marker.active .flag .flag-content h3, .vco-timeline .vco-navigation .timenav .content .marker.active .flag-small .flag-content h3 {
+    color: @secondary-color;
 }
