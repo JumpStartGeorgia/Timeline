@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'bundler', '> 1.2.0'
-gem "rails", "3.1.10"
-gem "mysql2", "~> 0.3.11" # this gem works better with utf-8
+gem "rails", "~> 3.2.22"
+gem "mysql2", "~> 0.3.10" # this gem works better with utf-8
 
-gem "json"
+gem "json", "~> 1.8.2"
 gem "jquery-rails", "~> 1.0.19"
 #gem "fancybox-rails", "~> 0.1.4" # use fancybox js
 gem "devise", "~> 2.0.4" # user authentication
 gem "cancan", "~> 1.6.8" # user authorization
 gem "formtastic", "~> 2.1.1" # create forms easier
 gem "formtastic-bootstrap", :git => "https://github.com/cgunther/formtastic-bootstrap.git", :branch => "bootstrap-2"
-gem "nested_form", "~> 0.1.1", :git => "https://github.com/davidray/nested_form.git" # easily build nested model forms with ajax links
+gem "nested_form", "~> 0.3.2" # easily build nested model forms with ajax links
 gem "globalize3", "~> 0.2.0" # internationalization
-gem "psych", "~> 1.2.2" # yaml parser - default psych in rails has issues
+gem 'psych', '~> 2.0', '>= 2.0.17' # yaml parser - default psych in rails has issues
 gem "will_paginate", "~> 3.0.3" # add paging to long lists
 #gem "kaminari", "~> 0.14.1" # paging
 gem "gon", "~> 2.2.2" # push data into js
@@ -34,10 +34,10 @@ gem 'tinymce-rails', "~> 3.5.8" #tinymce editor https://github.com/spohlenz/tiny
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "sass-rails", "3.1.4"
-  gem "coffee-rails", "~> 3.1.1"
+  gem 'sass-rails', '~> 3.2', '>= 3.2.6'
+  gem 'coffee-rails', '~> 3.2', '>= 3.2.2'
   gem "uglifier", ">= 1.0.3"
-  gem "therubyracer"
+  gem 'therubyracer', '~> 0.12.2'
   gem "less-rails"
 	gem "twitter-bootstrap-rails", "~> 2.1.0"
   gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
@@ -51,10 +51,6 @@ group :development do
   # gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git' # speed up loading page in dev mode
 end
 
-group :staging do
-	gem "unicorn", "~> 4.2.1" # http server
-end
-
-group :production do
-	gem "unicorn", "~> 4.2.1" # http server
+group :staging, :production do
+	gem "unicorn", "~> 5.0.1" # http server
 end
