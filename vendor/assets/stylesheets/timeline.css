@@ -381,7 +381,7 @@
     position: absolute;
     left: 0;
   }
-  
+
   .vco-slider .nav-next .icon{
     margin-left: 67px;
     background-image: url(right.png);
@@ -442,7 +442,7 @@
 .vco-timeline .vco-navigation .timenav .content .marker .line .event-line,
 .vco-timeline .vco-navigation .timenav .content .marker.active .line .event-line{
 	background-color:#c5c5c5;
-	color:#c5c5c5;	
+	color:#c5c5c5;
 }
 
 .dot
@@ -450,5 +450,3 @@
 	background-color:#323232 !important;
 	color:#323232 !important;
 }
-
-
