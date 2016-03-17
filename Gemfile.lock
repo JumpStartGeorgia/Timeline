@@ -201,9 +201,10 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.9)
+    twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
       execjs
+      rails (>= 3.1)
       railties (>= 3.1)
     tzinfo (0.3.47)
     uglifier (2.7.2)
@@ -249,7 +250,7 @@ DEPENDENCIES
   sass-rails (~> 3.2, >= 3.2.6)
   therubyracer (~> 0.12.2)
   tinymce-rails (~> 3.5.8)
-  twitter-bootstrap-rails (~> 2.1.0)
+  twitter-bootstrap-rails (~> 2.2.8)
   uglifier (>= 1.0.3)
   unicorn (~> 5.0.1)
   useragent!
