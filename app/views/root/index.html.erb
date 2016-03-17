@@ -9,14 +9,16 @@
   <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container-fluid">
+          <%= link_to root_path(:locale => I18n.locale),:class=>"brand font" do %>
+            <span><%= t('app.common.app_name') %></span>
+          <% end %>
+
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to root_path(:locale => I18n.locale),:class=>"brand font" do %>
-            <span><%= t('app.common.app_name') %></span>
-          <% end %>
+
           <div class="pull-right">
             <div class="nav-collapse collapse">
               <% if @categories.present? %>

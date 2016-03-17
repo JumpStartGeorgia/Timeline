@@ -217,7 +217,7 @@ body#body_timeline {
     margin-bottom:0px;
   }
   .navbar .navbar-inner{
-    background: #242424;
+    background: #005297;
 	  height: 70px;
 
     box-sizing:border-box;
@@ -226,7 +226,9 @@ body#body_timeline {
 	  border: none;
 
     .container-fluid{
-      padding-right: 0;
+      padding: 0;
+      height: inherit;
+      width: inherit;
 
       .navbar-search{
         margin-right: 30px;
@@ -342,8 +344,9 @@ body#body_timeline {
   }
 
   .brand {
+    margin-left: 10px;
     padding:4px 0px 0px 7px;
-        font-size: 24px;
+    font-size: 24px;
 	  font-weight: bold;
     text-transform: uppercase;
     color: #fff !important;
@@ -358,8 +361,13 @@ body#body_timeline {
       padding-left: 10px;
     }
   }
-  .pull-right{
-    padding-top: 12px;
+  .pull-right {
+    @media (min-width: 979px) {
+      height: inherit;
+      background-color: black;
+      box-sizing: border-box;
+      padding: 10px;
+    }
   }
   /* timeline text styles */
   .story_cat_tags{
@@ -649,6 +657,7 @@ body#body_timeline {
       }
       button.btn-navbar {
         background: #3c3c3c;
+        margin-right: 60px;
         &:hover {
           background: #6c6c6c;
         }
