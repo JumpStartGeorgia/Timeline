@@ -81,7 +81,7 @@ en:
       new: New
     common:
       app_name: Gudiashvili Timeline
-      added_on: "Added on: %{date}" 
+      added_on: "Added on: %{date}"
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -144,4 +144,3 @@ en:
     index:
       no_data: I am sorry but there is no data to load into the timeline.
       search: Search
-
