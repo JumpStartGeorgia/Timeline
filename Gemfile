@@ -38,7 +38,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2', '>= 3.2.2'
   gem "uglifier", ">= 1.0.3"
   gem 'therubyracer', '~> 0.12.2'
-  gem "less-rails"
+  gem 'less-rails', '~> 2.6'
 	gem "twitter-bootstrap-rails", "~> 2.1.0"
   gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
   gem "jquery-ui-rails"
