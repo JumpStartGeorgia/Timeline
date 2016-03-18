@@ -260,7 +260,7 @@ body#body_timeline {
         .imgs {
           position: absolute;
           top: 13px;
-          right: 11px;
+          right: 20px;
           img {
             vertical-align: top;
             &:first-of-type {
@@ -678,10 +678,11 @@ body#body_timeline {
         margin-bottom: 0px;
       }
       button.btn-navbar {
-        background: #3c3c3c;
+        background: darken(@secondary-color, 5%);
         margin-right: 60px;
-        &:hover {
-          background: #6c6c6c;
+
+        .icon-bar {
+          background-color: @primary-color;
         }
       }
     }
