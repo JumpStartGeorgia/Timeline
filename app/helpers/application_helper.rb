@@ -3,6 +3,12 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def inline_svg(path)
+    File.open("app/assets/images/#{path}", 'rb') do |file|
+      raw file.read
+    end
+  end
+
 	def flash_translation(level)
     case level
     when :notice then "alert-info"
