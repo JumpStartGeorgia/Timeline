@@ -1,5 +1,10 @@
+require 'robots_generator'
+
 BootstrapStarter::Application.routes.draw do
 
+
+  # user robots generator to avoid non-production sites from being indexed
+  match '/robots.txt' => RobotsGenerator
 
 	#--------------------------------
 	# all resources should be within the scope block below
