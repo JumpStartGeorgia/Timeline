@@ -36,7 +36,7 @@
     <% if @record['asset']['media'].length > 1 && @record['asset']['media'].index(full_url('')) == 0  %>
     		<meta id="og_image" property="og:image" content="<%= @record['asset']['media'] %>" />
     <% else %>
-    		<meta id="og_image" property="og:image" content="<%= full_url(image_path('fb_share.jpg')) %>" />
+    		<meta id="og_image" property="og:image" content="<%= full_url(image_path("fb_share_#{I18n.locale}.jpg")) %>" />
     <% end %>
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
@@ -47,7 +47,7 @@
     <%= csrf_meta_tags %>
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag '/favicon.png?v1', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag '/favicon.ico?v1', :rel => 'shortcut icon' %>
     
 		<script type="text/javascript">
       
@@ -93,7 +93,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-12801815-32', 'jumpstart.ge');
+      ga('create', 'UA-12801815-52', 'auto');
       ga('send', 'pageview');
 
     </script>
