@@ -3,11 +3,11 @@ module LoadData
 	require 'net/https'
   require 'json_cache'
 
-# en_url = "https://spreadsheets.google.com/feeds/list/1jV1_gBjQnCCpg84BTgarTJCS_Z_nhKCY_u9sBYemKZY/od6/public/values?alt=json"
-# ka_url = "https://spreadsheets.google.com/feeds/list/1VzRim2UMlKY1jIQF1P_G93h6fer0zQeQTnEn6zu0F0c/od6/public/values?alt=json"
+  @en_url = "https://spreadsheets.google.com/feeds/list/10pXl1f7tVtruhy_n0GSEjvyfpyf-GeoYZcu45Imtr2w/od6/public/values?alt=json"
+  @ka_url = "https://spreadsheets.google.com/feeds/list/1jD5nQIlWZ2fdTwvXsvDDgQELAb5j5cVwIuHLRSOUvls/od6/public/values?alt=json"
 
 
-  def self.google_spreadsheet_json_multi_lang(ka_url, en_url)
+  def self.google_spreadsheet_json_multi_lang(ka_url = @ka_url, en_url = @en_url)
     en_json = format_data(en_url)
     ka_json = format_data(ka_url)
   
