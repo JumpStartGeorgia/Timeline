@@ -80,8 +80,12 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: '#TSU16'
+      app_name: '#TSU16 Timeline'
       added_on: "Added on: %{date}"
+      about_text: |
+        In March 2016, students of Tbilisi State University started rallies to protest a number of ongoing events in the university. Parallel to their rallies, students from the university's self-governance body organized protests, resulting in confrontations between the two groups of students and tense situations in the university yard and building.
+
+        JumpStart Georgia created a visual timeline of the events at Tbilisi State University which will be updated as events unfold.
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -95,7 +99,8 @@ en:
       about: About
       users: Users
       sign_out: Sign Out
-      js_link_title: JumpStart Georgia - Communicating Information Better
+      js: JumpStart Georgia
+      js_link_title: JumpStart Georgia - Informing communities with data and design
       js_link_text: Built by
     unsupported_browser:
       title: Unsupported Browser
@@ -108,7 +113,8 @@ en:
       Safari: Safari
       admin: Admin
       sign_out: Sign Out
-      js_link_title: JumpStart Georgia - Communicating Information Better
+      js: JumpStart Georgia
+      js_link_title: JumpStart Georgia - Informing communities with data and design
       js_link_text: Built by
     timeline:
       admin: Admin
@@ -117,7 +123,8 @@ en:
       about: About
       users: Users
       sign_out: Sign Out
-      js_link_title: JumpStart Georgia - Communicating Information Better
+      js: JumpStart Georgia
+      js_link_title: JumpStart Georgia - Informing communities with data and design
       js_link_text: Built by
       search: Search
       search_result: "Your search for \"%{query}\" returned 0 results."
@@ -144,8 +151,3 @@ en:
     index:
       no_data: I am sorry but there is no data to load into the timeline.
       search: Search
-      about_text: |
-        In March 2016, students of Tbilisi State University started rallies to protest a number of ongoing events in the university. Parallel to their rallies, students from the university's self-governance body organized protests, resulting in confrontations between the two groups of students and tense situations in the university yard and building.
-
-        JumpStart Georgia created a visual timeline of the events at Tbilisi State University which will be updated as events unfold.
-      
