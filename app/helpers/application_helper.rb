@@ -3,6 +3,12 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def inline_svg(path)
+    File.open("app/assets/images/#{path}", 'rb') do |file|
+      raw file.read
+    end
+  end
+
 	def flash_translation(level)
     case level
     when :notice then "alert-info"
@@ -38,11 +44,11 @@ module ApplicationHelper
 	def generate_language_switcher_link(locale,short = false)
     cat_permalink = nil
     tag_permalink = nil
-    
+
     if params[:category].present?
       cat_permalink = Category.get_differnt_locale_permalink(Category::TYPES[:category], locale, params[:category])
     end
-    
+
     if params[:tag].present?
       tag_permalink = Category.get_differnt_locale_permalink(Category::TYPES[:tag], locale, params[:tag])
     end
@@ -64,7 +70,7 @@ module ApplicationHelper
 			link_to link_text, params.merge(:locale => locale,
         :category => nil, :tag => nil)
     end
-    
+
   end
 
 	# put the default locale first and then sort the remaining locales
@@ -96,7 +102,7 @@ module ApplicationHelper
 	  end
     return trans
 	end
-	
+
 
 
 	# Based on https://gist.github.com/1182136
