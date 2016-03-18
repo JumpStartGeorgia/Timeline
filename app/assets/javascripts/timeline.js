@@ -36,7 +36,7 @@ function calculate_timeline_height() {
         hash_unique_bookmark: true,
         start_zoom_adjust: -1,
 		    debug:		false,
-		    start_at_end: true
+		    start_at_end: false
 	    });
 
 
