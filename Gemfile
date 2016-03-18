@@ -31,6 +31,8 @@ gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser det
 #gem "paper_trail", "~> 2.6.3" # keep audit log of all transactions
 gem 'tinymce-rails', "~> 3.5.8" #tinymce editor https://github.com/spohlenz/tinymce-rails/tree/tinymce-4
 
+gem 'test-unit', '~> 3.0' #required now for rails c
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
