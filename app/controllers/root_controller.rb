@@ -5,14 +5,14 @@ class RootController < ApplicationController
 	CACHE_KEY = "[locale]/[data]"
 
   def index
-    # get the about text
-    if File.exists?(@about_path)
-      about_text = JSON.parse(File.read(@about_path))
-      @about = about_text[I18n.locale.to_s]
-    end
+    # # get the about text
+    # if File.exists?(@about_path)
+    #   about_text = JSON.parse(File.read(@about_path))
+    #   @about = about_text[I18n.locale.to_s]
+    # end
 
     data = get_event_json
-@is_fb_robot = true
+    @is_fb_robot = true
     if @is_fb_robot && params['_escaped_fragment_'].present? && !params[:fb].present?
 #        @ajax_url = fb_record_path('xxx')
       # pull out the specific record
