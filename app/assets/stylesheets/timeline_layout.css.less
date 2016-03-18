@@ -1,4 +1,4 @@
-@primary-color: #fccb8a;
+@primary-color: #f4dfc3;
 @secondary-color: #005297;
 
 /* timeline styles */
@@ -152,7 +152,7 @@ body#body_timeline {
     position:fixed;
     top:-40px;
     right:-40px;
-    background-color: #c56d38;
+    background-color: @primary-color;
     color:#fff;
     font-weight: bold;
     font-size:17px;
@@ -160,14 +160,13 @@ body#body_timeline {
     border-radius: 100%;
     height:80px;
     width:80px;
-    opacity:0.67;
     z-index: 157;
     color:#fff;
     text-transform: uppercase;
 
     a
     {
-      color:#fff;
+      color: @secondary-color;
       text-decoration:none;
       position:relative;
       top:45px;
@@ -234,9 +233,9 @@ body#body_timeline {
 
       .about-link {
         float: left;
-        font-size: 1.5em;
+        font-size: 1.3em;
         padding: 10px;
-        padding-top: 12px;
+        padding-top: 14px;
 
         a {
           color: rgb(255, 255, 255);
@@ -249,8 +248,8 @@ body#body_timeline {
         padding-top: 4px;
         position: relative;
         input{
-          background: #3c3c3c;
-          border-color: #242424;
+          background: darken(@secondary-color, 5%);
+          border-color: rgba(255,255,255,0.5);;
           padding-right: 27px;
           color: #fff;
 	        -webkit-box-shadow: none;
@@ -360,7 +359,7 @@ body#body_timeline {
   .brand {
     margin-left: 10px;
     padding:4px 0px 0px 7px;
-    font-size: 24px;
+    font-size: 30px;
 	  font-weight: bold;
     text-transform: uppercase;
     color: #fff !important;
@@ -377,8 +376,6 @@ body#body_timeline {
   }
   .pull-right {
     @media (min-width: 979px) {
-      height: inherit;
-      background-color: black;
       box-sizing: border-box;
       padding: 10px 30px;
     }
@@ -699,6 +696,11 @@ body#body_timeline {
 
 @media (max-width: 767px) {
   body#body_timeline {
+
+    .brand {
+      margin-left: 0;  
+    }
+
     .intro
     {
       .stamp
