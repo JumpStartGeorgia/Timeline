@@ -260,7 +260,7 @@ body#body_timeline {
         .imgs {
           position: absolute;
           top: 13px;
-          right: 11px;
+          right: 20px;
           img {
             vertical-align: top;
             &:first-of-type {
@@ -678,10 +678,11 @@ body#body_timeline {
         margin-bottom: 0px;
       }
       button.btn-navbar {
-        background: #3c3c3c;
+        background: darken(@secondary-color, 5%);
         margin-right: 60px;
-        &:hover {
-          background: #6c6c6c;
+
+        .icon-bar {
+          background-color: @primary-color;
         }
       }
     }
@@ -698,7 +699,7 @@ body#body_timeline {
   body#body_timeline {
 
     .brand {
-      margin-left: 0;  
+      margin-left: 0;
     }
 
     .intro
@@ -765,6 +766,18 @@ body#body_timeline {
         top: 120%;
       }
     }
+  }
+}
+
+@media (max-width: 320px) {
+  body#body_timeline .navbar .navbar-inner .brand {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 300px) {
+  body#body_timeline .navbar .navbar-inner .brand {
+    font-size: 1.25em;
   }
 }
 

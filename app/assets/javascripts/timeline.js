@@ -10,7 +10,7 @@ var was_search_box_length = 0;
 var hash_marker = '#!';
   // lunr.js does not work with geo chars so convert to eng chars
   function change_geo_to_en(text){
-    var new_text = new String(text); 
+    var new_text = new String(text);
     if (I18n.locale == 'ka'){
       for (var i=0;i<geo_chars.length;i++){
         new_text = new_text.replace(new RegExp(geo_chars[i], "g"), eng_geo_chars[i]);
@@ -19,13 +19,18 @@ var hash_marker = '#!';
     return new_text;
   }
 
+function calculate_timeline_height() {
+	return String($(window).height()-$('.navbar').outerHeight()-$('footer').outerHeight());
+}
+
   function generate_timeline(){
+
     if (!$.isEmptyObject(gon.json_data)){
 	    createStoryJS({
 		    type:		'timeline',
 		    width:		'100%',
         lang:     I18n.locale,
-		    height:		String($(window).height()-$('.navbar').height()-$('footer').height()),
+		    height:		calculate_timeline_height(),
 		    source:		timeline_data,
 		    embed_id:	'timeline-embed',
         hash_unique_bookmark: true,
@@ -119,7 +124,7 @@ var hash_marker = '#!';
 
     var socials = item.find('.event_social_links');
     socials.children().not('.fbshare').each(function (){ this.innerHTML = ''; });
-    
+
     var url = location.href;
     if (window.location.hash.length == 0){
       // id is not in url yet, so add it for sharing
@@ -201,9 +206,9 @@ $(document).ready(function() {
     }else{
       $('#panorama').prop('src', '/assets/bg_static.jpg');
     }
-    
-    
-    
+
+
+
     // adjust image to start with statue in middle of circle
     // formula: (frames to middle) - ( (1/2 width of screen) / (frame width) )
     var img_ratio = $(window).height() / $('#panorama').data('orig-height');
@@ -218,10 +223,10 @@ $(document).ready(function() {
       var ratio = $(window).height() / $('#panorama').data('orig-height');
       var new_height = $('#panorama').data('orig-height') * ratio;
       var new_width = $('#panorama').data('orig-width') * ratio;
-      $('#panorama').css('height', new_height).css('background-size',  new_width + 'px ' + new_height + 'px');        
-//      $('#panorama').css('height', new_height).css('background-size',  '4344px ' + new_height + 'px');        
-//      $('#panorama').css('width', new_width);        
-      $('#panorama').data('stitched', new_width);        
+      $('#panorama').css('height', new_height).css('background-size',  new_width + 'px ' + new_height + 'px');
+//      $('#panorama').css('height', new_height).css('background-size',  '4344px ' + new_height + 'px');
+//      $('#panorama').css('width', new_width);
+      $('#panorama').data('stitched', new_width);
       $('#panorama-reel').css('height', $(window).height());
     }
     panoramaResize();
@@ -230,9 +235,9 @@ $(document).ready(function() {
     window.onresize = function()
     {
       panoramaResize();
-      $('#timeline-embed').css('height', String($(window).height()-$('.navbar').height()-$('footer').height()) + "px");
+      $('#timeline-embed').css('height', calculate_timeline_height() + "px");
     }
-    
+
     // if this is not a small screen, turn on the scrolling panaorama
     if ($(window).width() > 978){
       $('#panorama').data('frame', new_f);
@@ -247,11 +252,11 @@ $(document).ready(function() {
       var topWindow = $(window).scrollTop();
       //multiply by 1.5 so the arrow will become transparent half-way up the page
       var topWindow = topWindow * 1.5;
-      
+
       //get height of window
       var windowHeight = $(window).height();
-          
-      //set position as percentage of how far the user has scrolled 
+
+      //set position as percentage of how far the user has scrolled
       var position = topWindow / windowHeight;
       //invert the percentage
       position = 1 - position;
@@ -261,7 +266,7 @@ $(document).ready(function() {
       $('.arrow-wrap').css('opacity', position);
 
     });
-    
+
   }
 
   if (gon.show_timeline){
@@ -269,14 +274,14 @@ $(document).ready(function() {
     timeline_data = JSON.parse(JSON.stringify(gon.json_data));
 
     generate_timeline();
-    
+
     // create index of all items in timeline for searching
     search_index = lunr(function () {
       this.field('title'),
       this.field('body'),
       this.ref('id')
-    });    
-    
+    });
+
     var s_title, s_body;
     for (var i=0; i<gon.json_data.timeline.date.length; i++){
       // remove any html and just keep plain text
@@ -291,7 +296,7 @@ $(document).ready(function() {
 
 
 
-    // if url has hash 
+    // if url has hash
     // - scroll down to timeline
     // - and language link does not when page loads, add it
     if (window.location.hash.length > 0){
@@ -299,12 +304,12 @@ $(document).ready(function() {
         url_ary = $(this).attr('href').split('#');
         $(this).attr('href', url_ary[0] + window.location.hash);
       });
-      
+
       $('html, body').animate({
         scrollTop: $("#timeline-embed").offset().top
       }, 2000);
     }
-    
+
     // if url has tag or category params, scroll down to timeline
     (window.onpopstate = function () {
         var match,
@@ -316,13 +321,13 @@ $(document).ready(function() {
         urlParams = {};
         while (match = search.exec(query))
            urlParams[decode(match[1])] = decode(match[2]);
-           
+
         if ('category' in urlParams || 'tag' in urlParams){
           $('html, body').animate({
             scrollTop: $("#timeline-embed").offset().top
           }, 2000);
         }
-    })();    
+    })();
 
     // search box
     var debounce = function (fn) {
@@ -337,7 +342,7 @@ $(document).ready(function() {
         }, 500)
       }
     }
-        
+
     // perform search
     $('input#search_box')
     .bind('keyup', debounce(function () {
@@ -368,5 +373,5 @@ $(document).ready(function() {
     });
 
   }
-         
+
 });
