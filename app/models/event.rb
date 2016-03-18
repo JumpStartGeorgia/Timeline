@@ -23,7 +23,8 @@ class Event < ActiveRecord::Base
   end 
 
   def self.sorted
-    with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
+#    with_translations(I18n.locale).order("events.start_date, events.start_time, event_translations.headline")
+    with_translations(I18n.locale).order("events.start_date, events.start_time, events.id")
   end
 
   def self.with_filters
