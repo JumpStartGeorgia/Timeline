@@ -87,6 +87,7 @@ en:
 
         JumpStart Georgia created a visual timeline of the events at Tbilisi State University which will be updated as events unfold.
       hash_tag: TSU16
+      js: JumpStart Georgia
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
