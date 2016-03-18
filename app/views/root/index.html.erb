@@ -5,13 +5,13 @@
   <% end %>
 <% end %>
 
-<section class='about-container'>
+<section class='about-container is-hidden js-make-about-showable-hideable'>
 
   <div class='about-container-box'>
 
     <div class='about-container-box-header'>
 
-      <button class='about-container-box-header-exit'>
+      <button class='about-container-box-header-exit js-hide-about-box'>
         x
       </button>
 
@@ -53,7 +53,9 @@
                 </div>
               </form>
               <div class='about-link'>
-                <a href='#'><%= t('layouts.application.about') %></a>
+                <a href='#' class='js-show-about-box'>
+                  <%= t('layouts.application.about') %>
+                </a>
               </div>
               <ul id="social_links" class="nav">
                 <li>
