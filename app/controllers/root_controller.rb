@@ -11,6 +11,8 @@ class RootController < ApplicationController
     #   @about = about_text[I18n.locale.to_s]
     # end
 
+
+
     data = get_event_json
     @is_fb_robot = true
     if @is_fb_robot && params['_escaped_fragment_'].present? && !params[:fb].present?
@@ -42,6 +44,7 @@ class RootController < ApplicationController
       gon.show_timeline = gon.json_data.present?
       @no_timeline_data = !gon.show_timeline
       gon.is_home_page = true
+      gon.hash_tag = t('app.common.hash_tag')
 
       respond_to do |format|
         format.html { render :layout => 'timeline'}

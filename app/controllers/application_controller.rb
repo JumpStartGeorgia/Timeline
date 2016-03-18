@@ -111,9 +111,10 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     # add social links
     x << "<div class='event_social_links'>"
     x << '  <a class="fbshare" title="Facebook" href="" target="_blank"></a>'
+    x << '  <a class="twitter-share-button" title="Tweet" target="_blank"></a>'
 #    x << "  <span class='st_facebook_custom' displayText='Facebook' title='Facebook'></span>"
-    x << "  <span class='st_twitter_custom' displayText='Tweet' title='Tweet'></span>"
-    x << "  <span class='st_sharethis_custom' displayText='ShareThis' title='ShareThis'></span>"
+    # x << "  <span class='st_twitter_custom' displayText='Tweet' title='Tweet'></span>"
+    # x << "  <span class='st_sharethis_custom' displayText='ShareThis' title='ShareThis'></span>"
 
    #x << "  <span class='st_facebook_hcount' displayText='Facebook'></span>"
    #x << "  <span class='st_googleplus_hcount' displayText='Google +'></span>"

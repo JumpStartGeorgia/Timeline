@@ -141,7 +141,8 @@ function calculate_timeline_height() {
     sep_reg = new RegExp('(.|\\s)*\\s+(' + sep_reg.join('|') + ')+\\s+(.|\\s)+');
     console.log(sep_reg, 'soldier > timeline'.match(sep_reg));
   */
-    var title = item.find(':input.title_here').parent().text() + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
+    var twitter_title = item.find(':input.title_here').parent().text();
+    var title = twitter_title + ' - ' + $('meta[property="og:title"]').data('original-content');//if you don't specify the title, it'll automatically get og:title
 
     //var spans = new Array(5).join('<span></span>');
     //$('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
@@ -162,6 +163,8 @@ function calculate_timeline_height() {
 //    item.find('.fbshare').attr('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(img) + '&p[title]=' + title + '&p[summary]=' + summary);
 
       item.find('.fbshare').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+      item.find('.twitter-share-button').attr('href', 'https://twitter.com/share?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(twitter_title) + '&via=jsgeorgia&hashtags=' + gon.hash_tag)
+
 /*
     stWidget.addEntry({
         "service": "facebook",
@@ -173,8 +176,8 @@ function calculate_timeline_height() {
     });
 */
 
-$(socials.children('.st_twitter_custom')[0]).attr('st_url', url).attr('st_title', title);
-$(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_title', title);
+// $(socials.children('.st_twitter_custom')[0]).attr('st_url', url).attr('st_title', title);
+// $(socials.children('.st_sharethis_custom')[0]).attr('st_url', url).attr('st_title', title);
 
 /*
     stWidget.addEntry({
