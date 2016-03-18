@@ -43,7 +43,6 @@ class RootController < ApplicationController
       gon.json_data = data
       gon.show_timeline = gon.json_data.present?
       @no_timeline_data = !gon.show_timeline
-      gon.is_home_page = true
       gon.hash_tag = t('app.common.hash_tag')
 
       respond_to do |format|
