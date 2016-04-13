@@ -124,4 +124,24 @@ class Admin::EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+  # reload the data with the latest dataset
+  # - this will delete everything on file and
+  #   then load in the spreadsheets
+  def reload_data
+    require 'load_data'
+
+    Event.transaction do
+      # delete all events and reset the event id to 1
+      Event.destroy_all
+      ActiveRecord::Base.connection.execute('ALTER TABLE events AUTO_INCREMENT = 1;')
+
+      # load the spreadsheets
+      LoadData.google_spreadsheet_json_multi_lang
+    end
+
+    # show the new events
+    redirect_to admin_events_path, notice: t('app.msgs.events_reloaded')
+  end
 end

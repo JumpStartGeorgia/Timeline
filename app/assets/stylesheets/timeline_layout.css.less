@@ -1,4 +1,4 @@
-@primary-color: #f4dfc3;
+@primary-color: #fff;
 @secondary-color: #005297;
 
 /* timeline styles */
@@ -37,7 +37,7 @@ body#body_timeline {
 
     a
     {
-      color: @secondary-color;
+      color: #ff3432;
       text-decoration:none;
       position:relative;
       top:45px;
@@ -89,7 +89,17 @@ body#body_timeline {
     margin-bottom:0px;
   }
   .navbar .navbar-inner{
-    background: @secondary-color;
+    /*background: @secondary-color;*/
+    background:
+      linear-gradient(
+        150deg,
+        #bd0094,
+        #0c8dff,
+        #0eda13,
+        #f7e517,
+        #ff3432
+      );
+
 	  height: 70px;
 
     box-sizing:border-box;
@@ -119,8 +129,8 @@ body#body_timeline {
         padding-top: 4px;
         position: relative;
         input{
-          background: darken(@secondary-color, 5%);
-          border-color: rgba(255,255,255,0.5);;
+          background: rgba(255,255,255,0.3);
+          border-color: rgba(255,255,255,0.5);
           padding-right: 27px;
           color: #fff;
 	        -webkit-box-shadow: none;
@@ -449,11 +459,11 @@ body#body_timeline {
         margin-bottom: 0px;
       }
       button.btn-navbar {
-        background: darken(@secondary-color, 5%);
+        background: darken(@primary-color, 5%);
         margin-right: 60px;
 
         .icon-bar {
-          background-color: @primary-color;
+          background-color: #666;
         }
       }
     }

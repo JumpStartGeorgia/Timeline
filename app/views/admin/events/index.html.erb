@@ -6,6 +6,13 @@
 <%= link_to t('helpers.links.new'),
             new_admin_event_path,
             :class => 'btn btn-primary' %>
+
+<%= link_to t('.btn_reload_text'),
+            reload_data_admin_events_path,
+            :class => 'btn btn-warning',
+            :method => :post,
+            :data => { :confirm => t(".btn_reload_confirm") } %>
+
 </div>
 
 

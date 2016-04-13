@@ -80,19 +80,18 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: '#TSU16 Timeline'
+      app_name: 'LGBT Law Timeline'
       added_on: "Added on: %{date}"
       about_text: |
-        In March 2016, students of Tbilisi State University started rallies to protest a number of ongoing events in the university. Parallel to their rallies, students from the university's self-governance body organized protests, resulting in confrontations between the two groups of students and tense situations in the university yard and building.
-
-        JumpStart Georgia created a visual timeline of the events at Tbilisi State University which will be updated as events unfold.
-      hash_tag: TSU16
+        TBD...
+      hash_tag: lgbt
       js: JumpStart Georgia
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
       success_created: "%{obj} was successfully created."
       success_updated: "%{obj} was successfully updated."
+      events_reloaded: The events have been successfully reloaded from the spreadsheets.
   layouts:
     application:
       admin: Admin
@@ -149,6 +148,10 @@ en:
         title: New User
       show:
         title: User Details
+    events:
+      index:
+        btn_reload_text: Reload with Latest Spreadsheet Data
+        btn_reload_confirm: This will delete all events and any images that are on file. Are you sure? (this may take a minute to process)
   root:
     index:
       no_data: I am sorry but there is no data to load into the timeline.

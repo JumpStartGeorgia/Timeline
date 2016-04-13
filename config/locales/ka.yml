@@ -80,19 +80,18 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: '#თსუ16 ქრონიკა'
+      app_name: 'LGBT Law Timeline'
       added_on: "დამატებულია: %{date}"
       about_text: |
-        2016 წლის მარტში თბილისის სახელმწიფო უნივერსიტეტში დაიწყო სტუდენტების გამოსვლები, რომლებიც უნივერსიტეტში მიმდინარე რიგ საკითხებს აპროტესტებდნენ. მათი აქციის პარალელურად მოეწყო უნივერსიტეტის თვითმმართველობის აქციები, რამაც უნივერსიტეტის შენობასა და ეზოში სტუდენტების ორი ჯგუფის დაპირისპირება და მდგომარეობის უკიდურესად გამწვავება გამოიწვია.
-
-        ჯამპსტარტ ჯორჯიამ თბილისის სახელმწიფო უნივერსიტეტის გარშემო მიმდინარე მოვლენების ვიზუალური ქრონოლოგია შექმნა, რომელიც მოვლენათა განვითარების შესაბამისად განახლდება და საშუალებას მოგცემთ, თვალყური ადევნოთ უნივერსიტეტში მიმდინარე პროცესებს.
-      hash_tag: თსუ16
+        TBD...
+      hash_tag: lgbt
       js: ჯამპსტარტ ჯორჯია
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
       success_created: "%{obj} შექმნილია."
       success_updated: "%{obj} განახლებულია."
+      events_reloaded: The events have been successfully reloaded from the spreadsheets.
   layouts:
     application:
       admin: ადმინისტრატო
@@ -149,6 +148,10 @@ ka:
         title: ახალი მომხმარებელი
       show:
         title: მომხმარებლის დეტალები
+    events:
+      index:
+        btn_reload_text: Reload with Latest Spreadsheet Data
+        btn_reload_confirm: This will delete all events and any images that are on file. Are you sure? (this may take a minute to process)
   root:
     index:
       no_data: 'სამწუხაროდ, მონაცემები არ მოიპოვება "დროის ხაზზე" ჩასატვირთად'

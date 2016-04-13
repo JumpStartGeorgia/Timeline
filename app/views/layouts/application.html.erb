@@ -57,9 +57,9 @@
                			<li>
                      <%= link_to t('.events'), admin_events_path %>
                     </li>
-                    <li>
+                    <!--li>
                       <%= link_to t('.categories'), admin_categories_path  %>
-                    </li>
+                    </li-->
                     <% if current_user.role? User::ROLES[:user_manager] %>
                  			<li>
                        <%= link_to t('.users'), admin_users_path %>
