@@ -9,7 +9,7 @@
       title = content_for?(:title) ? ("#{yield(:title)} | #{t('app.common.app_name')}").html_safe :
         ("#{t('app.common.app_name')} | #{t('.js')}").html_safe
 
-      desc = t('app.common.about_text')
+      desc = @about_text
     %>
 
     <meta name="description" content="<%= desc %>">
