@@ -6,12 +6,10 @@ class RootController < ApplicationController
 
   def index
     # # get the about text
-    # if File.exists?(@about_path)
-    #   about_text = JSON.parse(File.read(@about_path))
-    #   @about = about_text[I18n.locale.to_s]
-    # end
-
-
+    if File.exists?(@about_path)
+      about_text = JSON.parse(File.read(@about_path))
+      @about_text = about_text[I18n.locale.to_s]
+    end
 
     data = get_event_json
     @is_fb_robot = true

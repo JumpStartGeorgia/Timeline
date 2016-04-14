@@ -82,8 +82,6 @@ ka:
     common:
       app_name: 'LGBT Law Timeline'
       added_on: "დამატებულია: %{date}"
-      about_text: |
-        TBD...
       hash_tag: lgbt
       js: ჯამპსტარტ ჯორჯია
     msgs:
