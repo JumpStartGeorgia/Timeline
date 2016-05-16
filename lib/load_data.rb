@@ -3,14 +3,14 @@ module LoadData
 	require 'net/https'
   require 'json_cache'
 
-  @en_url = "https://spreadsheets.google.com/feeds/list/10pXl1f7tVtruhy_n0GSEjvyfpyf-GeoYZcu45Imtr2w/od6/public/values?alt=json"
-  @ka_url = "https://spreadsheets.google.com/feeds/list/1jD5nQIlWZ2fdTwvXsvDDgQELAb5j5cVwIuHLRSOUvls/od6/public/values?alt=json"
+  @en_url = "https://spreadsheets.google.com/feeds/list/1lPf0T4LQ5rcjSa4ornrIaWiDIyp1-yi8-e_ikq9IUJY/od6/public/values?alt=json"
+  @ka_url = "https://spreadsheets.google.com/feeds/list/1kUzqsH4ayfv-6qv70YSWAySyaKf46DPqaeh-HVkpu-Y/od6/public/values?alt=json"
 
 
   def self.google_spreadsheet_json_multi_lang(ka_url = @ka_url, en_url = @en_url)
     en_json = format_data(en_url)
     ka_json = format_data(ka_url)
-  
+
     if en_json.present? && ka_json.present?
       Event.load_from_json_multi_lang(ka_json, en_json)
 
@@ -33,8 +33,8 @@ module LoadData
 
     return nil
   end
-  
-  
+
+
   # when the timeline was initialized, only english records existed
   # need to update these records to include the geo records
   def self.add_geo_to_eng
@@ -44,7 +44,7 @@ module LoadData
 
     en_json = format_data(en_url)
     ka_json = format_data(ka_url)
-  
+
     if en_json.present? && ka_json.present?
       Event.add_missing_geo_json_multi_lang(ka_json, en_json)
 
@@ -55,10 +55,10 @@ module LoadData
     return nil
   end
 
-protected 
+protected
   def self.format_data(url)
     formatted_json = []
-    
+
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
