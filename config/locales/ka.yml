@@ -80,7 +80,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: 'LGBT Law Timeline'
+      app_name: 'ქორწინების განსაზღვრება'
       added_on: "დამატებულია: %{date}"
       hash_tag: lgbt
       js: ჯამპსტარტ ჯორჯია

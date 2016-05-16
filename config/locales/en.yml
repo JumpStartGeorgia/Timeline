@@ -80,7 +80,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: 'LGBT Law Timeline'
+      app_name: 'Defining Marriage'
       added_on: "Added on: %{date}"
       hash_tag: lgbt
       js: JumpStart Georgia

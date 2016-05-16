@@ -3,30 +3,20 @@ module LoadData
 	require 'net/https'
   require 'json_cache'
 
-  # tsu @en_url = "https://spreadsheets.google.com/feeds/list/10pXl1f7tVtruhy_n0GSEjvyfpyf-GeoYZcu45Imtr2w/od6/public/values?alt=json"
-  # tsu @ka_url = "https://spreadsheets.google.com/feeds/list/1jD5nQIlWZ2fdTwvXsvDDgQELAb5j5cVwIuHLRSOUvls/od6/public/values?alt=json"
-
-  @en_url = "https://spreadsheets.google.com/feeds/list/1lPf0T4LQ5rcjSa4ornrIaWiDIyp1-yi8-e_ikq9IUJY/od6/public/values?alt=json"
-  @ka_url = "https://spreadsheets.google.com/feeds/list/1kUzqsH4ayfv-6qv70YSWAySyaKf46DPqaeh-HVkpu-Y/od6/public/values?alt=json"
+  @en_url = "https://spreadsheets.google.com/feeds/list/10pXl1f7tVtruhy_n0GSEjvyfpyf-GeoYZcu45Imtr2w/od6/public/values?alt=json"
+  @ka_url = "https://spreadsheets.google.com/feeds/list/1jD5nQIlWZ2fdTwvXsvDDgQELAb5j5cVwIuHLRSOUvls/od6/public/values?alt=json"
 
 
   def self.google_spreadsheet_json_multi_lang(ka_url = @ka_url, en_url = @en_url)
     en_json = format_data(en_url)
     ka_json = format_data(ka_url)
   
-    if has_data(en_json) && has_data(ka_json)
+    if en_json.present? && ka_json.present?
       Event.load_from_json_multi_lang(ka_json, en_json)
 
-    elsif has_data(en_json)
-      Event.load_from_json(en_json)
-
-    elsif has_data(ka_json)
-      Event.load_from_json(ka_json)
-
+      # clear the cache files so the new data is avaialble
+      JsonCache.clear
     end
-
-    # clear the cache files so the new data is avaialble
-    JsonCache.clear
 
     return nil
   end
@@ -34,7 +24,7 @@ module LoadData
   def self.google_spreadsheet_json(url)
 
     json = format_data(url)
-    if has_data(json)
+    if json.present?
       Event.load_from_json(json)
 
       # clear the cache files so the new data is avaialble
@@ -45,25 +35,25 @@ module LoadData
   end
   
   
-  # # when the timeline was initialized, only english records existed
-  # # need to update these records to include the geo records
-  # def self.add_geo_to_eng
-  #   # urls to jumpstart 2012 timeline
-  #   en_url = "https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json"
-  #   ka_url = "https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dFpyUXpIQXczc2N1WUZWV01UUlN3VFE/od6/public/values?alt=json"
+  # when the timeline was initialized, only english records existed
+  # need to update these records to include the geo records
+  def self.add_geo_to_eng
+    # urls to jumpstart 2012 timeline
+    en_url = "https://spreadsheets.google.com/feeds/list/0AmtLAgh5j8CydGxrdmtMRzJkTVJtczZNWGtBZlNnUVE/od6/public/values?alt=json"
+    ka_url = "https://spreadsheets.google.com/feeds/list/0AtUyMZoeaZt8dFpyUXpIQXczc2N1WUZWV01UUlN3VFE/od6/public/values?alt=json"
 
-  #   en_json = format_data(en_url)
-  #   ka_json = format_data(ka_url)
+    en_json = format_data(en_url)
+    ka_json = format_data(ka_url)
   
-  #   if en_json.present? && ka_json.present?
-  #     Event.add_missing_geo_json_multi_lang(ka_json, en_json)
+    if en_json.present? && ka_json.present?
+      Event.add_missing_geo_json_multi_lang(ka_json, en_json)
 
-  #     # clear the cache files so the new data is avaialble
-  #     JsonCache.clear
-  #   end
+      # clear the cache files so the new data is avaialble
+      JsonCache.clear
+    end
 
-  #   return nil
-  # end
+    return nil
+  end
 
 protected 
   def self.format_data(url)
@@ -135,13 +125,6 @@ protected
     end
 
     return formatted_json
-  end
-
-
-  # look at the first row and see if there is a start date and headline
-  # if not, assume there is no data
-  def self.has_data(json) 
-    return json.present? && !(json[0]['start_date'].nil? && json[0]['headline'].nil?) 
   end
 
 end

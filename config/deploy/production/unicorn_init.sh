@@ -4,8 +4,8 @@ set -e
 ##################################
 ##### SET THESE VARIABLES ########
 ##################################
-AS_USER=tsu-16 # name of user on server
-APP_ROOT=/home/tsu-16/TSU16-Timeline/current # path to application current folder
+AS_USER=marriage # name of user on server
+APP_ROOT=/home/marriage/Marriage/current # path to application current folder
 # update the name of the enviroment at '-E _____' to production, staging, etc
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/deploy/production/unicorn.rb -E production"
 ##################################

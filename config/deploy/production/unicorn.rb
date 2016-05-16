@@ -1,10 +1,10 @@
 ##################################
 ##### SET THESE VARIABLES ########
 ##################################
-root = "/home/tsu-16/TSU16-Timeline/current" # path to application current folder
-sock_name = "unicorn_TSU16-Timeline" # must be unique name with no '.'
-port_num = 8148 # must be a unique port number for this application
-tout = 30 # time in seconds before process dies - need a long time for data uploads
+root = "/home/marriage/Marriage/current" # path to application current folder
+sock_name = "unicorn_Marriage" # must be unique name with no '.'
+port_num = 8150 # must be a unique port number for this application
+tout = 60 # time in seconds before process dies - need a long time for data uploads
 ##################################
 
 working_directory root
@@ -14,5 +14,5 @@ stdout_path "#{root}/log/unicorn.log"
 
 listen "/tmp/#{sock_name}.sock"
 listen port_num, :tcp_nopush => true
-worker_processes 2
+worker_processes 1
 timeout tout
