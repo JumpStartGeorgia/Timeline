@@ -3,12 +3,12 @@ class EventTranslation < ActiveRecord::Base
 	require 'utf8_converter'
 
 	belongs_to :event
-	has_attached_file :media_img, 
+	has_attached_file :media_img,
     :url => "/system/media_img/:id/:style/:filename",
     :styles => {
         :'processed' => {:geometry => "800>"}
     },
-    :convert_options => { 
+    :convert_options => {
       :'processed' => '-quality 85'
     }
 
@@ -30,12 +30,12 @@ class EventTranslation < ActiveRecord::Base
 
   def required_data_provided?
     provided = false
-    
+
     provided = self.headline.present?
-    
+
     return provided
   end
-  
+
   # only headline is required, but go ahead and add the rest of content
   def add_required_data(obj)
     self.headline = obj.headline if self.headline.blank?
@@ -51,6 +51,8 @@ class EventTranslation < ActiveRecord::Base
   def create_media_file
     if self.media.present? && ((self.media != self.media_original) || (!self.media_img_verified && self.media_img_file_name.blank?))
       begin
+        puts "!!!!! #{self.media}"
+
         file = open(self.media)
         if file.present?
           case file.content_type
@@ -75,6 +77,18 @@ class EventTranslation < ActiveRecord::Base
             puts "!!!!!!!!!!!!!!!!!!!!!"
           end
           self.media_img_verified = true
+        end
+      rescue RuntimeError => error
+        # example: redirection forbidden: http://bit.ly/gSarwN -> https://github.com/jugyo/termtter/commit/6e5fa4455a5117fb6c10bdf82bae52cfcf57a91f
+        if error.message =~ /^redirection forbidden/
+          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          puts error.message
+          puts "trying again with the following url"
+          puts error.message.split(/\s+/).last
+          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+          self.media = error.message.split(/\s+/).last
+          retry
         end
       rescue OpenURI::HTTPError => the_error
         self.media_img_verified = true
