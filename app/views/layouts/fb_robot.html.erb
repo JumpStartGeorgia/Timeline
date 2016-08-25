@@ -15,7 +15,7 @@
       url_ary = url.split('?')
       if url_ary.length == 2
         new_url << url_ary[0]
-        
+
         found_param = false
         url_ary[1].split('&').each do |param|
           if param.index('_escaped_fragment_').nil?
@@ -27,7 +27,7 @@
             new_url << '&'
           end
         end
-        
+
         new_url << '#!'
         new_url << params['_escaped_fragment_']
       end
@@ -36,7 +36,7 @@
     <% if @record['asset']['media'].length > 1 && @record['asset']['media'].index(full_url('')) == 0  %>
     		<meta id="og_image" property="og:image" content="<%= @record['asset']['media'] %>" />
     <% else %>
-    		<meta id="og_image" property="og:image" content="<%= full_url(image_path("fb_share_#{I18n.locale}.jpg")) %>" />
+    		<meta id="og_image" property="og:image" content="<%= full_url(image_path("fb_share.png")) %>" />
     <% end %>
 	  <meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
@@ -48,9 +48,9 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.ico?v1', :rel => 'shortcut icon' %>
-    
+
 		<script type="text/javascript">
-      
+
     </script>
   </head>
   <body>
@@ -58,7 +58,7 @@
   <div id="story">
     <h1 id="headline"><%= @record['headline']%></h1>
     <div id="date">
-      <% 
+      <%
         date = ''
         if @record['startDate']
           date << @record['startDate']
@@ -78,12 +78,12 @@
 
   <hr />
 
-  <% if @about %>        
+  <% if @about %>
     <div id="about">
       <%= simple_format(@about) %>
-    </div>       
+    </div>
   <% end %>
-    
+
 
 
 	<% if Rails.env.production? %>
