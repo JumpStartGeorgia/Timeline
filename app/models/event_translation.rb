@@ -50,15 +50,14 @@ class EventTranslation < ActiveRecord::Base
   # download it and save to media_img
   def create_media_file
     if self.media.present? && ((self.media != self.media_original) || (!self.media_img_verified && self.media_img_file_name.blank?))
+      media_url = self.media.dup
       begin
-        puts "!!!!! #{self.media}"
-
-        file = open(self.media)
+        file = open(media_url)
         if file.present?
           case file.content_type
           when "image/png", "image/gif", "image/jpeg", "image/pjpeg"
             # create the file name that paperclip will read in
-            extension = File.extname(URI.parse(self.media).path)
+            extension = File.extname(URI.parse(media_url).path)
             # if extension is not in url, us the content type
             # if extension is php (e.g., http://www.tbilisi.gov.ge/functions/img.php?src_jpg=../album/1297_5992_668123.jpg&im_new_w=500)
             # - default to content type to get true content type
@@ -72,7 +71,7 @@ class EventTranslation < ActiveRecord::Base
             self.media_img = file
           else
             puts "!!!!!!!!!!!!!!!!!!!!!"
-            puts self.media
+            puts media_url
             puts "the file is not an image"
             puts "!!!!!!!!!!!!!!!!!!!!!"
           end
@@ -87,7 +86,7 @@ class EventTranslation < ActiveRecord::Base
           puts error.message.split(/\s+/).last
           puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-          self.media = error.message.split(/\s+/).last
+          media_url = error.message.split(/\s+/).last
           retry
         end
       rescue OpenURI::HTTPError => the_error

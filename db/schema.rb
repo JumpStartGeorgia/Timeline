@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140403102624) do
+ActiveRecord::Schema.define(:version => 20160825092031) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20140403102624) do
     t.string   "locale"
     t.string   "headline"
     t.text     "story"
-    t.string   "media"
+    t.string   "media",                  :limit => 1000
     t.string   "credit"
     t.string   "caption"
     t.datetime "created_at"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20140403102624) do
     t.string   "media_img_content_type"
     t.integer  "media_img_file_size"
     t.datetime "media_img_updated_at"
-    t.boolean  "media_img_verified",     :default => false
+    t.boolean  "media_img_verified",                     :default => false
   end
 
   add_index "event_translations", ["event_id"], :name => "index_event_translations_on_event_id"
