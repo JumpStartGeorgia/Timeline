@@ -149,6 +149,10 @@ ka:
         title: ახალი მომხმარებელი
       show:
         title: მომხმარებლის დეტალები
+    events:
+      index:
+        btn_reload_text: Reload with Latest Spreadsheet Data
+        btn_reload_confirm: This will delete all events and any images that are on file. Are you sure? (this may take a minute to process)
   root:
     index:
       no_data: 'სამწუხაროდ, მონაცემები არ მოიპოვება "დროის ხაზზე" ჩასატვირთად'

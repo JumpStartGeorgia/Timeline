@@ -21,7 +21,11 @@ BootstrapStarter::Application.routes.draw do
 
 		namespace :admin do
 			resources :users
-      resources :events
+      resources :events do
+        collection do
+          post 'reload_data'
+        end
+      end
       resources :categories
 		end
 
