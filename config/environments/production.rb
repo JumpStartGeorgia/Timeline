@@ -28,7 +28,7 @@ BootstrapStarter::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -47,7 +47,7 @@ BootstrapStarter::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
-	config.action_mailer.default_url_options = { :host => 'jumpstart.ge' }
+	config.action_mailer.default_url_options = { :host => 'timeline.jumpstart.ge', :protocol => 'https' }
 	config.action_mailer.delivery_method = :smtp
 
   # Enable threaded mode
