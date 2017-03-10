@@ -11,8 +11,7 @@ class Message
 	attribute :bcc
 	attribute :locale, :default => I18n.locale
   
-	attr_accessible :name, :email, :event, :subject, :event_date, :url, :bcc,
-    :locale
+	attr_accessor :name, :email, :event, :subject, :event_date, :url, :bcc, :locale
 
   validates_presence_of :event
   

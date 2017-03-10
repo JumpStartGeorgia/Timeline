@@ -98,7 +98,8 @@
     </div>
 
 		<div id="container-content" class="container-fluid">
-		  <div id="hidden_form" class="container-fluid" >
+<% if false %>
+		  <div id="hidden_form" class="container-fluid">
 		    <form id="event_form" action="">
 		      <ul class="list_float">
 		        <li id="hidden_form_header" class="align_top">
@@ -181,7 +182,7 @@
           </ul>
 	      </form>
 		  </div>
-
+<% end %>
       <%= yield %>
     </div> <!-- /container -->
 

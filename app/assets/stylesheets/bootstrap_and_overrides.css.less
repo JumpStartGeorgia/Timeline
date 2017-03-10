@@ -1,6 +1,6 @@
 @import "twitter/bootstrap/bootstrap";
 body {
-	padding-top: 78px;
+  padding-top: 78px;
 }
 
 @import "twitter/bootstrap/responsive";
@@ -10,15 +10,17 @@ body {
 @iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
-//       have the proper paths. So for now we use the absolute path.
-@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
-@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
-@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
-@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
 
 // Font Awesome
-@import "fontawesome";
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -36,38 +38,38 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 html, body {
   height: 100%;
-	font-size: 13px;
+  font-size: 13px;
 }
 
 #wrapper {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -155px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -155px;
 }
 
 #wrapper > .container-fluid {
-	padding-top: 60px;
-	padding-bottom: 60px;
-	overflow: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  overflow: auto;
 }
 
 .push { height: 155px; } /* Just some arbitrary space to add between footer and rest of the content, when they are close */
 
 @media (max-width: 979px) {
   body {
-  	margin-top: 0;
+    margin-top: 0;
   }
   #wrapper > .container-fluid {
-  	padding: 1em;
+    padding: 1em;
   }
-	.navbar-fixed-top  {
-		margin: 0;
-	}
+  .navbar-fixed-top  {
+    margin: 0;
+  }
 }
 
 .container-fluid > ul.nav  {
-	line-height: 20px;
+  line-height: 20px;
 }
 .navbar-fixed-top .navbar-inner .container-fluid .brand {
   font-size: 19px;
