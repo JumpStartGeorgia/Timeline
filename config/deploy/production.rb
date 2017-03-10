@@ -1,7 +1,7 @@
 ##################################
 ##### SET THESE VARIABLES ########
 ##################################
-server "gamma.jumpstart.ge", :web, :app, :db, primary: true # server where app is located
+server "delta.jumpstart.ge", :web, :app, :db, primary: true # server where app is located
 set :application, "Timeline" # unique name of application
 set :user, "timeline"# name of user on server
 set :ngnix_conf_file_loc, "production/nginx.conf" # location of nginx conf file
